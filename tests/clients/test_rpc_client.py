@@ -82,7 +82,8 @@ def test_client_authentication_raises_error_on_auth_failure(mocker, nonce):
     mocker.patch("socket.create_connection")
     mocker.patch("pyboinc.clients.rpc_client.RpcClient.get_nonce", return_value=nonce)
     mocker.patch(
-        "pyboinc.clients.rpc_client.RpcClient.send_password", return_value="unauthorized"
+        "pyboinc.clients.rpc_client.RpcClient.send_password",
+        return_value="unauthorized",
     )
     client = RpcClient(hostname="localhost", password="wrong_password")
     assert not client.authenticate()
@@ -90,7 +91,9 @@ def test_client_authentication_raises_error_on_auth_failure(mocker, nonce):
 
 def test_client_can_make_custom_calls(mocker):
     mocker.patch("socket.create_connection")
-    m_call = mocker.patch("pyboinc.clients.rpc_client.RpcClient._call", return_value="123")
+    m_call = mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient._call", return_value="123"
+    )
 
     client = RpcClient(hostname="localhost")
     client.make_request("<mock_call/>")
