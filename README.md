@@ -11,10 +11,10 @@ from pyboinc import Boinc
 from pyboinc.clients.rpc_client import RpcClient
 
 # Hostname or IP of the running BOINC client
-BOINC_HOSTNAME="192.168.0.2"
+BOINC_HOSTNAME = "192.168.0.2"
 
 # Create an RPC client to connect to the BOINC socket
-rpc_client=RpcClient(hostname=BOINC_HOSTNAME)
+rpc_client = RpcClient(hostname=BOINC_HOSTNAME)
 rpc_client.authenticate()
 
 # Create a BOINC client to interact with the RPC socket
@@ -85,5 +85,37 @@ Response
       "keywords": "9 13 64 20 44"
     }
   ]
+}
+```
+
+### Get CC Status
+
+```python
+boinc_client.get_cc_status()
+```
+
+Response
+
+```json
+{
+  "cc_status": {
+    "network_status": "2",
+    "ams_password_error": "0",
+    "task_suspend_reason": "0",
+    "task_mode": "2",
+    "task_mode_perm": "2",
+    "task_mode_delay": "0.000000",
+    "gpu_suspend_reason": "0",
+    "gpu_mode": "2",
+    "gpu_mode_perm": "2",
+    "gpu_mode_delay": "0.000000",
+    "network_suspend_reason": "0",
+    "network_mode": "2",
+    "network_mode_perm": "2",
+    "network_mode_delay": "0.000000",
+    "disallow_attach": "0",
+    "simple_gui_only": "0",
+    "max_event_log_lines": "2000"
+  }
 }
 ```
