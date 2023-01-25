@@ -3,6 +3,7 @@ import xmltodict
 from pyboinc.clients.rpc_client import RpcClient
 
 from .projects import get_all_projects
+from .status import cc_status
 
 
 class Boinc:
@@ -19,3 +20,6 @@ class Boinc:
 
     def get_all_projects(self) -> dict:
         return get_all_projects(client=self.rpc_client)
+
+    def get_cc_status(self) -> dict:
+        return cc_status(client=self.rpc_client)
