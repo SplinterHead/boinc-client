@@ -14,8 +14,6 @@ def disk_stats(client: RpcClient):
     """Show disk usage by project."""
     rpc_resp = client.make_request("<get_disk_usage/>")
     rpc_json = xmltodict.parse(rpc_resp)
-    print("RPC JSON")
-    print(rpc_json)
     disk_stats = {"disk_stats": rpc_json.get("disk_usage_summary")}
     if "project" in rpc_json.get("disk_usage_summary"):
         disk_stats["disk_stats"]["projects"] = (
