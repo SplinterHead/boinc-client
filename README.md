@@ -41,7 +41,7 @@ The following options can be passed when creating a `Boinc` instance
 ## Unauthorised Operations
 These operations can be used without supplying a password. They are all read-only for pulling information about a BOINC client
 
-### Get client Version
+### Get Client Version
 ```python
 boinc_client.client_version()
 ```
@@ -95,7 +95,6 @@ boinc_client.get_cc_status()
 ```
 
 Response
-
 ```json
 {
   "cc_status": {
@@ -116,6 +115,27 @@ Response
     "disallow_attach": "0",
     "simple_gui_only": "0",
     "max_event_log_lines": "2000"
+  }
+}
+```
+
+### Get Disk Stats
+
+```python
+boinc_client.get_disk_stats()
+```
+
+Response
+```json
+{
+  "disk_stats": {
+    "projects": [
+      {"master_url": "https://projecta.com", "disk_usage": "30"}
+    ],
+    "d_total": "100",
+    "d_free": "20",
+    "d_boinc": "50",
+    "d_allowed": "75"
   }
 }
 ```
