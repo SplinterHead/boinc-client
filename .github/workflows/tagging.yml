@@ -30,13 +30,11 @@ jobs:
         with:
           commit_message: "Create ${{ steps.semver.outputs.next }} Release"
           tagging_message: ${{ steps.semver.outputs.next }}
-          token: ${{ secrets.GH_TOKEN }}
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0
         with:
-          allowUpdates: true
-          draft: false
-          makeLatest: true
           name: ${{ steps.semver.outputs.next }}
           body: Changelog Contents
+          tag: ${{ steps.semver.outputs.next }}
           token: ${{ github.token }}
+          makeLatest: true
