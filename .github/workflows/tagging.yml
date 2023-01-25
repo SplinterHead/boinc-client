@@ -22,8 +22,10 @@ jobs:
         id: semver
         uses: ietf-tools/semver-action@v1
         with:
-          token: ${{ secrets.GH_TOKEN }}
           branch: main
+          patchList: fix,bugfix
+          noVersionBumpBehavior: skip
+          token: ${{ secrets.GH_TOKEN }}
       - name: Bump Poetry Version
         run: poetry version ${{ steps.semver.outputs.nextStrict }}
       - uses: stefanzweifel/git-auto-commit-action@v4
