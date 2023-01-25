@@ -47,3 +47,87 @@ def basic_cc_status_dict() -> dict:
             "max_event_log_lines": "2000",
         }
     }
+
+
+@fixture
+def disk_stats_no_project_xml() -> str:
+    return """<disk_usage_summary>
+        <d_total>100</d_total>
+        <d_free>20</d_free>
+        <d_boinc>50</d_boinc>
+        <d_allowed>75</d_allowed>
+    </disk_usage_summary>"""
+
+
+@fixture
+def disk_stats_no_project_dict() -> dict:
+    return {
+        "disk_stats": {
+            "projects": [],
+            "d_total": "100",
+            "d_free": "20",
+            "d_boinc": "50",
+            "d_allowed": "75",
+        }
+    }
+
+
+@fixture
+def disk_stats_single_project_xml() -> str:
+    return """<disk_usage_summary>
+        <project>
+            <master_url>https://projecta.com</master_url>
+            <disk_usage>30</disk_usage>
+        </project>
+        <d_total>100</d_total>
+        <d_free>20</d_free>
+        <d_boinc>50</d_boinc>
+        <d_allowed>75</d_allowed>
+    </disk_usage_summary>"""
+
+
+@fixture
+def disk_stats_single_project_dict() -> dict:
+    return {
+        "disk_stats": {
+            "projects": [{"master_url": "https://projecta.com", "disk_usage": "30"}],
+            "d_total": "100",
+            "d_free": "20",
+            "d_boinc": "50",
+            "d_allowed": "75",
+        }
+    }
+
+
+@fixture
+def disk_stats_multi_project_xml() -> str:
+    return """<disk_usage_summary>
+        <project>
+            <master_url>https://projecta.com</master_url>
+            <disk_usage>30</disk_usage>
+        </project>
+        <project>
+            <master_url>https://projectb.com</master_url>
+            <disk_usage>35</disk_usage>
+        </project>
+        <d_total>100</d_total>
+        <d_free>20</d_free>
+        <d_boinc>50</d_boinc>
+        <d_allowed>75</d_allowed>
+    </disk_usage_summary>"""
+
+
+@fixture
+def disk_stats_multi_project_dict() -> dict:
+    return {
+        "disk_stats": {
+            "projects": [
+                {"master_url": "https://projecta.com", "disk_usage": "30"},
+                {"master_url": "https://projectb.com", "disk_usage": "35"},
+            ],
+            "d_total": "100",
+            "d_free": "20",
+            "d_boinc": "50",
+            "d_allowed": "75",
+        }
+    }
