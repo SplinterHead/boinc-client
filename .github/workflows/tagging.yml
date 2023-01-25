@@ -11,10 +11,11 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      - uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: 3.9
-      - name: Run image
+      - name: Setup Poetry
         uses: abatilo/actions-poetry@v2
         with:
           poetry-version: 1.3.2
@@ -22,21 +23,24 @@ jobs:
         id: semver
         uses: ietf-tools/semver-action@v1
         with:
-          token: ${{ secrets.GH_TOKEN }}
           branch: main
+          patchList: fix,bugfix
+          noVersionBumpBehavior: silent
+          token: ${{ secrets.GH_TOKEN }}
       - name: Bump Poetry Version
         run: poetry version ${{ steps.semver.outputs.nextStrict }}
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Create ${{ steps.semver.outputs.next }} Release"
           tagging_message: ${{ steps.semver.outputs.next }}
-          token: ${{ secrets.GH_TOKEN }}
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0
+        if: ${{ steps.semver.outputs.next != null }}
         with:
-          allowUpdates: true
-          draft: false
-          makeLatest: true
           name: ${{ steps.semver.outputs.next }}
           body: Changelog Contents
+          tag: ${{ steps.semver.outputs.next }}
           token: ${{ github.token }}
+          makeLatest: true
+          generateReleaseNotes: true
+          skipIfReleaseExists: true
