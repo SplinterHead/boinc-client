@@ -1,6 +1,6 @@
 # pyBoinc
 
-Python API for interacting with a BOINC client via RPC
+Python library for interacting with a BOINC client via RPC, with consistent response types
 
 ## Usage
 
@@ -143,7 +143,7 @@ Response
 ### Get Daily Network Stats
 
 ```python
-boinc_client.get_daily_transfers()
+boinc_client.get_network_stats()
 ```
 
 ```json

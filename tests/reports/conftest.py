@@ -2,7 +2,7 @@ from pytest import fixture
 
 
 @fixture
-def daily_transfer_report_xml() -> str:
+def daily_network_transfer_report_xml() -> str:
     return """<daily_xfers>
         <dx>
             <when>19358</when>
@@ -13,12 +13,12 @@ def daily_transfer_report_xml() -> str:
 
 
 @fixture
-def daily_transfer_report_dict() -> dict:
+def daily_network_transfer_report_dict() -> dict:
     return {"daily_transfers": {"2023-01-01": {"up": 1000.000, "down": 6000.000}}}
 
 
 @fixture
-def multi_daily_transfer_report_xml() -> str:
+def multi_daily_network_transfer_report_xml() -> str:
     return """<daily_xfers>
         <dx>
             <when>19358</when>
@@ -34,7 +34,7 @@ def multi_daily_transfer_report_xml() -> str:
 
 
 @fixture
-def multi_daily_transfer_report_dict() -> dict:
+def multi_daily_network_transfer_report_dict() -> dict:
     return {
         "daily_transfers": {
             "2023-01-01": {"up": 1000.000, "down": 6000.000},

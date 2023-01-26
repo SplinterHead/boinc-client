@@ -3,7 +3,7 @@ import xmltodict
 from pyboinc.clients.rpc_client import RpcClient
 
 from .projects import get_all_projects
-from .reports import get_daily_transfers
+from .reports import get_daily_network_transfers
 from .status import cc_status, disk_stats
 
 
@@ -28,5 +28,5 @@ class Boinc:
     def get_disk_stats(self) -> dict:
         return disk_stats(client=self.rpc_client)
 
-    def get_daily_transfers(self) -> dict:
-        return get_daily_transfers(client=self.rpc_client)
+    def get_network_stats(self) -> dict:
+        return get_daily_network_transfers(client=self.rpc_client)
