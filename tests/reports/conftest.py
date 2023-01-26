@@ -14,7 +14,7 @@ def daily_network_transfer_report_xml() -> str:
 
 @fixture
 def daily_network_transfer_report_dict() -> dict:
-    return {"daily_transfers": {"2023-01-01": {"up": 1000.000, "down": 6000.000}}}
+    return {"network_stats": {"2023-01-01": {"up": 1000.000, "down": 6000.000}}}
 
 
 @fixture
@@ -36,7 +36,7 @@ def multi_daily_network_transfer_report_xml() -> str:
 @fixture
 def multi_daily_network_transfer_report_dict() -> dict:
     return {
-        "daily_transfers": {
+        "network_stats": {
             "2023-01-01": {"up": 1000.000, "down": 6000.000},
             "2023-01-02": {"up": 2000.000, "down": 5000.000},
         }
