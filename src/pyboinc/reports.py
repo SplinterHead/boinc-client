@@ -5,13 +5,13 @@ import xmltodict
 from pyboinc.clients.rpc_client import RpcClient
 
 
-def _epoch_to_date(epoch_days: str):
+def _epoch_to_date(epoch_days: str) -> dt.date:
     epoch = dt.date(1970, 1, 1)
     delta = dt.timedelta(days=int(epoch_days))
     return epoch + delta
 
 
-def get_daily_network_transfers(client: RpcClient):
+def get_daily_network_transfers(client: RpcClient) -> dict:
     """Show network traffic history of the BOINC client. Read from daily_xfer_history.xml."""
     rpc_resp = client.make_request("<get_daily_xfer_history/>")
     rpc_json = xmltodict.parse(rpc_resp)
