@@ -139,3 +139,18 @@ Response
   }
 }
 ```
+
+### Get Daily Network Stats
+
+```python
+boinc_client.get_daily_transfers()
+```
+
+```json
+{
+  "daily_transfers": {
+    "2023-01-01": {"up": 1000.000, "down": 6000.000},
+    "2023-01-02": {"up": 2000.000, "down": 5000.000}
+  }
+}
+```
