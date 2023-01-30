@@ -22,7 +22,11 @@ jobs:
       - name: Install Dependencies
         run: poetry install
       - name: Test with PyTest
-        run: poetry run pytest
+        run: poetry run pytest --cov=pyboinc --cov-report=xml
+      - name: Code Coverage Summary Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        with:
+          filename: coverage.xml
 
   Release:
     runs-on: ubuntu-latest

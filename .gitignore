@@ -7,3 +7,7 @@
 # Python
 .pytest_cache/
 *.pyc
+
+# Test Reports
+.coverage
+coverage.xml
