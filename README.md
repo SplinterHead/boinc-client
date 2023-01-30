@@ -201,3 +201,34 @@ Response
     }
 }
 ```
+
+### Get Public Notices
+
+```python
+boinc_client.get_public_notices()
+```
+
+#### Arguments
+
+| Argument | Description                      | Required | Default |
+|----------|----------------------------------|----------|---------|
+| `start`  | ID of the first notice to return | No       | 0       |
+
+Response
+
+```json
+{
+    "notices": {
+        "1": {
+            "title": "Notice A",
+            "description": "This is a notice",
+            "create_time": 123,
+            "arrival_time": 124,
+            "is_private": false,
+            "project_name": "proja",
+            "category": "test",
+            "link": "https://linky.link",
+        }
+    }
+}
+```
