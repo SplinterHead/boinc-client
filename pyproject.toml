@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyboinc"
-version = "0.8.0"
+version = "0.9.0"
 description = "Python API for interacting with a BOINC client via RPC"
 authors = ["Lewis England"]
 readme = "README.md"
