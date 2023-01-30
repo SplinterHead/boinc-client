@@ -156,6 +156,6 @@ def multi_notice_dict() -> dict:
                 "project_name": "projb",
                 "category": "test2",
                 "link": "https://linky2.link",
-            }
+            },
         }
     }

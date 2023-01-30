@@ -68,4 +68,6 @@ def test_can_get_notices_since_id(
         return_value=multi_notice_xml,
     )
     _ = public_notices(client=mock_rpc_client, start=5) == multi_notice_dict
-    m_call.assert_called_once_with("<get_notices_public><seqno>5</seqno></get_notices_public>")
+    m_call.assert_called_once_with(
+        "<get_notices_public><seqno>5</seqno></get_notices_public>"
+    )

@@ -11,13 +11,14 @@ def _format_message(message):
         "time": int(message["time"]),
     }
 
+
 def _format_notice(notice):
     return {
         "arrival_time": int(notice["arrival_time"]),
         "category": notice["category"],
         "create_time": int(notice["create_time"]),
         "description": notice["description"],
-        "is_private": False if notice["is_private"] == 'false' else True,
+        "is_private": False if notice["is_private"] == "false" else True,
         "link": notice["link"],
         "project_name": notice["project_name"],
         "title": notice["title"],
@@ -48,7 +49,9 @@ def message_count(client: RpcClient) -> dict:
 
 def public_notices(client: RpcClient, start: int = 0) -> dict:
     """Show the largest message seqno."""
-    rpc_resp = client.make_request(f"<get_notices_public><seqno>{start}</seqno></get_notices_public>")
+    rpc_resp = client.make_request(
+        f"<get_notices_public><seqno>{start}</seqno></get_notices_public>"
+    )
     rpc_json = xmltodict.parse(rpc_resp)
     notice = rpc_json["notices"]["notice"]
     if type(notice) is dict:
