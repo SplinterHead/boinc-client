@@ -227,8 +227,59 @@ Response
             "is_private": false,
             "project_name": "proja",
             "category": "test",
-            "link": "https://linky.link",
+            "link": "https://linky.link"
         }
     }
+}
+```
+
+### Get Results
+
+```python
+boinc_client.get_results()
+```
+
+Response
+
+```json
+{
+    "results": [
+        {
+            "name": "foo",
+            "wu_name": "foo",
+            "platform": "foo",
+            "version_num": "foo",
+            "plan_class": "foo",
+            "project_url": "foo",
+            "final_cpu_time": "foo",
+            "final_elapsed_time": "foo",
+            "exit_status": "foo",
+            "state": "foo",
+            "report_deadline": "foo",
+            "received_time": "foo",
+            "estimated_cpu_time_remaining": "foo",
+            "project_suspended_via_gui": "foo",
+            "report_immediately": "foo",
+            "active_task": {
+                "active_task_state": "foo",
+                "app_version_num": "foo",
+                "slot": "foo",
+                "pid": "foo",
+                "scheduler_state": "foo",
+                "checkpoint_cpu_time": "foo",
+                "fraction_done": "foo",
+                "current_cpu_time": "foo",
+                "elapsed_time": "foo",
+                "swap_size": "foo",
+                "working_set_size": "foo",
+                "working_set_size_smoothed": "foo",
+                "page_fault_rate": "foo",
+                "bytes_sent": "foo",
+                "bytes_received": "foo",
+                "progress_rate": "foo"
+            },
+            "resources": "foo"
+        }
+    ]
 }
 ```
