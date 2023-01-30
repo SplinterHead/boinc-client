@@ -35,5 +35,5 @@ class Boinc:
     def get_message_count(self) -> int:
         return message_count(client=self.rpc_client)
 
-    def get_messages(self) -> dict:
-        return messages(client=self.rpc_client)
+    def get_messages(self, start: int = 0) -> dict:
+        return messages(client=self.rpc_client, start=start)

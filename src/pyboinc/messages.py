@@ -12,9 +12,11 @@ def _format_message(message):
     }
 
 
-def messages(client: RpcClient) -> dict:
+def messages(client: RpcClient, start: int = 0) -> dict:
     """Show messages with sequence numbers beyond the given seqno."""
-    rpc_resp = client.make_request("<get_messages/>")
+    rpc_resp = client.make_request(
+        f"<get_messages><seqno>{start}</seqno></get_messages>"
+    )
     rpc_json = xmltodict.parse(rpc_resp)
     msg = rpc_json["msgs"]["msg"]
     if type(msg) is dict:

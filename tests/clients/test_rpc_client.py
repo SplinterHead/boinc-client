@@ -40,7 +40,7 @@ def test_can_create_rpc_client_with_password(mocker):
 
 def test_client_can_create_socket_connection(mocker):
     m = mocker.patch("socket.create_connection")
-    client = RpcClient(hostname="localhost")
+    _ = RpcClient(hostname="localhost")
     m.assert_called_once_with(address=("localhost", 31416), timeout=30)
 
 
