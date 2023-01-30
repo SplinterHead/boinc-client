@@ -243,3 +243,91 @@ def multi_result_dict() -> dict:
             },
         ]
     }
+
+
+@fixture
+def single_old_result_xml() -> str:
+    return """<old_results>
+        <old_result>
+            <project_url>foo</project_url>
+            <result_name>foo</result_name>
+            <app_name>foo</app_name>
+            <exit_status>foo</exit_status>
+            <elapsed_time>foo</elapsed_time>
+            <cpu_time>foo</cpu_time>
+            <completed_time>foo</completed_time>
+            <create_time>foo</create_time>
+        </old_result>
+    </old_results>"""
+
+
+@fixture
+def single_old_result_dict() -> dict:
+    return {
+        "old_results": [
+            {
+                "project_url": "foo",
+                "result_name": "foo",
+                "app_name": "foo",
+                "exit_status": "foo",
+                "elapsed_time": "foo",
+                "cpu_time": "foo",
+                "completed_time": "foo",
+                "create_time": "foo",
+            }
+        ]
+    }
+
+
+@fixture
+def multi_old_result_xml() -> str:
+    return """<old_results>
+        <old_result>
+            <project_url>foo</project_url>
+            <result_name>foo</result_name>
+            <app_name>foo</app_name>
+            <exit_status>foo</exit_status>
+            <elapsed_time>foo</elapsed_time>
+            <cpu_time>foo</cpu_time>
+            <completed_time>foo</completed_time>
+            <create_time>foo</create_time>
+        </old_result>
+        <old_result>
+            <project_url>bar</project_url>
+            <result_name>bar</result_name>
+            <app_name>bar</app_name>
+            <exit_status>bar</exit_status>
+            <elapsed_time>bar</elapsed_time>
+            <cpu_time>bar</cpu_time>
+            <completed_time>bar</completed_time>
+            <create_time>bar</create_time>
+        </old_result>
+    </old_results>"""
+
+
+@fixture
+def multi_old_result_dict() -> dict:
+    return {
+        "old_results": [
+            {
+                "project_url": "foo",
+                "result_name": "foo",
+                "app_name": "foo",
+                "exit_status": "foo",
+                "elapsed_time": "foo",
+                "cpu_time": "foo",
+                "completed_time": "foo",
+                "create_time": "foo",
+            },
+            {
+                "project_url": "bar",
+                "result_name": "bar",
+                "app_name": "bar",
+                "exit_status": "bar",
+                "elapsed_time": "bar",
+                "cpu_time": "bar",
+                "completed_time": "bar",
+                "create_time": "bar",
+            },
+        ]
+    }

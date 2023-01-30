@@ -289,3 +289,28 @@ Response
     ]
 }
 ```
+
+### Get Old Results
+
+```python
+boinc_client.get_old_results()
+```
+
+Response
+
+```json
+{
+    "old_results": [
+        {
+            "project_url": "foo",
+            "result_name": "foo",
+            "app_name": "foo",
+            "exit_status": "foo",
+            "elapsed_time": "foo",
+            "cpu_time": "foo",
+            "completed_time": "foo",
+            "create_time": "foo"
+        }
+    ]
+}
+```

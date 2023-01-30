@@ -5,7 +5,7 @@ from pyboinc.clients.rpc_client import RpcClient
 from .messages import message_count, messages, public_notices
 from .projects import get_all_projects
 from .reports import get_daily_network_transfers
-from .results import results
+from .results import old_results, results
 from .status import cc_status, disk_stats
 
 
@@ -44,3 +44,6 @@ class Boinc:
 
     def get_results(self, active_only: bool = False) -> dict:
         return results(client=self.rpc_client, active_only=active_only)
+
+    def get_old_results(self) -> dict:
+        return old_results(client=self.rpc_client)

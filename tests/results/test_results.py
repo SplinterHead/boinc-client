@@ -1,4 +1,4 @@
-from pyboinc.results import results
+from pyboinc.results import old_results, results
 
 
 def test_can_get_single_result(
@@ -26,6 +26,7 @@ def test_can_get_multiple_result(
     )
     assert results(client=mock_rpc_client) == multi_result_dict
 
+
 def test_can_get_only_active_results(
     mocker, mock_rpc_client, multi_result_xml, multi_result_dict
 ):
@@ -37,3 +38,29 @@ def test_can_get_only_active_results(
     m_call.assert_called_once_with(
         "<get_results><active_only></active_only></get_results>"
     )
+
+
+def test_can_get_single_old_result(
+    mocker,
+    mock_rpc_client,
+    single_old_result_xml,
+    single_old_result_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=single_old_result_xml,
+    )
+    assert old_results(client=mock_rpc_client) == single_old_result_dict
+
+
+def test_can_get_multi_old_result(
+    mocker,
+    mock_rpc_client,
+    multi_old_result_xml,
+    multi_old_result_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=multi_old_result_xml,
+    )
+    assert old_results(client=mock_rpc_client) == multi_old_result_dict
