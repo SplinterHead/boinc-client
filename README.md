@@ -164,7 +164,9 @@ boinc_client.get_message_count()
 Response
 
 ```json
-30
+{
+  "message_count": 30
+}
 ```
 
 ### Get Messages
@@ -195,7 +197,7 @@ Response
             "pri": "projb",
             "body": "This is another Message",
             "time": 1672531300
-        },
+        }
     }
 }
 ```
