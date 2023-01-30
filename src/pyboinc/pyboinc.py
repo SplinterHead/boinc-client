@@ -42,5 +42,5 @@ class Boinc:
     def get_public_notices(self) -> dict:
         return public_notices(client=self.rpc_client)
 
-    def get_results(self) -> dict:
-        return results(client=self.rpc_client)
+    def get_results(self, active_only: bool = False) -> dict:
+        return results(client=self.rpc_client, active_only=active_only)

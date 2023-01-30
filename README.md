@@ -239,6 +239,12 @@ Response
 boinc_client.get_results()
 ```
 
+#### Arguments
+
+| Argument      | Description                                         | Required | Default |
+|---------------|-----------------------------------------------------|----------|---------|
+| `active_only` | Limits the returned results to only the active ones | No       | False   |
+
 Response
 
 ```json
