@@ -154,3 +154,48 @@ boinc_client.get_network_stats()
   }
 }
 ```
+
+### Get Message Count
+
+```python
+boinc_client.get_message_count()
+```
+
+Response
+
+```json
+30
+```
+
+### Get Messages
+
+```python
+boinc_client.get_messages()
+```
+
+#### Arguments
+
+| Argument | Description                       | Required | Default |
+|----------|-----------------------------------|----------|---------|
+| `start`  | ID of the first message to return | No       | 0       |
+
+Response
+
+```json
+{
+    "messages": {
+        "1": {
+            "project": "Project A",
+            "pri": "proja",
+            "body": "This is a Message",
+            "time": 1672531200
+        },
+        "2": {
+            "project": "Project B",
+            "pri": "projb",
+            "body": "This is another Message",
+            "time": 1672531300
+        },
+    }
+}
+```
