@@ -314,3 +314,29 @@ Response
     ]
 }
 ```
+
+### Get Project Statistics
+
+```python
+boinc_client.get_project_stats()
+```
+
+Response
+
+```json
+{
+    "project_stats": [
+        {
+            "master_url": "foo_url",
+            "daily_statistics": {
+                "foo_day": {
+                    "user_total_credit": "foo",
+                    "user_expavg_credit": "foo",
+                    "host_total_credit": "foo",
+                    "host_expavg_credit": "foo"
+                }
+            }
+        }
+    ]
+}
+```

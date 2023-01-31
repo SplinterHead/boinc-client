@@ -6,6 +6,7 @@ from .messages import message_count, messages, public_notices
 from .projects import get_all_projects
 from .reports import get_daily_network_transfers
 from .results import old_results, results
+from .stats import project_stats
 from .status import cc_status, disk_stats
 
 
@@ -47,3 +48,6 @@ class Boinc:
 
     def get_old_results(self) -> dict:
         return old_results(client=self.rpc_client)
+
+    def get_project_stats(self) -> dict:
+        return project_stats(client=self.rpc_client)
