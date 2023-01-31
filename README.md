@@ -56,8 +56,9 @@ Response
 ```
 
 ### Get BOINC Projects
+
 ```python
-boinc_client.get_all_projects()
+boinc_client.all_projects()
 ```
 
 Response

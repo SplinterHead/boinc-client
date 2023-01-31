@@ -1,4 +1,4 @@
-from pyboinc.projects import get_all_projects
+from pyboinc.projects import all_projects
 
 
 def test_can_get_single_project_with_single_platform(
@@ -11,9 +11,7 @@ def test_can_get_single_project_with_single_platform(
         "pyboinc.clients.rpc_client.RpcClient.make_request",
         return_value=single_project_single_platform_xml,
     )
-    assert (
-        get_all_projects(client=mock_rpc_client) == single_project_single_platform_dict
-    )
+    assert all_projects(client=mock_rpc_client) == single_project_single_platform_dict
 
 
 def test_can_get_single_project_with_multiple_platforms(
@@ -26,9 +24,7 @@ def test_can_get_single_project_with_multiple_platforms(
         "pyboinc.clients.rpc_client.RpcClient.make_request",
         return_value=single_project_multi_platform_xml,
     )
-    assert (
-        get_all_projects(client=mock_rpc_client) == single_project_multi_platform_dict
-    )
+    assert all_projects(client=mock_rpc_client) == single_project_multi_platform_dict
 
 
 def test_can_get_multiple_projects_with_single_platform(
@@ -41,6 +37,4 @@ def test_can_get_multiple_projects_with_single_platform(
         "pyboinc.clients.rpc_client.RpcClient.make_request",
         return_value=multi_project_single_platform_xml,
     )
-    assert (
-        get_all_projects(client=mock_rpc_client) == multi_project_single_platform_dict
-    )
+    assert all_projects(client=mock_rpc_client) == multi_project_single_platform_dict

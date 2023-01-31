@@ -1,4 +1,36 @@
-from pyboinc.stats import project_stats
+from pyboinc.stats import daily_network_transfers, project_stats
+
+
+def test_can_get_daily_network_transfer_reports(
+    mocker,
+    mock_rpc_client,
+    daily_network_transfer_report_xml,
+    daily_network_transfer_report_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=daily_network_transfer_report_xml,
+    )
+    assert (
+        daily_network_transfers(client=mock_rpc_client)
+        == daily_network_transfer_report_dict
+    )
+
+
+def test_can_get_multi_daily_network_transfer_reports(
+    mocker,
+    mock_rpc_client,
+    multi_daily_network_transfer_report_xml,
+    multi_daily_network_transfer_report_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=multi_daily_network_transfer_report_xml,
+    )
+    assert (
+        daily_network_transfers(client=mock_rpc_client)
+        == multi_daily_network_transfer_report_dict
+    )
 
 
 def test_can_get_single_project_single_day_stats(

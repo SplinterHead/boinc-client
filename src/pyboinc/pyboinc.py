@@ -3,10 +3,9 @@ import xmltodict
 from pyboinc.clients.rpc_client import RpcClient
 
 from .messages import message_count, messages, public_notices
-from .projects import get_all_projects
-from .reports import get_daily_network_transfers
+from .projects import all_projects
 from .results import old_results, results
-from .stats import project_stats
+from .stats import daily_network_transfers, project_stats
 from .status import cc_status, disk_stats
 
 
@@ -23,7 +22,7 @@ class Boinc:
         return rpc_json["server_version"]
 
     def get_all_projects(self) -> dict:
-        return get_all_projects(client=self.rpc_client)
+        return all_projects(client=self.rpc_client)
 
     def get_cc_status(self) -> dict:
         return cc_status(client=self.rpc_client)
@@ -32,7 +31,7 @@ class Boinc:
         return disk_stats(client=self.rpc_client)
 
     def get_network_stats(self) -> dict:
-        return get_daily_network_transfers(client=self.rpc_client)
+        return daily_network_transfers(client=self.rpc_client)
 
     def get_message_count(self) -> dict:
         return message_count(client=self.rpc_client)
