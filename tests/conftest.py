@@ -13,13 +13,3 @@ def mock_rpc_client(mocker) -> RpcClient:
 @fixture
 def mock_boinc_client(mock_rpc_client) -> Boinc:
     return Boinc(rpc_client=mock_rpc_client)
-
-
-@fixture
-def server_version() -> str:
-    return "<server_version>\n<major>1</major>\n<minor>2</minor>\n<release>0</release>\n</server_version>"
-
-
-@fixture
-def server_version_dict() -> dict:
-    return {"major": "1", "minor": "2", "release": "0"}

@@ -1,5 +1,3 @@
-import xmltodict
-
 from pyboinc.clients.rpc_client import RpcClient
 
 from .messages import message_count, messages, public_notices
@@ -7,6 +5,7 @@ from .projects import all_projects
 from .results import old_results, results
 from .stats import daily_network_transfers, project_stats
 from .status import cc_status, disk_stats
+from .versions import client_version
 
 
 class Boinc:
@@ -15,11 +14,8 @@ class Boinc:
     def __init__(self, rpc_client: RpcClient):
         self.rpc_client = rpc_client
 
-    def client_version(self) -> dict:
-        """Used to get the version of the running core client and send the version of the request's source."""
-        rpc_resp = self.rpc_client.make_request("<exchange_versions/>")
-        rpc_json = xmltodict.parse(rpc_resp)
-        return rpc_json["server_version"]
+    def get_client_version(self) -> dict:
+        return client_version(client=self.rpc_client)
 
     def get_all_projects(self) -> dict:
         return all_projects(client=self.rpc_client)
