@@ -5,7 +5,7 @@ from .projects import all_projects
 from .results import old_results, results
 from .stats import daily_network_transfers, project_stats
 from .status import cc_status, disk_stats
-from .versions import client_version
+from .versions import client_update, client_version
 
 
 class Boinc:
@@ -16,6 +16,9 @@ class Boinc:
 
     def get_client_version(self) -> dict:
         return client_version(client=self.rpc_client)
+
+    def get_client_update(self) -> dict:
+        return client_update(client=self.rpc_client)
 
     def get_all_projects(self) -> dict:
         return all_projects(client=self.rpc_client)
