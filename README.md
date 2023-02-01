@@ -55,6 +55,21 @@ Response
 }
 ```
 
+### Get Client Update
+```python
+boinc_client.get_client_update()
+```
+
+Response
+```json
+{
+    "update": {
+        "newer_version": "1.3.0",
+        "download_url": "http://boincclientdownload.info/v1_3_0.exe",
+    }
+}
+```
+
 ### Get BOINC Projects
 
 ```python
