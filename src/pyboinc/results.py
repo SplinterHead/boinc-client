@@ -11,20 +11,12 @@ def results(client: RpcClient, active_only: bool = False) -> dict:
         )
     else:
         rpc_resp = client.make_request("<get_results/>")
-    rpc_json = xmltodict.parse(rpc_resp)
-    result = rpc_json["results"]["result"]
-    if type(result) == dict:
-        result = [result]
-    results = {"results": []}
-    for r in result:
-        results["results"].append(r)
-    return results
+    rpc_json = xmltodict.parse(rpc_resp, force_list="result")
+    return {"results": [r for r in rpc_json["results"]["result"]]}
 
 
 def old_results(client: RpcClient) -> dict:
+    """Show old tasks."""
     rpc_resp = client.make_request("<get_old_results/>")
-    rpc_json = xmltodict.parse(rpc_resp)
-    old_result = rpc_json["old_results"]["old_result"]
-    if type(old_result) is dict:
-        old_result = [old_result]
-    return {"old_results": [result for result in old_result]}
+    rpc_json = xmltodict.parse(rpc_resp, force_list="old_result")
+    return {"old_results": [r for r in rpc_json["old_results"]["old_result"]]}

@@ -14,17 +14,9 @@ def _epoch_to_date(epoch_days: str) -> dt.date:
 def daily_network_transfers(client: RpcClient) -> dict:
     """Show network traffic history of the BOINC client. Read from daily_xfer_history.xml."""
     rpc_resp = client.make_request("<get_daily_xfer_history/>")
-    rpc_json = xmltodict.parse(rpc_resp)
+    rpc_json = xmltodict.parse(rpc_resp, force_list="dx")
     daily_xfer = {"network_stats": {}}
-    if type(rpc_json["daily_xfers"]["dx"]) is list:
-        for day in rpc_json["daily_xfers"]["dx"]:
-            day_key = _epoch_to_date(day["when"]).strftime("%Y-%m-%d")
-            daily_xfer["network_stats"][day_key] = {
-                "up": float(day["up"]),
-                "down": float(day["down"]),
-            }
-    else:
-        day = rpc_json["daily_xfers"]["dx"]
+    for day in rpc_json["daily_xfers"]["dx"]:
         day_key = _epoch_to_date(day["when"]).strftime("%Y-%m-%d")
         daily_xfer["network_stats"][day_key] = {
             "up": float(day["up"]),
@@ -35,31 +27,27 @@ def daily_network_transfers(client: RpcClient) -> dict:
 
 def project_stats(client: RpcClient):
     rpc_resp = client.make_request("<get_statistics/>")
-    rpc_json = xmltodict.parse(rpc_resp)
+    rpc_json = xmltodict.parse(
+        rpc_resp, force_list=("project_statistics", "daily_statistics")
+    )
     project_stats = {"project_stats": []}
-    proj = rpc_json["statistics"]["project_statistics"]
-    if type(proj) is dict:
-        proj = [proj]
-    for p in proj:
-        day = p["daily_statistics"]
-        if type(day) is dict:
-            day = [day]
+    for proj_stats in rpc_json["statistics"]["project_statistics"]:
         daily_stats = {}
-        for d in day:
+        for day_stat in proj_stats["daily_statistics"]:
             daily_stats.update(
                 {
-                    d["day"]: {
-                        "host_expavg_credit": d["host_expavg_credit"],
-                        "host_total_credit": d["host_total_credit"],
-                        "user_expavg_credit": d["user_expavg_credit"],
-                        "user_total_credit": d["user_total_credit"],
+                    day_stat["day"]: {
+                        "host_expavg_credit": day_stat["host_expavg_credit"],
+                        "host_total_credit": day_stat["host_total_credit"],
+                        "user_expavg_credit": day_stat["user_expavg_credit"],
+                        "user_total_credit": day_stat["user_total_credit"],
                     }
                 }
             )
         project_stats["project_stats"].append(
             {
                 "daily_statistics": daily_stats,
-                "master_url": p["master_url"],
+                "master_url": proj_stats["master_url"],
             }
         )
     return project_stats
