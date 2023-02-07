@@ -8,7 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 xmltodict = "^0.13.0"
-
+pydantic = "^1.10.4"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.12.0"
@@ -16,7 +16,13 @@ isort = "^5.11.4"
 pytest = "^7.2.1"
 pytest-cov = "^4.0.0"
 pytest-mock = "^3.10.0"
+pytest-lazy-fixture = "^0.6.3"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+markers = [
+    "model: Tests for Pydantic schemas"
+]

@@ -15,10 +15,25 @@ def single_messages_xml() -> str:
 
 
 @fixture
+def single_messages_json() -> dict:
+    return {
+        "msg": [
+            {
+                "project": "Project A",
+                "pri": "proja",
+                "seqno": "1",
+                "body": "This is a Message",
+                "time": "1672531200",
+            }
+        ]
+    }
+
+
+@fixture
 def single_messages_dict() -> dict:
     return {
         "messages": {
-            "1": {
+            1: {
                 "project": "Project A",
                 "pri": "proja",
                 "body": "This is a Message",

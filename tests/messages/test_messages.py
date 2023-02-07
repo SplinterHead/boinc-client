@@ -6,7 +6,7 @@ def test_can_get_message_count(mocker, mock_rpc_client):
         "pyboinc.clients.rpc_client.RpcClient.make_request",
         return_value="<seqno>1</seqno>",
     )
-    assert message_count(client=mock_rpc_client) == {"message_count": 1}
+    assert message_count(client=mock_rpc_client) == {"count": 1}
 
 
 def test_can_get_single_message(

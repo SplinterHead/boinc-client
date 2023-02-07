@@ -12,7 +12,7 @@ def server_version_xml() -> str:
 
 @fixture
 def server_version_dict() -> dict:
-    return {"major": "1", "minor": "2", "release": "0"}
+    return {"version": {"major": 1, "minor": 2, "patch": 0}}
 
 
 @fixture
@@ -22,10 +22,20 @@ def server_update_xml() -> str:
 
 
 @fixture
-def server_update_dict() -> dict:
+def server_update_json() -> dict:
     return {
         "update": {
             "newer_version": "1.3.0",
             "download_url": "http://boincclientdownload.info/v1_3_0.exe",
+        }
+    }
+
+
+@fixture
+def server_update_dict() -> dict:
+    return {
+        "update": {
+            "version": "1.3.0",
+            "url": "http://boincclientdownload.info/v1_3_0.exe",
         }
     }

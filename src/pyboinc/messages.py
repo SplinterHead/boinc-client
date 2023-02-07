@@ -1,6 +1,7 @@
 import xmltodict
 
 from pyboinc.clients.rpc_client import RpcClient
+from pyboinc.models.message_count import MessageCount
 
 
 def _format_message(message):
@@ -25,22 +26,29 @@ def _format_notice(notice):
     }
 
 
+def _postprocessor(_, key, value):
+    if key == "msg":
+        return key, {value["seqno"]: value}
+    return key, value
+
+
 def messages(client: RpcClient, start: int = 0) -> dict:
     """Show messages with sequence numbers beyond the given seqno."""
     rpc_resp = client.make_request(
         f"<get_messages><seqno>{start}</seqno></get_messages>"
     )
-    rpc_json = xmltodict.parse(rpc_resp, force_list="msg")
-    return {
-        "messages": {m["seqno"]: _format_message(m) for m in rpc_json["msgs"]["msg"]}
-    }
+    rpc_json = xmltodict.parse(rpc_resp, force_list="msg", postprocessor=_postprocessor)
+    print(rpc_json)
+    thing = {"new_messages": {i: m for (i, m) in rpc_json["msgs"]["msg"]}}
+    print(thing)
+    return thing
 
 
 def message_count(client: RpcClient) -> dict:
     """Show the largest message seqno."""
     rpc_resp = client.make_request("<get_message_count/>")
     rpc_json = xmltodict.parse(rpc_resp)
-    return {"message_count": int(rpc_json["seqno"])}
+    return MessageCount.parse_obj(rpc_json).dict()
 
 
 def public_notices(client: RpcClient, start: int = 0) -> dict:
