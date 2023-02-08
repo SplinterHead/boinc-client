@@ -63,7 +63,6 @@ def test_get_single_file_transfer(
     assert file_transfers(client=mock_rpc_client) == file_transfers_single_transfer_dict
 
 
-
 def test_get_multi_file_transfer(
     mocker,
     mock_rpc_client,

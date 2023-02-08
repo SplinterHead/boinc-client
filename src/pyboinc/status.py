@@ -30,6 +30,6 @@ def file_transfers(client: RpcClient) -> dict:
     rpc_resp = client.make_request("<get_file_transfers/>")
     rpc_json = xmltodict.parse(rpc_resp, force_list=("file_transfer",))
     file_transfers = {"file_transfers": []}
-    for transfer in rpc_json['file_transfers']['file_transfer']:
-        file_transfers['file_transfers'].append(transfer)
+    for transfer in rpc_json["file_transfers"]["file_transfer"]:
+        file_transfers["file_transfers"].append(transfer)
     return file_transfers

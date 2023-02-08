@@ -288,6 +288,6 @@ def file_transfers_multi_transfer_dict() -> dict:
                     "xfer_speed": "bar",
                     "url": "bar",
                 },
-            }
+            },
         ]
     }
