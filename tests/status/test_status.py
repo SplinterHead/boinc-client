@@ -1,4 +1,4 @@
-from pyboinc.status import cc_status, disk_stats
+from pyboinc.status import cc_status, disk_stats, file_transfers
 
 
 def test_get_cc_status(
@@ -48,3 +48,30 @@ def test_get_disk_stats_for_multi_project(
         return_value=disk_stats_multi_project_xml,
     )
     assert disk_stats(client=mock_rpc_client) == disk_stats_multi_project_dict
+
+
+def test_get_single_file_transfer(
+    mocker,
+    mock_rpc_client,
+    file_transfers_single_transfer_xml,
+    file_transfers_single_transfer_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=file_transfers_single_transfer_xml,
+    )
+    assert file_transfers(client=mock_rpc_client) == file_transfers_single_transfer_dict
+
+
+
+def test_get_multi_file_transfer(
+    mocker,
+    mock_rpc_client,
+    file_transfers_multi_transfer_xml,
+    file_transfers_multi_transfer_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=file_transfers_multi_transfer_xml,
+    )
+    assert file_transfers(client=mock_rpc_client) == file_transfers_multi_transfer_dict
