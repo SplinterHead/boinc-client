@@ -291,3 +291,183 @@ def file_transfers_multi_transfer_dict() -> dict:
             },
         ]
     }
+
+
+@fixture
+def host_info_xml() -> str:
+    return """<host_info>
+        <timezone>foo</timezone>
+        <domain_name>foo</domain_name>
+        <ip_addr>foo</ip_addr>
+        <host_cpid>foo</host_cpid>
+        <p_ncpus>foo</p_ncpus>
+        <p_vendor>foo</p_vendor>
+        <p_model>foo</p_model>
+        <p_features>foo</p_features>
+        <p_fpops>foo</p_fpops>
+        <p_iops>foo</p_iops>
+        <p_membw>foo</p_membw>
+        <p_calculated>foo</p_calculated>
+        <p_vm_extensions_disabled>foo</p_vm_extensions_disabled>
+        <m_nbytes>foo</m_nbytes>
+        <m_cache>foo</m_cache>
+        <m_swap>foo</m_swap>
+        <d_total>foo</d_total>
+        <d_free>foo</d_free>
+        <os_name>foo</os_name>
+        <os_version>foo</os_version>
+        <product_name>foo</product_name>
+        <virtualbox_version>foo</virtualbox_version>
+        <coprocs>
+            <coproc_intel_gpu>
+                <count>foo</count>
+                <name>foo</name>
+                <available_ram>foo</available_ram>
+                <have_opencl>foo</have_opencl>
+                <peak_flops>foo</peak_flops>
+                <version>foo</version>
+                <coproc_opencl>
+                    <name>foo</name>
+                    <vendor>foo</vendor>
+                    <vendor_id>foo</vendor_id>
+                    <available>foo</available>
+                    <half_fp_config>foo</half_fp_config>
+                    <single_fp_config>foo</single_fp_config>
+                    <double_fp_config>foo</double_fp_config>
+                    <endian_little>foo</endian_little>
+                    <execution_capabilities>foo</execution_capabilities>
+                    <extensions>foo</extensions>
+                    <global_mem_size>foo</global_mem_size>
+                    <local_mem_size>foo</local_mem_size>
+                    <max_clock_frequency>foo</max_clock_frequency>
+                    <max_compute_units>foo</max_compute_units>
+                    <nv_compute_capability_major>foo</nv_compute_capability_major>
+                    <nv_compute_capability_minor>foo</nv_compute_capability_minor>
+                    <amd_simd_per_compute_unit>foo</amd_simd_per_compute_unit>
+                    <amd_simd_width>foo</amd_simd_width>
+                    <amd_simd_instruction_width>foo</amd_simd_instruction_width>
+                    <opencl_platform_version>foo</opencl_platform_version>
+                    <opencl_device_version>foo</opencl_device_version>
+                    <opencl_driver_version>foo</opencl_driver_version>
+                </coproc_opencl>
+            </coproc_intel_gpu>
+        </coprocs>
+        <opencl_cpu_prop>
+            <platform_vendor>foo</platform_vendor>
+            <opencl_cpu_info>
+                <name>foo</name>
+                <vendor>foo</vendor>
+                <vendor_id>foo</vendor_id>
+                <available>foo</available>
+                <half_fp_config>foo</half_fp_config>
+                <single_fp_config>foo</single_fp_config>
+                <double_fp_config>foo</double_fp_config>
+                <endian_little>foo</endian_little>
+                <execution_capabilities>foo</execution_capabilities>
+                <extensions>foo</extensions>
+                <global_mem_size>foo</global_mem_size>
+                <local_mem_size>foo</local_mem_size>
+                <max_clock_frequency>foo</max_clock_frequency>
+                <max_compute_units>foo</max_compute_units>
+                <nv_compute_capability_major>foo</nv_compute_capability_major>
+                <nv_compute_capability_minor>foo</nv_compute_capability_minor>
+                <amd_simd_per_compute_unit>foo</amd_simd_per_compute_unit>
+                <amd_simd_width>foo</amd_simd_width>
+                <amd_simd_instruction_width>foo</amd_simd_instruction_width>
+                <opencl_platform_version>foo</opencl_platform_version>
+                <opencl_device_version>foo</opencl_device_version>
+                <opencl_driver_version>foo</opencl_driver_version>
+            </opencl_cpu_info>
+        </opencl_cpu_prop>
+    </host_info>"""
+
+
+@fixture
+def host_info_dict() -> dict:
+    return {
+        "host_info": {
+            "timezone": "foo",
+            "domain_name": "foo",
+            "ip_addr": "foo",
+            "host_cpid": "foo",
+            "p_ncpus": "foo",
+            "p_vendor": "foo",
+            "p_model": "foo",
+            "p_features": "foo",
+            "p_fpops": "foo",
+            "p_iops": "foo",
+            "p_membw": "foo",
+            "p_calculated": "foo",
+            "p_vm_extensions_disabled": "foo",
+            "m_nbytes": "foo",
+            "m_cache": "foo",
+            "m_swap": "foo",
+            "d_total": "foo",
+            "d_free": "foo",
+            "os_name": "foo",
+            "os_version": "foo",
+            "product_name": "foo",
+            "virtualbox_version": "foo",
+            "coprocs": {
+                "coproc_intel_gpu": {
+                    "count": "foo",
+                    "name": "foo",
+                    "available_ram": "foo",
+                    "have_opencl": "foo",
+                    "peak_flops": "foo",
+                    "version": "foo",
+                    "coproc_opencl": {
+                        "name": "foo",
+                        "vendor": "foo",
+                        "vendor_id": "foo",
+                        "available": "foo",
+                        "half_fp_config": "foo",
+                        "single_fp_config": "foo",
+                        "double_fp_config": "foo",
+                        "endian_little": "foo",
+                        "execution_capabilities": "foo",
+                        "extensions": "foo",
+                        "global_mem_size": "foo",
+                        "local_mem_size": "foo",
+                        "max_clock_frequency": "foo",
+                        "max_compute_units": "foo",
+                        "nv_compute_capability_major": "foo",
+                        "nv_compute_capability_minor": "foo",
+                        "amd_simd_per_compute_unit": "foo",
+                        "amd_simd_width": "foo",
+                        "amd_simd_instruction_width": "foo",
+                        "opencl_platform_version": "foo",
+                        "opencl_device_version": "foo",
+                        "opencl_driver_version": "foo",
+                    },
+                }
+            },
+            "opencl_cpu_prop": {
+                "platform_vendor": "foo",
+                "opencl_cpu_info": {
+                    "name": "foo",
+                    "vendor": "foo",
+                    "vendor_id": "foo",
+                    "available": "foo",
+                    "half_fp_config": "foo",
+                    "single_fp_config": "foo",
+                    "double_fp_config": "foo",
+                    "endian_little": "foo",
+                    "execution_capabilities": "foo",
+                    "extensions": "foo",
+                    "global_mem_size": "foo",
+                    "local_mem_size": "foo",
+                    "max_clock_frequency": "foo",
+                    "max_compute_units": "foo",
+                    "nv_compute_capability_major": "foo",
+                    "nv_compute_capability_minor": "foo",
+                    "amd_simd_per_compute_unit": "foo",
+                    "amd_simd_width": "foo",
+                    "amd_simd_instruction_width": "foo",
+                    "opencl_platform_version": "foo",
+                    "opencl_device_version": "foo",
+                    "opencl_driver_version": "foo",
+                },
+            },
+        }
+    }

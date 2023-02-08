@@ -1,4 +1,8 @@
-from pyboinc.status import cc_status, disk_stats, file_transfers
+import json
+
+import xmltodict
+
+from pyboinc.status import cc_status, disk_stats, file_transfers, host_info
 
 
 def test_get_cc_status(
@@ -74,3 +78,16 @@ def test_get_multi_file_transfer(
         return_value=file_transfers_multi_transfer_xml,
     )
     assert file_transfers(client=mock_rpc_client) == file_transfers_multi_transfer_dict
+
+
+def test_can_parse_host_info(
+    mocker,
+    mock_rpc_client,
+    host_info_xml,
+    host_info_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=host_info_xml,
+    )
+    assert host_info(client=mock_rpc_client) == host_info_dict

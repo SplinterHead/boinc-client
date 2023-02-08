@@ -33,3 +33,9 @@ def file_transfers(client: RpcClient) -> dict:
     for transfer in rpc_json["file_transfers"]["file_transfer"]:
         file_transfers["file_transfers"].append(transfer)
     return file_transfers
+
+def host_info(client: RpcClient) -> dict:
+    """Get information about host hardware and usage."""
+    rpc_resp = client.make_request("<get_host_info/>")
+    rpc_json = xmltodict.parse(rpc_resp)
+    return rpc_json
