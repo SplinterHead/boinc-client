@@ -2,7 +2,13 @@ import json
 
 import xmltodict
 
-from pyboinc.status import cc_status, disk_stats, file_transfers, host_info
+from pyboinc.status import (
+    cc_status,
+    disk_stats,
+    file_transfers,
+    host_info,
+    simple_gui_info,
+)
 
 
 def test_get_cc_status(
@@ -91,3 +97,29 @@ def test_can_parse_host_info(
         return_value=host_info_xml,
     )
     assert host_info(client=mock_rpc_client) == host_info_dict
+
+
+def test_can_get_simple_gui_info_single_project_single_result(
+    mocker,
+    mock_rpc_client,
+    simple_gui_info_singles_xml,
+    simple_gui_info_singles_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=simple_gui_info_singles_xml,
+    )
+    assert simple_gui_info(client=mock_rpc_client) == simple_gui_info_singles_dict
+
+
+def test_can_get_simple_gui_info_multi_project_multi_result(
+    mocker,
+    mock_rpc_client,
+    simple_gui_info_multi_xml,
+    simple_gui_info_multi_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=simple_gui_info_multi_xml,
+    )
+    assert simple_gui_info(client=mock_rpc_client) == simple_gui_info_multi_dict

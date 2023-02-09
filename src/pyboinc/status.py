@@ -1,3 +1,5 @@
+import json
+
 import xmltodict
 
 from pyboinc.clients.rpc_client import RpcClient
@@ -34,8 +36,24 @@ def file_transfers(client: RpcClient) -> dict:
         file_transfers["file_transfers"].append(transfer)
     return file_transfers
 
+
 def host_info(client: RpcClient) -> dict:
     """Get information about host hardware and usage."""
     rpc_resp = client.make_request("<get_host_info/>")
     rpc_json = xmltodict.parse(rpc_resp)
     return rpc_json
+
+
+def simple_gui_info(client: RpcClient) -> dict:
+    """Show status of projects and active tasks."""
+    rpc_resp = client.make_request("<get_simple_gui_info/>")
+    rpc_json = xmltodict.parse(rpc_resp, force_list=("project", "result"))
+    projects = [proj for proj in rpc_json["simple_gui_info"]["project"]]
+    results = [res for res in rpc_json["simple_gui_info"]["result"]]
+    for project in projects:
+        project["platforms"] = (
+            [{"name": p} for p in project["platforms"]["name"]]
+            if type(project["platforms"]["name"]) == list
+            else [project["platforms"]]
+        )
+    return {"gui_info": {"projects": projects, "results": results}}

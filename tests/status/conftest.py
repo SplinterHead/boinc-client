@@ -471,3 +471,333 @@ def host_info_dict() -> dict:
             },
         }
     }
+
+
+@fixture
+def simple_gui_info_singles_xml() -> str:
+    return """<simple_gui_info>
+    <project>
+        <name>test_project</name>
+        <url>test_url</url>
+        <general_area>test_area</general_area>
+        <specific_area>test_s_area</specific_area>
+        <description>test_desc</description>
+        <home>test_home</home>
+        <platforms>
+            <name>test_platform</name>
+        </platforms>
+        <summary>test_summary</summary>
+    </project>
+    <result>
+        <name>foo</name>
+        <wu_name>foo</wu_name>
+        <platform>foo</platform>
+        <version_num>foo</version_num>
+        <plan_class>foo</plan_class>
+        <project_url>foo</project_url>
+        <final_cpu_time>foo</final_cpu_time>
+        <final_elapsed_time>foo</final_elapsed_time>
+        <exit_status>foo</exit_status>
+        <state>foo</state>
+        <report_deadline>foo</report_deadline>
+        <received_time>foo</received_time>
+        <estimated_cpu_time_remaining>foo</estimated_cpu_time_remaining>
+        <project_suspended_via_gui>foo</project_suspended_via_gui>
+        <report_immediately>foo</report_immediately>
+        <active_task>
+            <active_task_state>foo</active_task_state>
+            <app_version_num>foo</app_version_num>
+            <slot>foo</slot>
+            <pid>foo</pid>
+            <scheduler_state>foo</scheduler_state>
+            <checkpoint_cpu_time>foo</checkpoint_cpu_time>
+            <fraction_done>foo</fraction_done>
+            <current_cpu_time>foo</current_cpu_time>
+            <elapsed_time>foo</elapsed_time>
+            <swap_size>foo</swap_size>
+            <working_set_size>foo</working_set_size>
+            <working_set_size_smoothed>foo</working_set_size_smoothed>
+            <page_fault_rate>foo</page_fault_rate>
+            <bytes_sent>foo</bytes_sent>
+            <bytes_received>foo</bytes_received>
+            <progress_rate>foo</progress_rate>
+        </active_task>
+        <resources>foo</resources>
+    </result>
+</simple_gui_info>"""
+
+
+@fixture
+def simple_gui_info_singles_dict() -> dict:
+    return {
+        "gui_info": {
+            "projects": [
+                {
+                    "name": "test_project",
+                    "url": "test_url",
+                    "general_area": "test_area",
+                    "specific_area": "test_s_area",
+                    "description": "test_desc",
+                    "home": "test_home",
+                    "platforms": [
+                        {
+                            "name": "test_platform"
+                        }
+                    ],
+                    "summary": "test_summary",
+                }
+            ],
+            "results": [
+                {
+                    "name": "foo",
+                    "wu_name": "foo",
+                    "platform": "foo",
+                    "version_num": "foo",
+                    "plan_class": "foo",
+                    "project_url": "foo",
+                    "final_cpu_time": "foo",
+                    "final_elapsed_time": "foo",
+                    "exit_status": "foo",
+                    "state": "foo",
+                    "report_deadline": "foo",
+                    "received_time": "foo",
+                    "estimated_cpu_time_remaining": "foo",
+                    "project_suspended_via_gui": "foo",
+                    "report_immediately": "foo",
+                    "active_task": {
+                        "active_task_state": "foo",
+                        "app_version_num": "foo",
+                        "slot": "foo",
+                        "pid": "foo",
+                        "scheduler_state": "foo",
+                        "checkpoint_cpu_time": "foo",
+                        "fraction_done": "foo",
+                        "current_cpu_time": "foo",
+                        "elapsed_time": "foo",
+                        "swap_size": "foo",
+                        "working_set_size": "foo",
+                        "working_set_size_smoothed": "foo",
+                        "page_fault_rate": "foo",
+                        "bytes_sent": "foo",
+                        "bytes_received": "foo",
+                        "progress_rate": "foo",
+                    },
+                    "resources": "foo",
+                }
+            ]
+        }
+    }
+
+
+@fixture
+def simple_gui_info_multi_xml() -> str:
+    return """<simple_gui_info>
+    <project>
+        <name>test_project</name>
+        <url>test_url</url>
+        <general_area>test_area</general_area>
+        <specific_area>test_s_area</specific_area>
+        <description>test_desc</description>
+        <home>test_home</home>
+        <platforms>
+            <name>test_platform</name>
+        </platforms>
+        <summary>test_summary</summary>
+    </project>
+    <project>
+        <name>test_project_2</name>
+        <url>test_url_2</url>
+        <general_area>test_area_2</general_area>
+        <specific_area>test_s_area_2</specific_area>
+        <description>test_desc_2</description>
+        <home>test_home_2</home>
+        <platforms>
+            <name>test_platform_2</name>
+        </platforms>
+        <summary>test_summary_2</summary>
+    </project>
+    <result>
+        <name>foo</name>
+        <wu_name>foo</wu_name>
+        <platform>foo</platform>
+        <version_num>foo</version_num>
+        <plan_class>foo</plan_class>
+        <project_url>foo</project_url>
+        <final_cpu_time>foo</final_cpu_time>
+        <final_elapsed_time>foo</final_elapsed_time>
+        <exit_status>foo</exit_status>
+        <state>foo</state>
+        <report_deadline>foo</report_deadline>
+        <received_time>foo</received_time>
+        <estimated_cpu_time_remaining>foo</estimated_cpu_time_remaining>
+        <project_suspended_via_gui>foo</project_suspended_via_gui>
+        <report_immediately>foo</report_immediately>
+        <active_task>
+            <active_task_state>foo</active_task_state>
+            <app_version_num>foo</app_version_num>
+            <slot>foo</slot>
+            <pid>foo</pid>
+            <scheduler_state>foo</scheduler_state>
+            <checkpoint_cpu_time>foo</checkpoint_cpu_time>
+            <fraction_done>foo</fraction_done>
+            <current_cpu_time>foo</current_cpu_time>
+            <elapsed_time>foo</elapsed_time>
+            <swap_size>foo</swap_size>
+            <working_set_size>foo</working_set_size>
+            <working_set_size_smoothed>foo</working_set_size_smoothed>
+            <page_fault_rate>foo</page_fault_rate>
+            <bytes_sent>foo</bytes_sent>
+            <bytes_received>foo</bytes_received>
+            <progress_rate>foo</progress_rate>
+        </active_task>
+        <resources>foo</resources>
+    </result>
+    <result>
+        <name>bar</name>
+        <wu_name>bar</wu_name>
+        <platform>bar</platform>
+        <version_num>bar</version_num>
+        <plan_class>bar</plan_class>
+        <project_url>bar</project_url>
+        <final_cpu_time>bar</final_cpu_time>
+        <final_elapsed_time>bar</final_elapsed_time>
+        <exit_status>bar</exit_status>
+        <state>bar</state>
+        <report_deadline>bar</report_deadline>
+        <received_time>bar</received_time>
+        <estimated_cpu_time_remaining>bar</estimated_cpu_time_remaining>
+        <project_suspended_via_gui>bar</project_suspended_via_gui>
+        <report_immediately>bar</report_immediately>
+        <active_task>
+            <active_task_state>bar</active_task_state>
+            <app_version_num>bar</app_version_num>
+            <slot>bar</slot>
+            <pid>bar</pid>
+            <scheduler_state>bar</scheduler_state>
+            <checkpoint_cpu_time>bar</checkpoint_cpu_time>
+            <fraction_done>bar</fraction_done>
+            <current_cpu_time>bar</current_cpu_time>
+            <elapsed_time>bar</elapsed_time>
+            <swap_size>bar</swap_size>
+            <working_set_size>bar</working_set_size>
+            <working_set_size_smoothed>bar</working_set_size_smoothed>
+            <page_fault_rate>bar</page_fault_rate>
+            <bytes_sent>bar</bytes_sent>
+            <bytes_received>bar</bytes_received>
+            <progress_rate>bar</progress_rate>
+        </active_task>
+        <resources>bar</resources>
+    </result>
+</simple_gui_info>"""
+
+
+@fixture
+def simple_gui_info_multi_dict() -> dict:
+    return {
+        "gui_info": {
+            "projects": [
+                {
+                    "name": "test_project",
+                    "url": "test_url",
+                    "general_area": "test_area",
+                    "specific_area": "test_s_area",
+                    "description": "test_desc",
+                    "home": "test_home",
+                    "platforms": [
+                        {
+                            "name": "test_platform"
+                        }
+                    ],
+                    "summary": "test_summary",
+                },
+                {
+                    "name": "test_project_2",
+                    "url": "test_url_2",
+                    "general_area": "test_area_2",
+                    "specific_area": "test_s_area_2",
+                    "description": "test_desc_2",
+                    "home": "test_home_2",
+                    "platforms": [
+                        {
+                            "name": "test_platform_2"
+                        }
+                    ],
+                    "summary": "test_summary_2",
+                }
+            ],
+            "results": [
+                {
+                    "name": "foo",
+                    "wu_name": "foo",
+                    "platform": "foo",
+                    "version_num": "foo",
+                    "plan_class": "foo",
+                    "project_url": "foo",
+                    "final_cpu_time": "foo",
+                    "final_elapsed_time": "foo",
+                    "exit_status": "foo",
+                    "state": "foo",
+                    "report_deadline": "foo",
+                    "received_time": "foo",
+                    "estimated_cpu_time_remaining": "foo",
+                    "project_suspended_via_gui": "foo",
+                    "report_immediately": "foo",
+                    "active_task": {
+                        "active_task_state": "foo",
+                        "app_version_num": "foo",
+                        "slot": "foo",
+                        "pid": "foo",
+                        "scheduler_state": "foo",
+                        "checkpoint_cpu_time": "foo",
+                        "fraction_done": "foo",
+                        "current_cpu_time": "foo",
+                        "elapsed_time": "foo",
+                        "swap_size": "foo",
+                        "working_set_size": "foo",
+                        "working_set_size_smoothed": "foo",
+                        "page_fault_rate": "foo",
+                        "bytes_sent": "foo",
+                        "bytes_received": "foo",
+                        "progress_rate": "foo",
+                    },
+                    "resources": "foo",
+                },
+                {
+                    "name": "bar",
+                    "wu_name": "bar",
+                    "platform": "bar",
+                    "version_num": "bar",
+                    "plan_class": "bar",
+                    "project_url": "bar",
+                    "final_cpu_time": "bar",
+                    "final_elapsed_time": "bar",
+                    "exit_status": "bar",
+                    "state": "bar",
+                    "report_deadline": "bar",
+                    "received_time": "bar",
+                    "estimated_cpu_time_remaining": "bar",
+                    "project_suspended_via_gui": "bar",
+                    "report_immediately": "bar",
+                    "active_task": {
+                        "active_task_state": "bar",
+                        "app_version_num": "bar",
+                        "slot": "bar",
+                        "pid": "bar",
+                        "scheduler_state": "bar",
+                        "checkpoint_cpu_time": "bar",
+                        "fraction_done": "bar",
+                        "current_cpu_time": "bar",
+                        "elapsed_time": "bar",
+                        "swap_size": "bar",
+                        "working_set_size": "bar",
+                        "working_set_size_smoothed": "bar",
+                        "page_fault_rate": "bar",
+                        "bytes_sent": "bar",
+                        "bytes_received": "bar",
+                        "progress_rate": "bar",
+                    },
+                    "resources": "bar",
+                }
+            ]
+        }
+    }
