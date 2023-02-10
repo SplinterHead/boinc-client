@@ -1,12 +1,9 @@
-import json
-
-import xmltodict
-
 from pyboinc.status import (
     cc_status,
     disk_stats,
     file_transfers,
     host_info,
+    screensaver_tasks,
     simple_gui_info,
 )
 
@@ -123,3 +120,34 @@ def test_can_get_simple_gui_info_multi_project_multi_result(
         return_value=simple_gui_info_multi_xml,
     )
     assert simple_gui_info(client=mock_rpc_client) == simple_gui_info_multi_dict
+
+
+def test_can_get_screensaver_tasks_single_result(
+    mocker,
+    mock_rpc_client,
+    screensaver_tasks_single_result_xml,
+    screensaver_tasks_single_result_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=screensaver_tasks_single_result_xml,
+    )
+    assert (
+        screensaver_tasks(client=mock_rpc_client)
+        == screensaver_tasks_single_result_dict
+    )
+
+
+def test_can_get_screensaver_tasks_multi_result(
+    mocker,
+    mock_rpc_client,
+    screensaver_tasks_multi_result_xml,
+    screensaver_tasks_multi_result_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=screensaver_tasks_multi_result_xml,
+    )
+    assert (
+        screensaver_tasks(client=mock_rpc_client) == screensaver_tasks_multi_result_dict
+    )

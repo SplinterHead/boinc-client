@@ -4,7 +4,7 @@ from .messages import message_count, messages, public_notices
 from .projects import all_projects
 from .results import old_results, results
 from .stats import daily_network_transfers, project_stats
-from .status import cc_status, disk_stats, simple_gui_info
+from .status import cc_status, disk_stats, screensaver_tasks, simple_gui_info
 from .versions import client_update, client_version
 
 
@@ -52,3 +52,6 @@ class Boinc:
 
     def get_simple_gui_info(self) -> dict:
         return simple_gui_info(client=self.rpc_client)
+
+    def get_screensaver_tasks(self) -> dict:
+        return screensaver_tasks(client=self.rpc_client)

@@ -54,3 +54,14 @@ def simple_gui_info(client: RpcClient) -> dict:
         project["gui_urls"] = gui_urls
     results = [res for res in rpc_json["simple_gui_info"]["result"]]
     return {"gui_info": {"projects": projects, "results": results}}
+
+
+def screensaver_tasks(client: RpcClient) -> dict:
+    """Show status of projects and active tasks."""
+    rpc_resp = client.make_request("<get_screensaver_tasks/>")
+    rpc_json = xmltodict.parse(rpc_resp, force_list=("result",))
+    results = {
+        "results": rpc_json["handle_get_screensaver_tasks"]["result"],
+        "suspend_reason": rpc_json["handle_get_screensaver_tasks"]["suspend_reason"],
+    }
+    return {"screensaver_tasks": results}
