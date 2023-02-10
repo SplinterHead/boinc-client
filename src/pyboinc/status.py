@@ -49,11 +49,8 @@ def simple_gui_info(client: RpcClient) -> dict:
     rpc_resp = client.make_request("<get_simple_gui_info/>")
     rpc_json = xmltodict.parse(rpc_resp, force_list=("project", "result"))
     projects = [proj for proj in rpc_json["simple_gui_info"]["project"]]
-    results = [res for res in rpc_json["simple_gui_info"]["result"]]
     for project in projects:
-        project["platforms"] = (
-            [{"name": p} for p in project["platforms"]["name"]]
-            if type(project["platforms"]["name"]) == list
-            else [project["platforms"]]
-        )
+        gui_urls = project["gui_urls"]["gui_url"]
+        project["gui_urls"] = gui_urls
+    results = [res for res in rpc_json["simple_gui_info"]["result"]]
     return {"gui_info": {"projects": projects, "results": results}}

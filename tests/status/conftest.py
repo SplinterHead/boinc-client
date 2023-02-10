@@ -477,16 +477,68 @@ def host_info_dict() -> dict:
 def simple_gui_info_singles_xml() -> str:
     return """<simple_gui_info>
     <project>
-        <name>test_project</name>
-        <url>test_url</url>
-        <general_area>test_area</general_area>
-        <specific_area>test_s_area</specific_area>
-        <description>test_desc</description>
-        <home>test_home</home>
-        <platforms>
-            <name>test_platform</name>
-        </platforms>
-        <summary>test_summary</summary>
+        <master_url>foo</master_url>
+        <project_name>foo</project_name>
+        <symstore>foo</symstore>
+        <user_name>foo</user_name>
+        <team_name>foo</team_name>
+        <host_venue>foo</host_venue>
+        <email_hash>foo</email_hash>
+        <cross_project_id>foo</cross_project_id>
+        <external_cpid>foo</external_cpid>
+        <cpid_time>foo</cpid_time>
+        <user_total_credit>foo</user_total_credit>
+        <user_expavg_credit>foo</user_expavg_credit>
+        <user_create_time>foo</user_create_time>
+        <rpc_seqno>foo</rpc_seqno>
+        <userid>foo</userid>
+        <teamid>foo</teamid>
+        <hostid>foo</hostid>
+        <host_total_credit>foo</host_total_credit>
+        <host_expavg_credit>foo</host_expavg_credit>
+        <host_create_time>foo</host_create_time>
+        <nrpc_failures>foo</nrpc_failures>
+        <master_fetch_failures>foo</master_fetch_failures>
+        <min_rpc_time>foo</min_rpc_time>
+        <next_rpc_time>foo</next_rpc_time>
+        <rec>foo</rec>
+        <rec_time>foo</rec_time>
+        <resource_share>foo</resource_share>
+        <disk_usage>foo</disk_usage>
+        <disk_share>foo</disk_share>
+        <desired_disk_usage>foo</desired_disk_usage>
+        <duration_correction_factor>foo</duration_correction_factor>
+        <sched_rpc_pending>foo</sched_rpc_pending>
+        <send_time_stats_log>foo</send_time_stats_log>
+        <send_job_log>foo</send_job_log>
+        <njobs_success>foo</njobs_success>
+        <njobs_error>foo</njobs_error>
+        <elapsed_time>foo</elapsed_time>
+        <last_rpc_time>foo</last_rpc_time>
+        <dont_use_dcf>foo</dont_use_dcf>
+        <rsc_backoff_time>
+            <name>CPU</name>
+            <value>0.000000</value>
+        </rsc_backoff_time>
+        <rsc_backoff_interval>
+            <name>CPU</name>
+            <value>0.000000</value>
+        </rsc_backoff_interval>
+        <gui_urls>
+            <gui_url>
+              <name>Foo 1</name>
+              <description>foo</description>
+              <url>foo</url>
+            </gui_url>
+            <gui_url>
+              <name>Foo 2</name>
+              <description>foo</description>
+              <url>foo</url>
+            </gui_url>
+        </gui_urls>
+        <sched_priority>foo</sched_priority>
+        <project_files_downloaded_time>foo</project_files_downloaded_time>
+        <project_dir>foo</project_dir>
     </project>
     <result>
         <name>foo</name>
@@ -502,8 +554,6 @@ def simple_gui_info_singles_xml() -> str:
         <report_deadline>foo</report_deadline>
         <received_time>foo</received_time>
         <estimated_cpu_time_remaining>foo</estimated_cpu_time_remaining>
-        <project_suspended_via_gui>foo</project_suspended_via_gui>
-        <report_immediately>foo</report_immediately>
         <active_task>
             <active_task_state>foo</active_task_state>
             <app_version_num>foo</app_version_num>
@@ -521,8 +571,9 @@ def simple_gui_info_singles_xml() -> str:
             <bytes_sent>foo</bytes_sent>
             <bytes_received>foo</bytes_received>
             <progress_rate>foo</progress_rate>
+            <graphics_exec_path>foo</graphics_exec_path>
+            <slot_path>foo</slot_path>
         </active_task>
-        <resources>foo</resources>
     </result>
 </simple_gui_info>"""
 
@@ -533,18 +584,54 @@ def simple_gui_info_singles_dict() -> dict:
         "gui_info": {
             "projects": [
                 {
-                    "name": "test_project",
-                    "url": "test_url",
-                    "general_area": "test_area",
-                    "specific_area": "test_s_area",
-                    "description": "test_desc",
-                    "home": "test_home",
-                    "platforms": [
-                        {
-                            "name": "test_platform"
-                        }
+                    "master_url": "foo",
+                    "project_name": "foo",
+                    "symstore": "foo",
+                    "user_name": "foo",
+                    "team_name": "foo",
+                    "host_venue": "foo",
+                    "email_hash": "foo",
+                    "cross_project_id": "foo",
+                    "external_cpid": "foo",
+                    "cpid_time": "foo",
+                    "user_total_credit": "foo",
+                    "user_expavg_credit": "foo",
+                    "user_create_time": "foo",
+                    "rpc_seqno": "foo",
+                    "userid": "foo",
+                    "teamid": "foo",
+                    "hostid": "foo",
+                    "host_total_credit": "foo",
+                    "host_expavg_credit": "foo",
+                    "host_create_time": "foo",
+                    "nrpc_failures": "foo",
+                    "master_fetch_failures": "foo",
+                    "min_rpc_time": "foo",
+                    "next_rpc_time": "foo",
+                    "rec": "foo",
+                    "rec_time": "foo",
+                    "resource_share": "foo",
+                    "disk_usage": "foo",
+                    "disk_share": "foo",
+                    "desired_disk_usage": "foo",
+                    "duration_correction_factor": "foo",
+                    "sched_rpc_pending": "foo",
+                    "send_time_stats_log": "foo",
+                    "send_job_log": "foo",
+                    "njobs_success": "foo",
+                    "njobs_error": "foo",
+                    "elapsed_time": "foo",
+                    "last_rpc_time": "foo",
+                    "dont_use_dcf": "foo",
+                    "rsc_backoff_time": {"name": "CPU", "value": "0.000000"},
+                    "rsc_backoff_interval": {"name": "CPU", "value": "0.000000"},
+                    "gui_urls": [
+                        {"name": "Foo 1", "description": "foo", "url": "foo"},
+                        {"name": "Foo 2", "description": "foo", "url": "foo"},
                     ],
-                    "summary": "test_summary",
+                    "sched_priority": "foo",
+                    "project_files_downloaded_time": "foo",
+                    "project_dir": "foo",
                 }
             ],
             "results": [
@@ -562,8 +649,6 @@ def simple_gui_info_singles_dict() -> dict:
                     "report_deadline": "foo",
                     "received_time": "foo",
                     "estimated_cpu_time_remaining": "foo",
-                    "project_suspended_via_gui": "foo",
-                    "report_immediately": "foo",
                     "active_task": {
                         "active_task_state": "foo",
                         "app_version_num": "foo",
@@ -581,10 +666,11 @@ def simple_gui_info_singles_dict() -> dict:
                         "bytes_sent": "foo",
                         "bytes_received": "foo",
                         "progress_rate": "foo",
+                        "graphics_exec_path": "foo",
+                        "slot_path": "foo",
                     },
-                    "resources": "foo",
                 }
-            ]
+            ],
         }
     }
 
@@ -593,28 +679,132 @@ def simple_gui_info_singles_dict() -> dict:
 def simple_gui_info_multi_xml() -> str:
     return """<simple_gui_info>
     <project>
-        <name>test_project</name>
-        <url>test_url</url>
-        <general_area>test_area</general_area>
-        <specific_area>test_s_area</specific_area>
-        <description>test_desc</description>
-        <home>test_home</home>
-        <platforms>
-            <name>test_platform</name>
-        </platforms>
-        <summary>test_summary</summary>
+        <master_url>foo</master_url>
+        <project_name>foo</project_name>
+        <symstore>foo</symstore>
+        <user_name>foo</user_name>
+        <team_name>foo</team_name>
+        <host_venue>foo</host_venue>
+        <email_hash>foo</email_hash>
+        <cross_project_id>foo</cross_project_id>
+        <external_cpid>foo</external_cpid>
+        <cpid_time>foo</cpid_time>
+        <user_total_credit>foo</user_total_credit>
+        <user_expavg_credit>foo</user_expavg_credit>
+        <user_create_time>foo</user_create_time>
+        <rpc_seqno>foo</rpc_seqno>
+        <userid>foo</userid>
+        <teamid>foo</teamid>
+        <hostid>foo</hostid>
+        <host_total_credit>foo</host_total_credit>
+        <host_expavg_credit>foo</host_expavg_credit>
+        <host_create_time>foo</host_create_time>
+        <nrpc_failures>foo</nrpc_failures>
+        <master_fetch_failures>foo</master_fetch_failures>
+        <min_rpc_time>foo</min_rpc_time>
+        <next_rpc_time>foo</next_rpc_time>
+        <rec>foo</rec>
+        <rec_time>foo</rec_time>
+        <resource_share>foo</resource_share>
+        <disk_usage>foo</disk_usage>
+        <disk_share>foo</disk_share>
+        <desired_disk_usage>foo</desired_disk_usage>
+        <duration_correction_factor>foo</duration_correction_factor>
+        <sched_rpc_pending>foo</sched_rpc_pending>
+        <send_time_stats_log>foo</send_time_stats_log>
+        <send_job_log>foo</send_job_log>
+        <njobs_success>foo</njobs_success>
+        <njobs_error>foo</njobs_error>
+        <elapsed_time>foo</elapsed_time>
+        <last_rpc_time>foo</last_rpc_time>
+        <dont_use_dcf>foo</dont_use_dcf>
+        <rsc_backoff_time>
+            <name>CPU</name>
+            <value>0.000000</value>
+        </rsc_backoff_time>
+        <rsc_backoff_interval>
+            <name>CPU</name>
+            <value>0.000000</value>
+        </rsc_backoff_interval>
+        <gui_urls>
+            <gui_url>
+              <name>Foo 1</name>
+              <description>foo</description>
+              <url>foo</url>
+            </gui_url>
+            <gui_url>
+              <name>Foo 2</name>
+              <description>foo</description>
+              <url>foo</url>
+            </gui_url>
+        </gui_urls>
+        <sched_priority>foo</sched_priority>
+        <project_files_downloaded_time>foo</project_files_downloaded_time>
+        <project_dir>foo</project_dir>
     </project>
     <project>
-        <name>test_project_2</name>
-        <url>test_url_2</url>
-        <general_area>test_area_2</general_area>
-        <specific_area>test_s_area_2</specific_area>
-        <description>test_desc_2</description>
-        <home>test_home_2</home>
-        <platforms>
-            <name>test_platform_2</name>
-        </platforms>
-        <summary>test_summary_2</summary>
+        <master_url>bar</master_url>
+        <project_name>bar</project_name>
+        <symstore>bar</symstore>
+        <user_name>bar</user_name>
+        <team_name>bar</team_name>
+        <host_venue>bar</host_venue>
+        <email_hash>bar</email_hash>
+        <cross_project_id>bar</cross_project_id>
+        <external_cpid>bar</external_cpid>
+        <cpid_time>bar</cpid_time>
+        <user_total_credit>bar</user_total_credit>
+        <user_expavg_credit>bar</user_expavg_credit>
+        <user_create_time>bar</user_create_time>
+        <rpc_seqno>bar</rpc_seqno>
+        <userid>bar</userid>
+        <teamid>bar</teamid>
+        <hostid>bar</hostid>
+        <host_total_credit>bar</host_total_credit>
+        <host_expavg_credit>bar</host_expavg_credit>
+        <host_create_time>bar</host_create_time>
+        <nrpc_failures>bar</nrpc_failures>
+        <master_fetch_failures>bar</master_fetch_failures>
+        <min_rpc_time>bar</min_rpc_time>
+        <next_rpc_time>bar</next_rpc_time>
+        <rec>bar</rec>
+        <rec_time>bar</rec_time>
+        <resource_share>bar</resource_share>
+        <disk_usage>bar</disk_usage>
+        <disk_share>bar</disk_share>
+        <desired_disk_usage>bar</desired_disk_usage>
+        <duration_correction_factor>bar</duration_correction_factor>
+        <sched_rpc_pending>bar</sched_rpc_pending>
+        <send_time_stats_log>bar</send_time_stats_log>
+        <send_job_log>bar</send_job_log>
+        <njobs_success>bar</njobs_success>
+        <njobs_error>bar</njobs_error>
+        <elapsed_time>bar</elapsed_time>
+        <last_rpc_time>bar</last_rpc_time>
+        <dont_use_dcf>foo</dont_use_dcf>
+        <rsc_backoff_time>
+            <name>CPU</name>
+            <value>0.000000</value>
+        </rsc_backoff_time>
+        <rsc_backoff_interval>
+            <name>CPU</name>
+            <value>0.000000</value>
+        </rsc_backoff_interval>
+        <gui_urls>
+            <gui_url>
+              <name>Bar 1</name>
+              <description>bar</description>
+              <url>bar</url>
+            </gui_url>
+            <gui_url>
+              <name>Foo 2</name>
+              <description>bar</description>
+              <url>bar</url>
+            </gui_url>
+        </gui_urls>
+        <sched_priority>bar</sched_priority>
+        <project_files_downloaded_time>bar</project_files_downloaded_time>
+        <project_dir>bar</project_dir>
     </project>
     <result>
         <name>foo</name>
@@ -630,8 +820,6 @@ def simple_gui_info_multi_xml() -> str:
         <report_deadline>foo</report_deadline>
         <received_time>foo</received_time>
         <estimated_cpu_time_remaining>foo</estimated_cpu_time_remaining>
-        <project_suspended_via_gui>foo</project_suspended_via_gui>
-        <report_immediately>foo</report_immediately>
         <active_task>
             <active_task_state>foo</active_task_state>
             <app_version_num>foo</app_version_num>
@@ -649,8 +837,9 @@ def simple_gui_info_multi_xml() -> str:
             <bytes_sent>foo</bytes_sent>
             <bytes_received>foo</bytes_received>
             <progress_rate>foo</progress_rate>
+            <graphics_exec_path>foo</graphics_exec_path>
+            <slot_path>foo</slot_path>
         </active_task>
-        <resources>foo</resources>
     </result>
     <result>
         <name>bar</name>
@@ -666,8 +855,6 @@ def simple_gui_info_multi_xml() -> str:
         <report_deadline>bar</report_deadline>
         <received_time>bar</received_time>
         <estimated_cpu_time_remaining>bar</estimated_cpu_time_remaining>
-        <project_suspended_via_gui>bar</project_suspended_via_gui>
-        <report_immediately>bar</report_immediately>
         <active_task>
             <active_task_state>bar</active_task_state>
             <app_version_num>bar</app_version_num>
@@ -685,8 +872,9 @@ def simple_gui_info_multi_xml() -> str:
             <bytes_sent>bar</bytes_sent>
             <bytes_received>bar</bytes_received>
             <progress_rate>bar</progress_rate>
+            <graphics_exec_path>bar</graphics_exec_path>
+            <slot_path>bar</slot_path>
         </active_task>
-        <resources>bar</resources>
     </result>
 </simple_gui_info>"""
 
@@ -697,33 +885,105 @@ def simple_gui_info_multi_dict() -> dict:
         "gui_info": {
             "projects": [
                 {
-                    "name": "test_project",
-                    "url": "test_url",
-                    "general_area": "test_area",
-                    "specific_area": "test_s_area",
-                    "description": "test_desc",
-                    "home": "test_home",
-                    "platforms": [
-                        {
-                            "name": "test_platform"
-                        }
+                    "master_url": "foo",
+                    "project_name": "foo",
+                    "symstore": "foo",
+                    "user_name": "foo",
+                    "team_name": "foo",
+                    "host_venue": "foo",
+                    "email_hash": "foo",
+                    "cross_project_id": "foo",
+                    "external_cpid": "foo",
+                    "cpid_time": "foo",
+                    "user_total_credit": "foo",
+                    "user_expavg_credit": "foo",
+                    "user_create_time": "foo",
+                    "rpc_seqno": "foo",
+                    "userid": "foo",
+                    "teamid": "foo",
+                    "hostid": "foo",
+                    "host_total_credit": "foo",
+                    "host_expavg_credit": "foo",
+                    "host_create_time": "foo",
+                    "nrpc_failures": "foo",
+                    "master_fetch_failures": "foo",
+                    "min_rpc_time": "foo",
+                    "next_rpc_time": "foo",
+                    "rec": "foo",
+                    "rec_time": "foo",
+                    "resource_share": "foo",
+                    "disk_usage": "foo",
+                    "disk_share": "foo",
+                    "desired_disk_usage": "foo",
+                    "duration_correction_factor": "foo",
+                    "sched_rpc_pending": "foo",
+                    "send_time_stats_log": "foo",
+                    "send_job_log": "foo",
+                    "njobs_success": "foo",
+                    "njobs_error": "foo",
+                    "elapsed_time": "foo",
+                    "last_rpc_time": "foo",
+                    "dont_use_dcf": "foo",
+                    "rsc_backoff_time": {"name": "CPU", "value": "0.000000"},
+                    "rsc_backoff_interval": {"name": "CPU", "value": "0.000000"},
+                    "gui_urls": [
+                        {"name": "Foo 1", "description": "foo", "url": "foo"},
+                        {"name": "Foo 2", "description": "foo", "url": "foo"},
                     ],
-                    "summary": "test_summary",
+                    "sched_priority": "foo",
+                    "project_files_downloaded_time": "foo",
+                    "project_dir": "foo",
                 },
                 {
-                    "name": "test_project_2",
-                    "url": "test_url_2",
-                    "general_area": "test_area_2",
-                    "specific_area": "test_s_area_2",
-                    "description": "test_desc_2",
-                    "home": "test_home_2",
-                    "platforms": [
-                        {
-                            "name": "test_platform_2"
-                        }
+                    "master_url": "bar",
+                    "project_name": "bar",
+                    "symstore": "bar",
+                    "user_name": "bar",
+                    "team_name": "bar",
+                    "host_venue": "bar",
+                    "email_hash": "bar",
+                    "cross_project_id": "bar",
+                    "external_cpid": "bar",
+                    "cpid_time": "bar",
+                    "user_total_credit": "bar",
+                    "user_expavg_credit": "bar",
+                    "user_create_time": "bar",
+                    "rpc_seqno": "bar",
+                    "userid": "bar",
+                    "teamid": "bar",
+                    "hostid": "bar",
+                    "host_total_credit": "bar",
+                    "host_expavg_credit": "bar",
+                    "host_create_time": "bar",
+                    "nrpc_failures": "bar",
+                    "master_fetch_failures": "bar",
+                    "min_rpc_time": "bar",
+                    "next_rpc_time": "bar",
+                    "rec": "bar",
+                    "rec_time": "bar",
+                    "resource_share": "bar",
+                    "disk_usage": "bar",
+                    "disk_share": "bar",
+                    "desired_disk_usage": "bar",
+                    "duration_correction_factor": "bar",
+                    "sched_rpc_pending": "bar",
+                    "send_time_stats_log": "bar",
+                    "send_job_log": "bar",
+                    "njobs_success": "bar",
+                    "njobs_error": "bar",
+                    "elapsed_time": "bar",
+                    "last_rpc_time": "bar",
+                    "dont_use_dcf": "foo",
+                    "rsc_backoff_time": {"name": "CPU", "value": "0.000000"},
+                    "rsc_backoff_interval": {"name": "CPU", "value": "0.000000"},
+                    "gui_urls": [
+                        {"name": "Bar 1", "description": "bar", "url": "bar"},
+                        {"name": "Foo 2", "description": "bar", "url": "bar"},
                     ],
-                    "summary": "test_summary_2",
-                }
+                    "sched_priority": "bar",
+                    "project_files_downloaded_time": "bar",
+                    "project_dir": "bar",
+                },
             ],
             "results": [
                 {
@@ -740,8 +1000,6 @@ def simple_gui_info_multi_dict() -> dict:
                     "report_deadline": "foo",
                     "received_time": "foo",
                     "estimated_cpu_time_remaining": "foo",
-                    "project_suspended_via_gui": "foo",
-                    "report_immediately": "foo",
                     "active_task": {
                         "active_task_state": "foo",
                         "app_version_num": "foo",
@@ -759,8 +1017,9 @@ def simple_gui_info_multi_dict() -> dict:
                         "bytes_sent": "foo",
                         "bytes_received": "foo",
                         "progress_rate": "foo",
+                        "graphics_exec_path": "foo",
+                        "slot_path": "foo",
                     },
-                    "resources": "foo",
                 },
                 {
                     "name": "bar",
@@ -776,8 +1035,6 @@ def simple_gui_info_multi_dict() -> dict:
                     "report_deadline": "bar",
                     "received_time": "bar",
                     "estimated_cpu_time_remaining": "bar",
-                    "project_suspended_via_gui": "bar",
-                    "report_immediately": "bar",
                     "active_task": {
                         "active_task_state": "bar",
                         "app_version_num": "bar",
@@ -795,9 +1052,10 @@ def simple_gui_info_multi_dict() -> dict:
                         "bytes_sent": "bar",
                         "bytes_received": "bar",
                         "progress_rate": "bar",
+                        "graphics_exec_path": "bar",
+                        "slot_path": "bar",
                     },
-                    "resources": "bar",
-                }
-            ]
+                },
+            ],
         }
     }
