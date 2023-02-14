@@ -1305,3 +1305,201 @@ def screensaver_tasks_multi_result_dict() -> dict:
             ],
         }
     }
+
+
+@fixture
+def client_state_xml() -> str:
+    return """<client_state>
+    <host_info>
+        <timezone>foo</timezone>
+        <domain_name>foo</domain_name>
+        <ip_addr>foo</ip_addr>
+        <host_cpid>foo</host_cpid>
+        <p_ncpus>foo</p_ncpus>
+        <p_vendor>foo</p_vendor>
+        <p_model>foo</p_model>
+        <p_features>foo</p_features>
+        <p_fpops>foo</p_fpops>
+        <p_iops>foo</p_iops>
+        <p_membw>foo</p_membw>
+        <p_calculated>foo</p_calculated>
+        <p_vm_extensions_disabled>foo</p_vm_extensions_disabled>
+        <m_nbytes>foo</m_nbytes>
+        <m_cache>foo</m_cache>
+        <m_swap>foo</m_swap>
+        <d_total>foo</d_total>
+        <d_free>foo</d_free>
+        <os_name>foo</os_name>
+        <os_version>foo</os_version>
+        <n_usable_coprocs>foo</n_usable_coprocs>
+        <wsl_available>foo</wsl_available>
+    </host_info>
+    <net_stats>
+        <bwup>foo</bwup>
+        <avg_up>foo</avg_up>
+        <avg_time_up>foo</avg_time_up>
+        <bwdown>foo</bwdown>
+        <avg_down>foo</avg_down>
+        <avg_time_down>foo</avg_time_down>
+    </net_stats>
+    <time_stats>
+        <on_frac>foo</on_frac>
+        <connected_frac>foo</connected_frac>
+        <cpu_and_network_available_frac>foo</cpu_and_network_available_frac>
+        <active_frac>foo</active_frac>
+        <gpu_active_frac>foo</gpu_active_frac>
+        <client_start_time>foo</client_start_time>
+        <total_start_time>foo</total_start_time>
+        <total_duration>foo</total_duration>
+        <total_active_duration>foo</total_active_duration>
+        <total_gpu_active_duration>foo</total_gpu_active_duration>
+        <now>foo</now>
+        <previous_uptime>foo</previous_uptime>
+        <session_active_duration>foo</session_active_duration>
+        <session_gpu_active_duration>foo</session_gpu_active_duration>
+    </time_stats>
+    <platform_name>foo</platform_name>
+    <core_client_major_version>foo</core_client_major_version>
+    <core_client_minor_version>foo</core_client_minor_version>
+    <core_client_release>foo</core_client_release>
+    <executing_as_daemon>foo</executing_as_daemon>
+    <platform>foo</platform>
+    <global_preferences>
+       <source_project>foo</source_project>
+       <mod_time>foo</mod_time>
+       <battery_charge_min_pct>foo</battery_charge_min_pct>
+       <battery_max_temperature>foo</battery_max_temperature>
+       <run_on_batteries>foo</run_on_batteries>
+       <run_if_user_active>foo</run_if_user_active>
+       <run_gpu_if_user_active>foo</run_gpu_if_user_active>
+       <suspend_if_no_recent_input>foo</suspend_if_no_recent_input>
+       <suspend_cpu_usage>foo</suspend_cpu_usage>
+       <start_hour>foo</start_hour>
+       <end_hour>foo</end_hour>
+       <net_start_hour>foo</net_start_hour>
+       <net_end_hour>foo</net_end_hour>
+       <leave_apps_in_memory>foo</leave_apps_in_memory>
+       <confirm_before_connecting>foo</confirm_before_connecting>
+       <hangup_if_dialed>foo</hangup_if_dialed>
+       <dont_verify_images>foo</dont_verify_images>
+       <work_buf_min_days>foo</work_buf_min_days>
+       <work_buf_additional_days>foo</work_buf_additional_days>
+       <max_ncpus_pct>foo</max_ncpus_pct>
+       <cpu_scheduling_period_minutes>foo</cpu_scheduling_period_minutes>
+       <disk_interval>foo</disk_interval>
+       <disk_max_used_gb>foo</disk_max_used_gb>
+       <disk_max_used_pct>foo</disk_max_used_pct>
+       <disk_min_free_gb>foo</disk_min_free_gb>
+       <vm_max_used_pct>foo</vm_max_used_pct>
+       <ram_max_used_busy_pct>foo</ram_max_used_busy_pct>
+       <ram_max_used_idle_pct>foo</ram_max_used_idle_pct>
+       <idle_time_to_run>foo</idle_time_to_run>
+       <max_bytes_sec_up>foo</max_bytes_sec_up>
+       <max_bytes_sec_down>foo</max_bytes_sec_down>
+       <cpu_usage_limit>foo</cpu_usage_limit>
+       <daily_xfer_limit_mb>foo</daily_xfer_limit_mb>
+       <daily_xfer_period_days>foo</daily_xfer_period_days>
+       <override_file_present>foo</override_file_present>
+       <network_wifi_only>foo</network_wifi_only>
+    </global_preferences>
+</client_state>"""
+
+
+@fixture
+def client_state_dict() -> dict:
+    return {
+        "client_state": {
+            "host_info": {
+                "timezone": "foo",
+                "domain_name": "foo",
+                "ip_addr": "foo",
+                "host_cpid": "foo",
+                "p_ncpus": "foo",
+                "p_vendor": "foo",
+                "p_model": "foo",
+                "p_features": "foo",
+                "p_fpops": "foo",
+                "p_iops": "foo",
+                "p_membw": "foo",
+                "p_calculated": "foo",
+                "p_vm_extensions_disabled": "foo",
+                "m_nbytes": "foo",
+                "m_cache": "foo",
+                "m_swap": "foo",
+                "d_total": "foo",
+                "d_free": "foo",
+                "os_name": "foo",
+                "os_version": "foo",
+                "n_usable_coprocs": "foo",
+                "wsl_available": "foo",
+            },
+            "net_stats": {
+                "bwup": "foo",
+                "avg_up": "foo",
+                "avg_time_up": "foo",
+                "bwdown": "foo",
+                "avg_down": "foo",
+                "avg_time_down": "foo",
+            },
+            "time_stats": {
+                "on_frac": "foo",
+                "connected_frac": "foo",
+                "cpu_and_network_available_frac": "foo",
+                "active_frac": "foo",
+                "gpu_active_frac": "foo",
+                "client_start_time": "foo",
+                "total_start_time": "foo",
+                "total_duration": "foo",
+                "total_active_duration": "foo",
+                "total_gpu_active_duration": "foo",
+                "now": "foo",
+                "previous_uptime": "foo",
+                "session_active_duration": "foo",
+                "session_gpu_active_duration": "foo",
+            },
+            "platform_name": "foo",
+            "core_client_major_version": "foo",
+            "core_client_minor_version": "foo",
+            "core_client_release": "foo",
+            "executing_as_daemon": "foo",
+            "platform": "foo",
+            "global_preferences": {
+                "source_project": "foo",
+                "mod_time": "foo",
+                "battery_charge_min_pct": "foo",
+                "battery_max_temperature": "foo",
+                "run_on_batteries": "foo",
+                "run_if_user_active": "foo",
+                "run_gpu_if_user_active": "foo",
+                "suspend_if_no_recent_input": "foo",
+                "suspend_cpu_usage": "foo",
+                "start_hour": "foo",
+                "end_hour": "foo",
+                "net_start_hour": "foo",
+                "net_end_hour": "foo",
+                "leave_apps_in_memory": "foo",
+                "confirm_before_connecting": "foo",
+                "hangup_if_dialed": "foo",
+                "dont_verify_images": "foo",
+                "work_buf_min_days": "foo",
+                "work_buf_additional_days": "foo",
+                "max_ncpus_pct": "foo",
+                "cpu_scheduling_period_minutes": "foo",
+                "disk_interval": "foo",
+                "disk_max_used_gb": "foo",
+                "disk_max_used_pct": "foo",
+                "disk_min_free_gb": "foo",
+                "vm_max_used_pct": "foo",
+                "ram_max_used_busy_pct": "foo",
+                "ram_max_used_idle_pct": "foo",
+                "idle_time_to_run": "foo",
+                "max_bytes_sec_up": "foo",
+                "max_bytes_sec_down": "foo",
+                "cpu_usage_limit": "foo",
+                "daily_xfer_limit_mb": "foo",
+                "daily_xfer_period_days": "foo",
+                "override_file_present": "foo",
+                "network_wifi_only": "foo",
+            },
+        }
+    }

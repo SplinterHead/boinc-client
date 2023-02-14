@@ -1,5 +1,6 @@
 from pyboinc.status import (
     cc_status,
+    client_state,
     disk_stats,
     file_transfers,
     host_info,
@@ -151,3 +152,14 @@ def test_can_get_screensaver_tasks_multi_result(
     assert (
         screensaver_tasks(client=mock_rpc_client) == screensaver_tasks_multi_result_dict
     )
+
+
+def test_can_get_client_state(
+    mocker, mock_rpc_client, client_state_xml, client_state_dict
+):
+
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=client_state_xml,
+    )
+    assert client_state(client=mock_rpc_client) == client_state_dict

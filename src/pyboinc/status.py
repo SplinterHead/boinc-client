@@ -1,8 +1,13 @@
-import json
-
 import xmltodict
 
 from pyboinc.clients.rpc_client import RpcClient
+
+
+def client_state(client: RpcClient) -> dict:
+    """Get the entire state."""
+    rpc_resp = client.make_request("<get_state/>")
+    rpc_json = xmltodict.parse(rpc_resp)
+    return rpc_json
 
 
 def cc_status(client: RpcClient) -> dict:

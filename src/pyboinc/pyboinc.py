@@ -4,7 +4,13 @@ from .messages import message_count, messages, public_notices
 from .projects import all_projects
 from .results import old_results, results
 from .stats import daily_network_transfers, project_stats
-from .status import cc_status, disk_stats, screensaver_tasks, simple_gui_info
+from .status import (
+    cc_status,
+    client_state,
+    disk_stats,
+    screensaver_tasks,
+    simple_gui_info,
+)
 from .versions import client_update, client_version
 
 
@@ -19,6 +25,9 @@ class Boinc:
 
     def get_client_update(self) -> dict:
         return client_update(client=self.rpc_client)
+
+    def get_client_state(self) -> dict:
+        return client_state(client=self.rpc_client)
 
     def get_all_projects(self) -> dict:
         return all_projects(client=self.rpc_client)
