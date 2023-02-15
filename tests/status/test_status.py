@@ -4,6 +4,7 @@ from pyboinc.status import (
     disk_stats,
     file_transfers,
     host_info,
+    project_state,
     screensaver_tasks,
     simple_gui_info,
 )
@@ -163,3 +164,14 @@ def test_can_get_client_state(
         return_value=client_state_xml,
     )
     assert client_state(client=mock_rpc_client) == client_state_dict
+
+
+def test_can_get_project_status(
+    mocker, mock_rpc_client, project_status_xml, project_status_dict
+):
+
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=project_status_xml,
+    )
+    assert project_state(client=mock_rpc_client) == project_status_dict

@@ -1503,3 +1503,130 @@ def client_state_dict() -> dict:
             },
         }
     }
+
+
+@fixture
+def project_status_xml() -> str:
+    return """<projects>
+    <project>
+        <master_url>foo</master_url>
+        <project_name>foo</project_name>
+        <symstore>foo</symstore>
+        <user_name>foo</user_name>
+        <team_name>foo</team_name>
+        <host_venue>foo</host_venue>
+        <email_hash>foo</email_hash>
+        <cross_project_id>foo</cross_project_id>
+        <external_cpid>foo</external_cpid>
+        <cpid_time>foo</cpid_time>
+        <user_total_credit>foo</user_total_credit>
+        <user_expavg_credit>foo</user_expavg_credit>
+        <user_create_time>foo</user_create_time>
+        <rpc_seqno>foo</rpc_seqno>
+        <userid>foo</userid>
+        <teamid>foo</teamid>
+        <hostid>foo</hostid>
+        <host_total_credit>foo</host_total_credit>
+        <host_expavg_credit>foo</host_expavg_credit>
+        <host_create_time>foo</host_create_time>
+        <nrpc_failures>foo</nrpc_failures>
+        <master_fetch_failures>foo</master_fetch_failures>
+        <min_rpc_time>foo</min_rpc_time>
+        <next_rpc_time>foo</next_rpc_time>
+        <rec>foo</rec>
+        <rec_time>foo</rec_time>
+        <resource_share>foo</resource_share>
+        <disk_usage>foo</disk_usage>
+        <disk_share>foo</disk_share>
+        <desired_disk_usage>foo</desired_disk_usage>
+        <duration_correction_factor>foo</duration_correction_factor>
+        <sched_rpc_pending>foo</sched_rpc_pending>
+        <send_time_stats_log>foo</send_time_stats_log>
+        <send_job_log>foo</send_job_log>
+        <njobs_success>foo</njobs_success>
+        <njobs_error>foo</njobs_error>
+        <elapsed_time>foo</elapsed_time>
+        <last_rpc_time>foo</last_rpc_time>
+        <dont_use_dcf>foo</dont_use_dcf>
+        <rsc_backoff_time>
+            <name>CPU</name>
+            <value>foo</value>
+        </rsc_backoff_time>
+        <rsc_backoff_interval>
+            <name>CPU</name>
+            <value>foo</value>
+        </rsc_backoff_interval>
+    <gui_urls>
+       <gui_url>
+          <name>Research Overview</name>
+          <description>Learn about the projects hosted at Foo Network</description>
+          <url>https://www.foo.org/research/viewAllProjects.do</url>
+       </gui_url>
+    </gui_urls>
+        <sched_priority>foo</sched_priority>
+        <project_files_downloaded_time>foo</project_files_downloaded_time>
+        <project_dir>foo</project_dir>
+    </project>
+</projects>
+"""
+
+
+@fixture
+def project_status_dict() -> dict:
+    return {
+        "projects": [
+            {
+                "master_url": "foo",
+                "project_name": "foo",
+                "symstore": "foo",
+                "user_name": "foo",
+                "team_name": "foo",
+                "host_venue": "foo",
+                "email_hash": "foo",
+                "cross_project_id": "foo",
+                "external_cpid": "foo",
+                "cpid_time": "foo",
+                "user_total_credit": "foo",
+                "user_expavg_credit": "foo",
+                "user_create_time": "foo",
+                "rpc_seqno": "foo",
+                "userid": "foo",
+                "teamid": "foo",
+                "hostid": "foo",
+                "host_total_credit": "foo",
+                "host_expavg_credit": "foo",
+                "host_create_time": "foo",
+                "nrpc_failures": "foo",
+                "master_fetch_failures": "foo",
+                "min_rpc_time": "foo",
+                "next_rpc_time": "foo",
+                "rec": "foo",
+                "rec_time": "foo",
+                "resource_share": "foo",
+                "disk_usage": "foo",
+                "disk_share": "foo",
+                "desired_disk_usage": "foo",
+                "duration_correction_factor": "foo",
+                "sched_rpc_pending": "foo",
+                "send_time_stats_log": "foo",
+                "send_job_log": "foo",
+                "njobs_success": "foo",
+                "njobs_error": "foo",
+                "elapsed_time": "foo",
+                "last_rpc_time": "foo",
+                "dont_use_dcf": "foo",
+                "rsc_backoff_time": {"name": "CPU", "value": "foo"},
+                "rsc_backoff_interval": {"name": "CPU", "value": "foo"},
+                "gui_urls": [
+                    {
+                        "name": "Research Overview",
+                        "description": "Learn about the projects hosted at Foo Network",
+                        "url": "https://www.foo.org/research/viewAllProjects.do",
+                    },
+                ],
+                "sched_priority": "foo",
+                "project_files_downloaded_time": "foo",
+                "project_dir": "foo",
+            }
+        ]
+    }

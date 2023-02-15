@@ -8,6 +8,7 @@ from .status import (
     cc_status,
     client_state,
     disk_stats,
+    project_state,
     screensaver_tasks,
     simple_gui_info,
 )
@@ -28,6 +29,9 @@ class Boinc:
 
     def get_client_state(self) -> dict:
         return client_state(client=self.rpc_client)
+
+    def get_project_state(self) -> dict:
+        return project_state(client=self.rpc_client)
 
     def get_all_projects(self) -> dict:
         return all_projects(client=self.rpc_client)

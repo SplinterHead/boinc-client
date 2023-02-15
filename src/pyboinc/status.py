@@ -10,6 +10,16 @@ def client_state(client: RpcClient) -> dict:
     return rpc_json
 
 
+def project_state(client: RpcClient) -> dict:
+    """Show status of all attached projects."""
+    rpc_resp = client.make_request("<get_project_status/>")
+    rpc_json = xmltodict.parse(rpc_resp, force_list=("project", "gui_url"))
+    projects = rpc_json["projects"]["project"]
+    for p in projects:
+        p["gui_urls"] = p["gui_urls"]["gui_url"]
+    return {"projects": projects}
+
+
 def cc_status(client: RpcClient) -> dict:
     """Show CPU/GPU/network run modes and network connection status."""
     rpc_resp = client.make_request("<get_cc_status/>")
