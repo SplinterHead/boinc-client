@@ -2,6 +2,16 @@ from pytest import fixture
 
 
 @fixture
+def empty_network_transfer_report_xml() -> str:
+    return "<daily_xfers></daily_xfers>"
+
+
+@fixture
+def empty_network_transfer_report_dict() -> dict:
+    return {"network_stats": {}}
+
+
+@fixture
 def daily_network_transfer_report_xml() -> str:
     return """<daily_xfers>
         <dx>

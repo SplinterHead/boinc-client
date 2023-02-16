@@ -16,12 +16,13 @@ def daily_network_transfers(client: RpcClient) -> dict:
     rpc_resp = client.make_request("<get_daily_xfer_history/>")
     rpc_json = xmltodict.parse(rpc_resp, force_list="dx")
     daily_xfer = {"network_stats": {}}
-    for day in rpc_json["daily_xfers"]["dx"]:
-        day_key = _epoch_to_date(day["when"]).strftime("%Y-%m-%d")
-        daily_xfer["network_stats"][day_key] = {
-            "up": float(day["up"]),
-            "down": float(day["down"]),
-        }
+    if rpc_json["daily_xfers"]:
+        for day in rpc_json["daily_xfers"]["dx"]:
+            day_key = _epoch_to_date(day["when"]).strftime("%Y-%m-%d")
+            daily_xfer["network_stats"][day_key] = {
+                "up": float(day["up"]),
+                "down": float(day["down"]),
+            }
     return daily_xfer
 
 
