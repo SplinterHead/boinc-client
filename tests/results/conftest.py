@@ -2,6 +2,16 @@ from pytest import fixture
 
 
 @fixture
+def empty_result_xml() -> str:
+    return "<results></results>"
+
+
+@fixture
+def empty_result_dict() -> dict:
+    return {"results": []}
+
+
+@fixture
 def single_result_xml() -> str:
     return """<results>
     <result>
@@ -243,6 +253,16 @@ def multi_result_dict() -> dict:
             },
         ]
     }
+
+
+@fixture
+def empty_old_result_xml() -> str:
+    return "<old_results></old_results>"
+
+
+@fixture
+def empty_old_result_dict() -> dict:
+    return {"old_results": []}
 
 
 @fixture

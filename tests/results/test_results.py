@@ -1,6 +1,19 @@
 from pyboinc.results import old_results, results
 
 
+def test_can_get_empty_result(
+    mocker,
+    mock_rpc_client,
+    empty_result_xml,
+    empty_result_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=empty_result_xml,
+    )
+    assert results(client=mock_rpc_client) == empty_result_dict
+
+
 def test_can_get_single_result(
     mocker,
     mock_rpc_client,
@@ -38,6 +51,19 @@ def test_can_get_only_active_results(
     m_call.assert_called_once_with(
         "<get_results><active_only>1</active_only></get_results>"
     )
+
+
+def test_can_get_empty_old_result(
+    mocker,
+    mock_rpc_client,
+    empty_old_result_xml,
+    empty_old_result_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=empty_old_result_xml,
+    )
+    assert old_results(client=mock_rpc_client) == empty_old_result_dict
 
 
 def test_can_get_single_old_result(
