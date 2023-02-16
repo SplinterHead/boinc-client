@@ -63,6 +63,13 @@ def test_network_stats(boinc_client):
     assert "network_stats" in result
 
 
+@mark.integration
+def test_project_stats(boinc_client):
+    result = boinc_client.get_project_stats()
+    assert result
+    assert "project_stats" in result
+
+
 # Versions
 @mark.integration
 def test_container_version(boinc_client):

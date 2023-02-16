@@ -49,6 +49,19 @@ def test_can_get_multi_daily_network_transfer_reports(
     )
 
 
+def test_can_get_empty_project_stats(
+    mocker,
+    mock_rpc_client,
+    empty_project_stats_xml,
+    empty_project_stats_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=empty_project_stats_xml,
+    )
+    assert project_stats(client=mock_rpc_client) == empty_project_stats_dict
+
+
 def test_can_get_single_project_single_day_stats(
     mocker,
     mock_rpc_client,

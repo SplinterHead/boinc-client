@@ -54,6 +54,16 @@ def multi_daily_network_transfer_report_dict() -> dict:
 
 
 @fixture
+def empty_project_stats_xml() -> str:
+    return "<statistics></statistics>"
+
+
+@fixture
+def empty_project_stats_dict() -> dict:
+    return {"project_stats": []}
+
+
+@fixture
 def single_project_single_day_stats_xml() -> str:
     return """<statistics>
         <project_statistics>
