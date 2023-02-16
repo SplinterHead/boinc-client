@@ -40,6 +40,16 @@ def test_can_get_messages_since_id(
     m_call.assert_called_once_with("<get_messages><seqno>5</seqno></get_messages>")
 
 
+def test_can_get_empty_public_notice(
+    mocker, mock_rpc_client, empty_notice_xml, empty_notice_dict
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=empty_notice_xml,
+    )
+    assert public_notices(client=mock_rpc_client) == empty_notice_dict
+
+
 def test_can_get_single_public_notice(
     mocker, mock_rpc_client, single_notice_xml, single_notice_dict
 ):

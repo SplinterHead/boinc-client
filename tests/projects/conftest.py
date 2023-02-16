@@ -2,6 +2,16 @@ from pytest import fixture
 
 
 @fixture
+def empty_project_list_xml() -> str:
+    return ""
+
+
+@fixture
+def empty_project_list_dict() -> dict:
+    return {"projects": []}
+
+
+@fixture
 def single_project_single_platform_xml() -> str:
     return """<projects>
             <project>

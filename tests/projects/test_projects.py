@@ -1,6 +1,19 @@
 from pyboinc.projects import all_projects
 
 
+def test_can_get_empty_list(
+    mocker,
+    mock_rpc_client,
+    empty_project_list_xml,
+    empty_project_list_dict,
+):
+    mocker.patch(
+        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        return_value=empty_project_list_xml,
+    )
+    assert all_projects(client=mock_rpc_client) == empty_project_list_dict
+
+
 def test_can_get_single_project_with_single_platform(
     mocker,
     mock_rpc_client,

@@ -44,7 +44,7 @@ def message_count(client: RpcClient) -> dict:
 
 
 def public_notices(client: RpcClient, start: int = 0) -> dict:
-    """Show the largest message seqno."""
+    """Returns only non-private notices, doesn't require authentication."""
     rpc_resp = client.make_request(
         f"<get_notices_public><seqno>{start}</seqno></get_notices_public>"
     )
@@ -53,4 +53,6 @@ def public_notices(client: RpcClient, start: int = 0) -> dict:
         "notices": {
             n["seqno"]: _format_notice(n) for n in rpc_json["notices"]["notice"]
         }
+        if rpc_json["notices"]
+        else {}
     }

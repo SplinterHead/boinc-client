@@ -105,6 +105,16 @@ def single_notice_dict() -> dict:
 
 
 @fixture
+def empty_notice_xml() -> str:
+    return "<notices></notices>"
+
+
+@fixture
+def empty_notice_dict() -> dict:
+    return {"notices": {}}
+
+
+@fixture
 def multi_notice_xml() -> str:
     return """<notices>
         <notice>
