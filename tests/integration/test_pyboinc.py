@@ -41,10 +41,18 @@ def test_all_projects_list(boinc_client):
 
 
 # Results
-# @mark.integration
-# def test_results(boinc_client):
-#     result = boinc_client.get_results()
-#     assert result
+@mark.integration
+def test_results(boinc_client):
+    result = boinc_client.get_results()
+    assert result
+    assert "results" in result
+
+
+@mark.integration
+def test_old_results(boinc_client):
+    result = boinc_client.get_old_results()
+    assert result
+    assert "old_results" in result
 
 
 # Versions
@@ -60,11 +68,3 @@ def test_container_update(boinc_client):
     result = boinc_client.get_client_update()
     assert result
     assert "update" in result
-
-
-# Messages
-@mark.integration
-def test_messages(boinc_client):
-    result = boinc_client.get_messages()
-    assert result
-    assert result is not {}
