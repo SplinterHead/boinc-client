@@ -67,19 +67,19 @@ boinc_client.get_client_state()
 Response (abridged)
 ```json
 {
-        "client_state": {
-            "host_info": {},
-            "net_stats": {},
-            "time_stats": {},
-            "platform_name": "foo",
-            "core_client_major_version": "foo",
-            "core_client_minor_version": "foo",
-            "core_client_release": "foo",
-            "executing_as_daemon": "foo",
-            "platform": "foo",
-            "global_preferences": {},
-        }
+    "client_state": {
+        "host_info": {},
+        "net_stats": {},
+        "time_stats": {},
+        "platform_name": "foo",
+        "core_client_major_version": "foo",
+        "core_client_minor_version": "foo",
+        "core_client_release": "foo",
+        "executing_as_daemon": "foo",
+        "platform": "foo",
+        "global_preferences": {},
     }
+}
 ```
 
 ### Get Project State
@@ -154,25 +154,25 @@ boinc_client.get_cc_status()
 Response
 ```json
 {
-  "cc_status": {
-    "network_status": "2",
-    "ams_password_error": "0",
-    "task_suspend_reason": "0",
-    "task_mode": "2",
-    "task_mode_perm": "2",
-    "task_mode_delay": "0.000000",
-    "gpu_suspend_reason": "0",
-    "gpu_mode": "2",
-    "gpu_mode_perm": "2",
-    "gpu_mode_delay": "0.000000",
-    "network_suspend_reason": "0",
-    "network_mode": "2",
-    "network_mode_perm": "2",
-    "network_mode_delay": "0.000000",
-    "disallow_attach": "0",
-    "simple_gui_only": "0",
-    "max_event_log_lines": "2000"
-  }
+    "cc_status": {
+        "network_status": "2",
+        "ams_password_error": "0",
+        "task_suspend_reason": "0",
+        "task_mode": "2",
+        "task_mode_perm": "2",
+        "task_mode_delay": "0.000000",
+        "gpu_suspend_reason": "0",
+        "gpu_mode": "2",
+        "gpu_mode_perm": "2",
+        "gpu_mode_delay": "0.000000",
+        "network_suspend_reason": "0",
+        "network_mode": "2",
+        "network_mode_perm": "2",
+        "network_mode_delay": "0.000000",
+        "disallow_attach": "0",
+        "simple_gui_only": "0",
+        "max_event_log_lines": "2000"
+    }
 }
 ```
 
@@ -288,28 +288,28 @@ boinc_client.get_screensaver_tasks()
 Response (abridged)
 ```json
 {
-        "screensaver_tasks": {
-            "suspend_reason": "0",
-            "results": [
-                {
-                    "name": "foo",
-                    "wu_name": "foo",
-                    "platform": "foo",
-                    "version_num": "foo",
-                    "plan_class": "foo",
-                    "project_url": "foo",
-                    "final_cpu_time": "foo",
-                    "final_elapsed_time": "foo",
-                    "exit_status": "foo",
-                    "state": "foo",
-                    "report_deadline": "foo",
-                    "received_time": "foo",
-                    "estimated_cpu_time_remaining": "foo",
-                    "active_task": {},
-                },
-            ],
-        },
-    }
+    "screensaver_tasks": {
+        "suspend_reason": "0",
+        "results": [
+            {
+                "name": "foo",
+                "wu_name": "foo",
+                "platform": "foo",
+                "version_num": "foo",
+                "plan_class": "foo",
+                "project_url": "foo",
+                "final_cpu_time": "foo",
+                "final_elapsed_time": "foo",
+                "exit_status": "foo",
+                "state": "foo",
+                "report_deadline": "foo",
+                "received_time": "foo",
+                "estimated_cpu_time_remaining": "foo",
+                "active_task": {},
+            },
+        ],
+    },
+}
 ```
 
 ### Get Project Statistics
@@ -369,6 +369,7 @@ boinc_client.get_messages()
 | Argument | Description                       | Required | Default |
 |----------|-----------------------------------|----------|---------|
 | `start`  | ID of the first message to return | No       | 0       |
+
 Response
 ```json
 {
@@ -398,6 +399,7 @@ boinc_client.get_public_notices()
 | Argument | Description                      | Required | Default |
 |----------|----------------------------------|----------|---------|
 | `start`  | ID of the first notice to return | No       | 0       |
+
 Response
 ```json
 {
@@ -425,6 +427,7 @@ boinc_client.get_results()
 | Argument      | Description                                         | Required | Default |
 |---------------|-----------------------------------------------------|----------|---------|
 | `active_only` | Limits the returned results to only the active ones | No       | False   |
+
 Response (abridged)
 ```json
 {
