@@ -89,6 +89,8 @@ jobs:
           generateReleaseNotes: true
           skipIfReleaseExists: true
       - name: Build Library
+        if: ${{ steps.semver.outputs.next != null }}
         run: poetry build
       - name: Publish Library
+        if: ${{ steps.semver.outputs.next != null }}
         run: poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }}
