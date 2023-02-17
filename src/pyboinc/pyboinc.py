@@ -8,6 +8,8 @@ from .status import (
     cc_status,
     client_state,
     disk_stats,
+    file_transfers,
+    host_info,
     project_state,
     screensaver_tasks,
     simple_gui_info,
@@ -44,6 +46,12 @@ class Boinc:
 
     def get_network_stats(self) -> dict:
         return daily_network_transfers(client=self.rpc_client)
+
+    def get_file_transfers(self) -> dict:
+        return file_transfers(client=self.rpc_client)
+
+    def get_host_info(self) -> dict:
+        return host_info(client=self.rpc_client)
 
     def get_message_count(self) -> dict:
         return message_count(client=self.rpc_client)

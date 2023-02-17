@@ -134,6 +134,16 @@ def disk_stats_multi_project_dict() -> dict:
 
 
 @fixture
+def file_transfers_empty_transfer_xml() -> str:
+    return "<file_transfers></file_transfers>"
+
+
+@fixture
+def file_transfers_empty_transfer_dict() -> dict:
+    return {"file_transfers": []}
+
+
+@fixture
 def file_transfers_single_transfer_xml() -> str:
     return """<file_transfers>
         <file_transfer>
@@ -471,6 +481,16 @@ def host_info_dict() -> dict:
             },
         }
     }
+
+
+@fixture
+def simple_gui_info_empty_xml() -> str:
+    return "<simple_gui_info></simple_gui_info>"
+
+
+@fixture
+def simple_gui_info_empty_dict() -> dict:
+    return {"gui_info": {"projects": [], "results": []}}
 
 
 @fixture
@@ -1062,6 +1082,18 @@ def simple_gui_info_multi_dict() -> dict:
 
 
 @fixture
+def screensaver_tasks_empty_result_xml() -> str:
+    return """<handle_get_screensaver_tasks>
+        <suspend_reason>0</suspend_reason>
+    </handle_get_screensaver_tasks>"""
+
+
+@fixture
+def screensaver_tasks_empty_result_dict() -> dict:
+    return {"screensaver_tasks": {"suspend_reason": "0", "results": []}}
+
+
+@fixture
 def screensaver_tasks_single_result_xml() -> str:
     return """<handle_get_screensaver_tasks>
     <suspend_reason>0</suspend_reason>
@@ -1503,6 +1535,16 @@ def client_state_dict() -> dict:
             },
         }
     }
+
+
+@fixture
+def empty_project_status_xml() -> str:
+    return "<projects></projects>"
+
+
+@fixture
+def empty_project_status_dict() -> dict:
+    return {"projects": []}
 
 
 @fixture
