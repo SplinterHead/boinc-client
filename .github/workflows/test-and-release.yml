@@ -8,7 +8,7 @@ jobs:
   Unit_Test:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
+      fail-fast: true
     steps:
       - uses: actions/checkout@v3
       - name: Setup Poetry
@@ -28,7 +28,7 @@ jobs:
   Integration_Test:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
+      fail-fast: true
     steps:
       - uses: actions/checkout@v3
       - name: Setup Poetry
@@ -88,3 +88,7 @@ jobs:
           makeLatest: true
           generateReleaseNotes: true
           skipIfReleaseExists: true
+      - name: Build and publish to pypi
+        uses: JRubics/poetry-publish@v1.16
+        with:
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
