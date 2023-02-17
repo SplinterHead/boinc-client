@@ -73,7 +73,8 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
       - name: Bump Poetry Version
         run: poetry version ${{ steps.semver.outputs.nextStrict }}
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Commit Release to repo
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Create ${{ steps.semver.outputs.next }} Release"
           tagging_message: ${{ steps.semver.outputs.next }}
