@@ -23,20 +23,40 @@ class Boinc:
     def __init__(self, rpc_client: RpcClient):
         self.rpc_client = rpc_client
 
-    def get_client_version(self) -> dict:
-        return client_version(client=self.rpc_client)
+    # Messages
+    def get_messages(self, start: int = 0) -> dict:
+        return messages(client=self.rpc_client, start=start)
 
-    def get_client_update(self) -> dict:
-        return client_update(client=self.rpc_client)
+    def get_message_count(self) -> dict:
+        return message_count(client=self.rpc_client)
 
+    def get_public_notices(self) -> dict:
+        return public_notices(client=self.rpc_client)
+
+    # Projects
+    def get_all_projects(self) -> dict:
+        return all_projects(client=self.rpc_client)
+
+    # Results
+    def get_results(self, active_only: bool = False) -> dict:
+        return results(client=self.rpc_client, active_only=active_only)
+
+    def get_old_results(self) -> dict:
+        return old_results(client=self.rpc_client)
+
+    # Stats
+    def get_network_stats(self) -> dict:
+        return daily_network_transfers(client=self.rpc_client)
+
+    def get_project_stats(self) -> dict:
+        return project_stats(client=self.rpc_client)
+
+    # Status
     def get_client_state(self) -> dict:
         return client_state(client=self.rpc_client)
 
     def get_project_state(self) -> dict:
         return project_state(client=self.rpc_client)
-
-    def get_all_projects(self) -> dict:
-        return all_projects(client=self.rpc_client)
 
     def get_cc_status(self) -> dict:
         return cc_status(client=self.rpc_client)
@@ -44,35 +64,21 @@ class Boinc:
     def get_disk_stats(self) -> dict:
         return disk_stats(client=self.rpc_client)
 
-    def get_network_stats(self) -> dict:
-        return daily_network_transfers(client=self.rpc_client)
-
     def get_file_transfers(self) -> dict:
         return file_transfers(client=self.rpc_client)
 
     def get_host_info(self) -> dict:
         return host_info(client=self.rpc_client)
 
-    def get_message_count(self) -> dict:
-        return message_count(client=self.rpc_client)
-
-    def get_messages(self, start: int = 0) -> dict:
-        return messages(client=self.rpc_client, start=start)
-
-    def get_public_notices(self) -> dict:
-        return public_notices(client=self.rpc_client)
-
-    def get_results(self, active_only: bool = False) -> dict:
-        return results(client=self.rpc_client, active_only=active_only)
-
-    def get_old_results(self) -> dict:
-        return old_results(client=self.rpc_client)
-
-    def get_project_stats(self) -> dict:
-        return project_stats(client=self.rpc_client)
-
     def get_simple_gui_info(self) -> dict:
         return simple_gui_info(client=self.rpc_client)
 
     def get_screensaver_tasks(self) -> dict:
         return screensaver_tasks(client=self.rpc_client)
+
+    # Versions
+    def get_client_version(self) -> dict:
+        return client_version(client=self.rpc_client)
+
+    def get_client_update(self) -> dict:
+        return client_update(client=self.rpc_client)
