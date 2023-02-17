@@ -1,7 +1,7 @@
 from pytest import fixture
 
-from pyboinc.clients.rpc_client import RpcClient
-from pyboinc.pyboinc import Boinc
+from boinc_client.boinc_client import Boinc
+from boinc_client.clients.rpc_client import RpcClient
 
 
 @fixture

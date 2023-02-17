@@ -2,7 +2,7 @@ import datetime as dt
 
 import xmltodict
 
-from pyboinc.clients.rpc_client import RpcClient
+from boinc_client.clients.rpc_client import RpcClient
 
 
 def _epoch_to_date(epoch_days: str) -> dt.date:

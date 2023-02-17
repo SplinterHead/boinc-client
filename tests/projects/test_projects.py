@@ -1,4 +1,4 @@
-from pyboinc.projects import all_projects
+from boinc_client.projects import all_projects
 
 
 def test_can_get_empty_list(
@@ -8,7 +8,7 @@ def test_can_get_empty_list(
     empty_project_list_dict,
 ):
     mocker.patch(
-        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
         return_value=empty_project_list_xml,
     )
     assert all_projects(client=mock_rpc_client) == empty_project_list_dict
@@ -21,7 +21,7 @@ def test_can_get_single_project_with_single_platform(
     single_project_single_platform_dict,
 ):
     mocker.patch(
-        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
         return_value=single_project_single_platform_xml,
     )
     assert all_projects(client=mock_rpc_client) == single_project_single_platform_dict
@@ -34,7 +34,7 @@ def test_can_get_single_project_with_multiple_platforms(
     single_project_multi_platform_dict,
 ):
     mocker.patch(
-        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
         return_value=single_project_multi_platform_xml,
     )
     assert all_projects(client=mock_rpc_client) == single_project_multi_platform_dict
@@ -47,7 +47,7 @@ def test_can_get_multiple_projects_with_single_platform(
     multi_project_single_platform_dict,
 ):
     mocker.patch(
-        "pyboinc.clients.rpc_client.RpcClient.make_request",
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
         return_value=multi_project_single_platform_xml,
     )
     assert all_projects(client=mock_rpc_client) == multi_project_single_platform_dict

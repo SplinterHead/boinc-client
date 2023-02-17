@@ -1,4 +1,4 @@
-from pyboinc.clients.rpc_client import RpcClient
+from boinc_client.clients.rpc_client import RpcClient
 
 from .messages import message_count, messages, public_notices
 from .projects import all_projects

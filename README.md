@@ -1,4 +1,4 @@
-# pyBoinc
+# BOINC Client
 
 Python native library for interacting with a BOINC client via RPC. This library has been designed to have consistent response types.
 
@@ -7,8 +7,8 @@ Python native library for interacting with a BOINC client via RPC. This library 
 ### Setup
 
 ```python
-from pyboinc import Boinc
-from pyboinc.clients.rpc_client import RpcClient
+from boinc_client import Boinc
+from boinc_client.clients.rpc_client import RpcClient
 
 # Hostname or IP of the running BOINC client
 BOINC_HOSTNAME = "192.168.0.2"

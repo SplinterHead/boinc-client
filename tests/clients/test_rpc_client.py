@@ -1,6 +1,6 @@
 import pytest
 
-from pyboinc.clients.rpc_client import RpcClient
+from boinc_client.clients.rpc_client import RpcClient
 
 
 @pytest.fixture
@@ -49,7 +49,7 @@ def test_client_start_authentication_when_password_passed(mocker, nonce):
         return f"<boinc_gui_rpc_reply>\n<nonce>{nonce}</nonce>\n</boinc_gui_rpc_reply>"
 
     mocker.patch("socket.create_connection")
-    mocker.patch("pyboinc.clients.rpc_client.RpcClient._call", mock_call)
+    mocker.patch("boinc_client.clients.rpc_client.RpcClient._call", mock_call)
     client = RpcClient(hostname="localhost", password="password")
     assert client.get_nonce() == nonce
 
@@ -59,7 +59,7 @@ def test_client_passes_password_to_target(mocker, nonce, password_hash):
 
     mocker.patch("socket.create_connection")
     m_call = mocker.patch(
-        "pyboinc.clients.rpc_client.RpcClient._call",
+        "boinc_client.clients.rpc_client.RpcClient._call",
         return_value="<boinc_gui_rpc_reply>\n<authorized/>\n</boinc_gui_rpc_reply>",
     )
 
@@ -70,9 +70,12 @@ def test_client_passes_password_to_target(mocker, nonce, password_hash):
 
 def test_client_authentication_completes_auth_flow(mocker, nonce):
     mocker.patch("socket.create_connection")
-    mocker.patch("pyboinc.clients.rpc_client.RpcClient.get_nonce", return_value=nonce)
     mocker.patch(
-        "pyboinc.clients.rpc_client.RpcClient.send_password", return_value="authorized"
+        "boinc_client.clients.rpc_client.RpcClient.get_nonce", return_value=nonce
+    )
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.send_password",
+        return_value="authorized",
     )
     client = RpcClient(hostname="localhost", password="password")
     assert client.authenticate()
@@ -80,9 +83,11 @@ def test_client_authentication_completes_auth_flow(mocker, nonce):
 
 def test_client_authentication_raises_error_on_auth_failure(mocker, nonce):
     mocker.patch("socket.create_connection")
-    mocker.patch("pyboinc.clients.rpc_client.RpcClient.get_nonce", return_value=nonce)
     mocker.patch(
-        "pyboinc.clients.rpc_client.RpcClient.send_password",
+        "boinc_client.clients.rpc_client.RpcClient.get_nonce", return_value=nonce
+    )
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.send_password",
         return_value="unauthorized",
     )
     client = RpcClient(hostname="localhost", password="wrong_password")
@@ -92,7 +97,7 @@ def test_client_authentication_raises_error_on_auth_failure(mocker, nonce):
 def test_client_can_make_custom_calls(mocker):
     mocker.patch("socket.create_connection")
     m_call = mocker.patch(
-        "pyboinc.clients.rpc_client.RpcClient._call", return_value="123"
+        "boinc_client.clients.rpc_client.RpcClient._call", return_value="123"
     )
 
     client = RpcClient(hostname="localhost")
@@ -104,7 +109,7 @@ def test_client_can_make_custom_calls(mocker):
 def test_client_removes_default_wrapper_tag(mocker):
     mocker.patch("socket.create_connection")
     mocker.patch(
-        "pyboinc.clients.rpc_client.RpcClient._call",
+        "boinc_client.clients.rpc_client.RpcClient._call",
         return_value="<boinc_gui_rpc_reply>\n<request/>\n</boinc_gui_rpc_reply>",
     )
 

@@ -1,6 +1,6 @@
 import xmltodict
 
-from pyboinc.clients.rpc_client import RpcClient
+from boinc_client.clients.rpc_client import RpcClient
 
 
 def _format_message(message):

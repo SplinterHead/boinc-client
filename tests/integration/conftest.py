@@ -2,8 +2,8 @@ import pytest
 from testcontainers.core.container import DockerContainer
 from testcontainers.core.waiting_utils import wait_for_logs
 
-from pyboinc.clients.rpc_client import RpcClient
-from pyboinc.pyboinc import Boinc
+from boinc_client.boinc_client import Boinc
+from boinc_client.clients.rpc_client import RpcClient
 
 BOINC_PORT = 31416
 HOST_PORT = 31416

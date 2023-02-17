@@ -1,6 +1,6 @@
 import xmltodict
 
-from pyboinc.clients.rpc_client import RpcClient
+from boinc_client.clients.rpc_client import RpcClient
 
 
 def client_version(client: RpcClient) -> dict:
