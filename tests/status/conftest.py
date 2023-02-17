@@ -1538,17 +1538,17 @@ def client_state_dict() -> dict:
 
 
 @fixture
-def empty_project_status_xml() -> str:
+def empty_project_state_xml() -> str:
     return "<projects></projects>"
 
 
 @fixture
-def empty_project_status_dict() -> dict:
+def empty_project_state_dict() -> dict:
     return {"projects": []}
 
 
 @fixture
-def project_status_xml() -> str:
+def project_state_xml() -> str:
     return """<projects>
     <project>
         <master_url>foo</master_url>
@@ -1614,7 +1614,7 @@ def project_status_xml() -> str:
 
 
 @fixture
-def project_status_dict() -> dict:
+def project_state_dict() -> dict:
     return {
         "projects": [
             {

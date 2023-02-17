@@ -208,22 +208,22 @@ def test_can_get_client_state(
 
 
 def test_can_get_empty_project_status(
-    mocker, mock_rpc_client, empty_project_status_xml, empty_project_status_dict
+    mocker, mock_rpc_client, empty_project_state_xml, empty_project_state_dict
 ):
 
     mocker.patch(
         "pyboinc.clients.rpc_client.RpcClient.make_request",
-        return_value=empty_project_status_xml,
+        return_value=empty_project_state_xml,
     )
-    assert project_state(client=mock_rpc_client) == empty_project_status_dict
+    assert project_state(client=mock_rpc_client) == empty_project_state_dict
 
 
 def test_can_get_project_status(
-    mocker, mock_rpc_client, project_status_xml, project_status_dict
+    mocker, mock_rpc_client, project_state_xml, project_state_dict
 ):
 
     mocker.patch(
         "pyboinc.clients.rpc_client.RpcClient.make_request",
-        return_value=project_status_xml,
+        return_value=project_state_xml,
     )
-    assert project_state(client=mock_rpc_client) == project_status_dict
+    assert project_state(client=mock_rpc_client) == project_state_dict
