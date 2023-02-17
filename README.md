@@ -59,7 +59,7 @@ Check all the tests are executing properly:
 poetry run pytest -m "not integration"
 
 # Run only the Integration tests
-poetry run pytest -m integratin
+poetry run pytest -m integration
 
 # Run all tests (recommended)
 poetry run pytest
