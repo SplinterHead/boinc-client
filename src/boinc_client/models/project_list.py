@@ -33,6 +33,6 @@ class ProjectList(Schema):
     projects = fields.Nested(Project(many=True))
 
     @pre_load
-    def _convert_none_to_empty_dict(self, data, **kwargs):
+    def _convert_none_to_empty_list(self, data, **kwargs):
         data["projects"] = data["projects"]["project"] if data["projects"] else []
         return data
