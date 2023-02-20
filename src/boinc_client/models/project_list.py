@@ -14,7 +14,7 @@ class Project(Schema):
     specific_area = fields.Str()
     description = fields.Str()
     home = fields.Str()
-    platforms = fields.List(fields.Nested(ProjectPlatform()))
+    platforms = fields.Nested(ProjectPlatform(many=True))
     image = fields.Str()
     summary = fields.Str()
     keywords = fields.Str()
@@ -30,7 +30,7 @@ class Project(Schema):
 
 
 class ProjectList(Schema):
-    projects = fields.List(fields.Nested(Project()))
+    projects = fields.Nested(Project(many=True))
 
     @pre_load
     def _convert_none_to_empty_dict(self, data, **kwargs):
