@@ -8,11 +8,7 @@ def server_version_xml(test_files) -> str:
 
 @fixture
 def server_version_dict(test_files) -> dict:
-    return {
-        "version": {
-            "major": 1, "minor": 2, "patch": 0
-        }
-    }
+    return {"version": {"major": 1, "minor": 2, "patch": 0}}
 
 
 @fixture
@@ -25,7 +21,7 @@ def server_update_dict(test_files) -> dict:
     return {
         "update": {
             "newer_version": "1.3.0",
-            "download_url": "https://boinc.berkeley.edu/download.php"
+            "download_url": "https://boinc.berkeley.edu/download.php",
         }
     }
 
@@ -40,6 +36,6 @@ def server_update_no_dict(test_files) -> dict:
     return {
         "update": {
             "newer_version": None,
-            "download_url": "https://boinc.berkeley.edu/download.php"
+            "download_url": "https://boinc.berkeley.edu/download.php",
         }
     }
