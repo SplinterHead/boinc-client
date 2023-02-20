@@ -1,0 +1,13 @@
+<notices>
+    <notice>
+        <title>Notice A</title>
+        <description>This is a notice</description>
+        <create_time>123</create_time>
+        <arrival_time>124</arrival_time>
+        <is_private>false</is_private>
+        <project_name>proja</project_name>
+        <category>test</category>
+        <link>https://linky.link</link>
+        <seqno>1</seqno>
+    </notice>
+</notices>
