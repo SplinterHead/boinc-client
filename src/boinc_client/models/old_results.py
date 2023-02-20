@@ -12,7 +12,7 @@ class OldResult(Schema):
     create_time = fields.Float()
 
 
-class OldResultList(Schema):
+class OldResults(Schema):
     old_results = fields.Nested(OldResult(many=True))
 
     @pre_load

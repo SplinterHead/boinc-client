@@ -1,7 +1,7 @@
 import xmltodict
 
 from boinc_client.clients.rpc_client import RpcClient
-from boinc_client.models.project_list import ProjectList
+from boinc_client.models.projects import Projects
 
 EMPTY_PROJECT_LIST = "<projects></projects>"
 
@@ -12,4 +12,4 @@ def all_projects(client: RpcClient) -> dict:
     if rpc_resp == "":
         rpc_resp = EMPTY_PROJECT_LIST
     rpc_json = xmltodict.parse(rpc_resp, force_list="project")
-    return ProjectList().load(rpc_json)
+    return Projects().load(rpc_json)

@@ -40,7 +40,7 @@ class Result(Schema):
     active_task = fields.Nested(ActiveTask())
 
 
-class ResultList(Schema):
+class Results(Schema):
     results = fields.Nested(Result(many=True))
 
     @pre_load

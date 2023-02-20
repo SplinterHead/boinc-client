@@ -29,7 +29,7 @@ class Project(Schema):
         return data
 
 
-class ProjectList(Schema):
+class Projects(Schema):
     projects = fields.Nested(Project(many=True))
 
     @pre_load

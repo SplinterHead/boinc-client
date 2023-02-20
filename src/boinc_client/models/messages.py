@@ -1,7 +1,7 @@
 from marshmallow import Schema, fields, post_load, pre_load
 
 
-class MessageContent(Schema):
+class Message(Schema):
     project = fields.Str(allow_none=True)
     pri = fields.Str()
     body = fields.Str(allow_none=True)
@@ -16,7 +16,7 @@ class MessageContent(Schema):
 
 class Messages(Schema):
     messages = fields.Dict(
-        fields.Int(), fields.Nested(MessageContent()), data_key="msgs"
+        fields.Int(), fields.Nested(Message()), data_key="msgs"
     )
 
     @pre_load

@@ -1,7 +1,7 @@
 from marshmallow import Schema, fields, post_load, pre_load
 
 
-class NoticeContent(Schema):
+class Notice(Schema):
     title = fields.Str()
     description = fields.Str()
     create_time = fields.Int()
@@ -19,7 +19,7 @@ class NoticeContent(Schema):
 
 
 class Notices(Schema):
-    notices = fields.Dict(fields.Int(), fields.Nested(NoticeContent()))
+    notices = fields.Dict(fields.Int(), fields.Nested(Notice()))
 
     @pre_load
     def _convert_none_to_empty_dict(self, data, **kwargs):
