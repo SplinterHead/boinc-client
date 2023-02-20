@@ -18,7 +18,7 @@ def single_messages_xml() -> str:
 def single_messages_dict() -> dict:
     return {
         "messages": {
-            "1": {
+            1: {
                 "project": "Project A",
                 "pri": "proja",
                 "body": "This is a Message",
@@ -52,13 +52,13 @@ def multi_messages_xml() -> str:
 def multi_messages_dict() -> dict:
     return {
         "messages": {
-            "1": {
+            1: {
                 "project": "Project A",
                 "pri": "proja",
                 "body": "This is a Message",
                 "time": 1672531200,
             },
-            "2": {
+            2: {
                 "project": "Project B",
                 "pri": "projb",
                 "body": "This is another Message",

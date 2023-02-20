@@ -1,17 +1,9 @@
 import xmltodict
 
 from boinc_client.clients.rpc_client import RpcClient
+from boinc_client.models.message import Messages
 from boinc_client.models.message_count import MessageCount
 from boinc_client.models.public_notice import Notices
-
-
-def _format_message(message):
-    return {
-        "project": message["project"],
-        "pri": message["pri"],
-        "body": message["body"],
-        "time": int(message["time"]),
-    }
 
 
 def messages(client: RpcClient, start: int = 0) -> dict:
@@ -20,9 +12,7 @@ def messages(client: RpcClient, start: int = 0) -> dict:
         f"<get_messages><seqno>{start}</seqno></get_messages>"
     )
     rpc_json = xmltodict.parse(rpc_resp, force_list="msg")
-    return {
-        "messages": {m["seqno"]: _format_message(m) for m in rpc_json["msgs"]["msg"]}
-    }
+    return Messages().load(rpc_json)
 
 
 def message_count(client: RpcClient) -> dict:
