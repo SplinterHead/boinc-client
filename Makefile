@@ -9,12 +9,12 @@ fmtxml: fmt
 
 .PHONY: unittest
 unittest: fmt
-	poetry run pytest -m "not integration" -v
+	poetry run pytest -m "not integration" -vv
 
 .PHONY: integration
 integration: fmt
-	poetry run pytest -m integration -v
+	poetry run pytest -m integration -vv
 
 .PHONY: test
 test: fmt
-	poetry run pytest -v
+	poetry run pytest -vv
