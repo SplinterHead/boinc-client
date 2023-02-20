@@ -2,20 +2,12 @@ from pytest import fixture
 
 
 @fixture
-def single_messages_xml() -> str:
-    return """<msgs>
-      <msg>
-          <project>Project A</project>
-          <pri>proja</pri>
-          <seqno>1</seqno>
-          <body>This is a Message</body>
-          <time>1672531200</time>
-      </msg>
-  </msgs>"""
+def single_messages_xml(test_files) -> str:
+    return open(f"{test_files}/messages/single_message.xml").read()
 
 
 @fixture
-def single_messages_dict() -> dict:
+def single_messages_dict(test_files) -> dict:
     return {
         "messages": {
             1: {
@@ -29,16 +21,8 @@ def single_messages_dict() -> dict:
 
 
 @fixture
-def none_proj_messages_xml() -> str:
-    return """<msgs>
-      <msg>
-          <project></project>
-          <pri>proja</pri>
-          <seqno>1</seqno>
-          <body>This is a Message</body>
-          <time>1672531200</time>
-      </msg>
-  </msgs>"""
+def none_proj_messages_xml(test_files) -> str:
+    return open(f"{test_files}/messages/single_message_with_nones.xml").read()
 
 
 @fixture
@@ -48,7 +32,7 @@ def none_proj_messages_dict() -> dict:
             1: {
                 "project": None,
                 "pri": "proja",
-                "body": "This is a Message",
+                "body": None,
                 "time": 1672531200,
             }
         }
@@ -56,23 +40,8 @@ def none_proj_messages_dict() -> dict:
 
 
 @fixture
-def multi_messages_xml() -> str:
-    return """<msgs>
-      <msg>
-          <project>Project A</project>
-          <pri>proja</pri>
-          <seqno>1</seqno>
-          <body>This is a Message</body>
-          <time>1672531200</time>
-      </msg>
-      <msg>
-          <project>Project B</project>
-          <pri>projb</pri>
-          <seqno>2</seqno>
-          <body>This is another Message</body>
-          <time>1672531300</time>
-      </msg>
-  </msgs>"""
+def multi_messages_xml(test_files) -> str:
+    return open(f"{test_files}/messages/multi_messages.xml").read()
 
 
 @fixture
@@ -96,8 +65,8 @@ def multi_messages_dict() -> dict:
 
 
 @fixture
-def empty_notice_xml() -> str:
-    return "<notices></notices>"
+def empty_notice_xml(test_files) -> str:
+    return open(f"{test_files}/notices/empty_notice.xml").read()
 
 
 @fixture
@@ -106,21 +75,8 @@ def empty_notice_dict() -> dict:
 
 
 @fixture
-def single_notice_xml() -> str:
-    return """<notices>
-        <notice>
-            <title>Notice A</title>
-            <description>This is a notice</description>
-            <create_time>123</create_time>
-            <arrival_time>124</arrival_time>
-            <is_private>false</is_private>
-            <project_name>proja</project_name>
-            <category>test</category>
-            <link>https://linky.link</link>
-            <seqno>1</seqno>
-        </notice>
-    </notices>
-"""
+def single_notice_xml(test_files) -> str:
+    return open(f"{test_files}/notices/single_notice.xml").read()
 
 
 @fixture
@@ -142,32 +98,8 @@ def single_notice_dict() -> dict:
 
 
 @fixture
-def multi_notice_xml() -> str:
-    return """<notices>
-        <notice>
-            <title>Notice A</title>
-            <description>This is a notice</description>
-            <create_time>123</create_time>
-            <arrival_time>124</arrival_time>
-            <is_private>false</is_private>
-            <project_name>proja</project_name>
-            <category>test</category>
-            <link>https://linky.link</link>
-            <seqno>1</seqno>
-        </notice>
-        <notice>
-            <title>Notice B</title>
-            <description>This is another notice</description>
-            <create_time>456</create_time>
-            <arrival_time>457</arrival_time>
-            <is_private>false</is_private>
-            <project_name>projb</project_name>
-            <category>test2</category>
-            <link>https://linky2.link</link>
-            <seqno>2</seqno>
-        </notice>
-    </notices>
-"""
+def multi_notice_xml(test_files) -> str:
+    return open(f"{test_files}/notices/multi_notices.xml").read()
 
 
 @fixture

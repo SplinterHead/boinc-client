@@ -4,7 +4,7 @@ from marshmallow import Schema, fields, post_load, pre_load
 class MessageContent(Schema):
     project = fields.Str(allow_none=True)
     pri = fields.Str()
-    body = fields.Str()
+    body = fields.Str(allow_none=True)
     time = fields.Int()
     seqno = fields.Int()
 

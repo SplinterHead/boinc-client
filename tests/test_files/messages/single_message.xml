@@ -1,0 +1,9 @@
+<msgs>
+    <msg>
+        <project>Project A</project>
+        <pri>proja</pri>
+        <seqno>1</seqno>
+        <body>This is a Message</body>
+        <time>1672531200</time>
+    </msg>
+</msgs>
