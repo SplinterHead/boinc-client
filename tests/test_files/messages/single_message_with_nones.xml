@@ -1,9 +1,11 @@
 <msgs>
     <msg>
         <project></project>
-        <pri>proja</pri>
-        <seqno>1</seqno>
-        <body></body>
-        <time>1672531200</time>
+         <pri>1</pri>
+         <seqno>64</seqno>
+         <body><![CDATA[
+
+        ]]></body>
+         <time>1676897876</time>
     </msg>
 </msgs>

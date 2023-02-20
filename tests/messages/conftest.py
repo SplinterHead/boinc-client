@@ -10,11 +10,11 @@ def single_messages_xml(test_files) -> str:
 def single_messages_dict(test_files) -> dict:
     return {
         "messages": {
-            1: {
-                "project": "Project A",
-                "pri": "proja",
-                "body": "This is a Message",
-                "time": 1672531200,
+            109: {
+                "project": "World Community Grid",
+                "pri": "1",
+                "body": "Finished download of MCM1_FILENAME.txt",
+                "time": 1676897897,
             }
         }
     }
@@ -29,11 +29,11 @@ def none_proj_messages_xml(test_files) -> str:
 def none_proj_messages_dict() -> dict:
     return {
         "messages": {
-            1: {
+            64: {
                 "project": None,
-                "pri": "proja",
+                "pri": "1",
                 "body": None,
-                "time": 1672531200,
+                "time": 1676897876,
             }
         }
     }
@@ -48,17 +48,17 @@ def multi_messages_xml(test_files) -> str:
 def multi_messages_dict() -> dict:
     return {
         "messages": {
-            1: {
-                "project": "Project A",
-                "pri": "proja",
-                "body": "This is a Message",
-                "time": 1672531200,
+            109: {
+                "project": "World Community Grid",
+                "pri": "1",
+                "body": "Finished download of MCM1_FILENAME.txt",
+                "time": 1676897897,
             },
-            2: {
-                "project": "Project B",
-                "pri": "projb",
-                "body": "This is another Message",
-                "time": 1672531300,
+            110: {
+                "project": "World Community Grid",
+                "pri": "1",
+                "body": "Started download of MCM2_FILENAME.txt",
+                "time": 1676897897,
             },
         }
     }

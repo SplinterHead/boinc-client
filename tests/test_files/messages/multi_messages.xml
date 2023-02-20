@@ -1,16 +1,20 @@
 <msgs>
-      <msg>
-          <project>Project A</project>
-          <pri>proja</pri>
-          <seqno>1</seqno>
-          <body>This is a Message</body>
-          <time>1672531200</time>
-      </msg>
-      <msg>
-          <project>Project B</project>
-          <pri>projb</pri>
-          <seqno>2</seqno>
-          <body>This is another Message</body>
-          <time>1672531300</time>
-      </msg>
-  </msgs>
+    <msg>
+        <project>World Community Grid</project>
+        <pri>1</pri>
+        <seqno>109</seqno>
+        <body><![CDATA[
+        Finished download of MCM1_FILENAME.txt
+        ]]></body>
+        <time>1676897897</time>
+    </msg>
+    <msg>
+        <project>World Community Grid</project>
+        <pri>1</pri>
+        <seqno>110</seqno>
+        <body><![CDATA[
+        Started download of MCM2_FILENAME.txt
+        ]]></body>
+        <time>1676897897</time>
+    </msg>
+</msgs>
