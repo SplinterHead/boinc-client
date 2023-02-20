@@ -29,6 +29,33 @@ def single_messages_dict() -> dict:
 
 
 @fixture
+def none_proj_messages_xml() -> str:
+    return """<msgs>
+      <msg>
+          <project></project>
+          <pri>proja</pri>
+          <seqno>1</seqno>
+          <body>This is a Message</body>
+          <time>1672531200</time>
+      </msg>
+  </msgs>"""
+
+
+@fixture
+def none_proj_messages_dict() -> dict:
+    return {
+        "messages": {
+            1: {
+                "project": None,
+                "pri": "proja",
+                "body": "This is a Message",
+                "time": 1672531200,
+            }
+        }
+    }
+
+
+@fixture
 def multi_messages_xml() -> str:
     return """<msgs>
       <msg>

@@ -2,7 +2,7 @@ from marshmallow import Schema, fields, post_load, pre_load
 
 
 class MessageContent(Schema):
-    project = fields.Str()
+    project = fields.Str(allow_none=True)
     pri = fields.Str()
     body = fields.Str()
     time = fields.Int()
