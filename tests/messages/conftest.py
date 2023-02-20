@@ -69,6 +69,16 @@ def multi_messages_dict() -> dict:
 
 
 @fixture
+def empty_notice_xml() -> str:
+    return "<notices></notices>"
+
+
+@fixture
+def empty_notice_dict() -> dict:
+    return {"notices": {}}
+
+
+@fixture
 def single_notice_xml() -> str:
     return """<notices>
         <notice>
@@ -90,7 +100,7 @@ def single_notice_xml() -> str:
 def single_notice_dict() -> dict:
     return {
         "notices": {
-            "1": {
+            1: {
                 "title": "Notice A",
                 "description": "This is a notice",
                 "create_time": 123,
@@ -102,16 +112,6 @@ def single_notice_dict() -> dict:
             }
         }
     }
-
-
-@fixture
-def empty_notice_xml() -> str:
-    return "<notices></notices>"
-
-
-@fixture
-def empty_notice_dict() -> dict:
-    return {"notices": {}}
 
 
 @fixture
@@ -147,7 +147,7 @@ def multi_notice_xml() -> str:
 def multi_notice_dict() -> dict:
     return {
         "notices": {
-            "1": {
+            1: {
                 "title": "Notice A",
                 "description": "This is a notice",
                 "create_time": 123,
@@ -157,7 +157,7 @@ def multi_notice_dict() -> dict:
                 "category": "test",
                 "link": "https://linky.link",
             },
-            "2": {
+            2: {
                 "title": "Notice B",
                 "description": "This is another notice",
                 "create_time": 456,

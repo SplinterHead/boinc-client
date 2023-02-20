@@ -1,6 +1,7 @@
 import xmltodict
 
 from boinc_client.clients.rpc_client import RpcClient
+from boinc_client.models.public_notice import Notices
 
 
 def _format_message(message):
@@ -9,19 +10,6 @@ def _format_message(message):
         "pri": message["pri"],
         "body": message["body"],
         "time": int(message["time"]),
-    }
-
-
-def _format_notice(notice):
-    return {
-        "arrival_time": int(notice["arrival_time"]),
-        "category": notice["category"],
-        "create_time": int(notice["create_time"]),
-        "description": notice["description"],
-        "is_private": notice["is_private"] == "true",
-        "link": notice["link"],
-        "project_name": notice["project_name"],
-        "title": notice["title"],
     }
 
 
@@ -49,10 +37,4 @@ def public_notices(client: RpcClient, start: int = 0) -> dict:
         f"<get_notices_public><seqno>{start}</seqno></get_notices_public>"
     )
     rpc_json = xmltodict.parse(rpc_resp, force_list="notice")
-    return {
-        "notices": {
-            n["seqno"]: _format_notice(n) for n in rpc_json["notices"]["notice"]
-        }
-        if rpc_json["notices"]
-        else {}
-    }
+    return Notices().load(rpc_json)

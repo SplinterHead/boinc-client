@@ -12,6 +12,7 @@ issues = "https://github.com/SplinterHead/boinc-client/issues"
 [tool.poetry.dependencies]
 python = "^3.9"
 xmltodict = "^0.13.0"
+marshmallow = "^3.19.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.12.0"
