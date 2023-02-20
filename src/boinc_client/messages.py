@@ -1,6 +1,7 @@
 import xmltodict
 
 from boinc_client.clients.rpc_client import RpcClient
+from boinc_client.models.message_count import MessageCount
 from boinc_client.models.public_notice import Notices
 
 
@@ -28,7 +29,7 @@ def message_count(client: RpcClient) -> dict:
     """Show the largest message seqno."""
     rpc_resp = client.make_request("<get_message_count/>")
     rpc_json = xmltodict.parse(rpc_resp)
-    return {"message_count": int(rpc_json["seqno"])}
+    return MessageCount().load(rpc_json)
 
 
 def public_notices(client: RpcClient, start: int = 0) -> dict:
