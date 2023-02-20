@@ -1,0 +1,18 @@
+<projects>
+    <project>
+        <name>SIDock@home</name>
+        <id>51</id>
+        <url>https://www.sidock.si/sidock/</url>
+        <web_url>https://www.sidock.si/sidock/</web_url>
+        <general_area>Biology and Medicine</general_area>
+        <specific_area>Biomedicine</specific_area>
+        <description><![CDATA[Study drugs to fight SARS-CoV-2]]></description>
+        <home>The COVID.SI project and the Karelian Research Center of the Russian Academy of Sciences</home>
+        <platforms>
+            <name>x86_64-pc-linux-gnu</name>
+        </platforms>
+        <image>https://boinc.berkeley.edu/images/sidock.png</image>
+        <summary>Study drugs to fight SARS-CoV-2</summary>
+        <keywords>9 13 64 20 44</keywords>
+    </project>
+</projects>
