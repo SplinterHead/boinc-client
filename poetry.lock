@@ -682,6 +682,17 @@ files = [
 ]
 
 [[package]]
+name = "xmlformatter"
+version = "0.2.4"
+description = "Format and compress XML documents"
+category = "dev"
+optional = false
+python-versions = "*"
+files = [
+    {file = "xmlformatter-0.2.4.tar.gz", hash = "sha256:6d93c4bc04cffb1d4cf6eb9d9034018e9b264e4554269e7da67539ba4bff03f5"},
+]
+
+[[package]]
 name = "xmltodict"
 version = "0.13.0"
 description = "Makes working with XML feel like you are working with JSON"
@@ -696,4 +707,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "c6f63a08b084a860d2f4bcb5dc00a9f81ca7965525cc5a7f093db69336688417"
+content-hash = "49366d4230f7b2181ad15e9924491ecf65ba92ba6e4738aa061753779bc9c6be"

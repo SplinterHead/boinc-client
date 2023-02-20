@@ -21,6 +21,7 @@ pytest = "^7.2.1"
 pytest-cov = "^4.0.0"
 pytest-mock = "^3.10.0"
 testcontainers-core = "^0.0.1rc1"
+xmlformatter = "^0.2.4"
 
 [build-system]
 requires = ["poetry-core"]
