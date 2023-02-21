@@ -60,7 +60,7 @@ def test_old_results(boinc_client):
 def test_network_stats(boinc_client):
     result = boinc_client.get_network_stats()
     assert result
-    assert "network_stats" in result
+    assert "network_transfers" in result
 
 
 @mark.integration
