@@ -40,6 +40,16 @@ class Result(Schema):
     estimated_cpu_time_remaining = fields.Float()
     edf_scheduled = fields.Str(allow_none=True)
     active_task = fields.Nested(ActiveTask())
+    ready_to_report = fields.Bool()
+    completed_time = fields.Float()
+
+    @pre_load
+    def _set_ready(self, data, **kwargs):
+        if "ready_to_report" in data:
+            data["ready_to_report"] = True
+        else:
+            data["ready_to_report"] = False
+        return data
 
 
 class Results(Schema):

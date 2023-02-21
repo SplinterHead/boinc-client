@@ -1,0 +1,19 @@
+<results>
+    <result>
+        <name>MCM1_0196931_1633_1</name>
+        <wu_name>MCM1_0196931_1633</wu_name>
+        <platform>x86_64-pc-linux-gnu</platform>
+        <version_num>761</version_num>
+        <plan_class></plan_class>
+        <project_url>http://www.worldcommunitygrid.org/</project_url>
+        <final_cpu_time>18111.560000</final_cpu_time>
+        <final_elapsed_time>18205.122296</final_elapsed_time>
+        <exit_status>0</exit_status>
+        <state>5</state>
+        <report_deadline>1677444048.000000</report_deadline>
+        <received_time>1676925648.893159</received_time>
+        <estimated_cpu_time_remaining>0.000000</estimated_cpu_time_remaining>
+        <ready_to_report></ready_to_report>
+        <completed_time>1676979676.425968</completed_time>
+    </result>
+</results>

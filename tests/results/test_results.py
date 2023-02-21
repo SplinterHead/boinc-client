@@ -40,6 +40,19 @@ def test_can_get_single_active_result(
     assert results(client=mock_rpc_client) == single_active_result_dict
 
 
+def test_can_get_single_completed_result(
+    mocker,
+    mock_rpc_client,
+    single_completed_result_xml,
+    single_completed_result_dict,
+):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=single_completed_result_xml,
+    )
+    assert results(client=mock_rpc_client) == single_completed_result_dict
+
+
 def test_can_get_multiple_result(
     mocker,
     mock_rpc_client,

@@ -34,6 +34,7 @@ def single_pending_result_dict() -> dict:
                 "report_deadline": 1677416632.000000,
                 "received_time": 1676898233.328302,
                 "estimated_cpu_time_remaining": 15050.234471,
+                "ready_to_report": False,
             }
         ]
     }
@@ -83,6 +84,37 @@ def single_active_result_dict() -> dict:
                     "graphics_exec_path": "/var/lib/boinc/projects/www.worldcommunitygrid.org/wcgrid_mcm1_gfx_7.61_x86_64-pc-linux-gnu",
                     "slot_path": "/var/lib/boinc/slots/2",
                 },
+                "ready_to_report": False,
+            }
+        ]
+    }
+
+
+@fixture
+def single_completed_result_xml(test_files) -> str:
+    return open(f"{test_files}/results/single_completed_result.xml").read()
+
+
+@fixture
+def single_completed_result_dict() -> dict:
+    return {
+        "results": [
+            {
+                "name": "MCM1_0196931_1633_1",
+                "wu_name": "MCM1_0196931_1633",
+                "platform": "x86_64-pc-linux-gnu",
+                "version_num": 761,
+                "plan_class": None,
+                "project_url": "http://www.worldcommunitygrid.org/",
+                "final_cpu_time": 18111.560000,
+                "final_elapsed_time": 18205.122296,
+                "exit_status": 0,
+                "state": 5,
+                "report_deadline": 1677444048.000000,
+                "received_time": 1676925648.893159,
+                "estimated_cpu_time_remaining": 0.000000,
+                "ready_to_report": True,
+                "completed_time": 1676979676.425968,
             }
         ]
     }
@@ -131,6 +163,7 @@ def multi_result_dict() -> dict:
                     "graphics_exec_path": "/var/lib/boinc/projects/www.worldcommunitygrid.org/wcgrid_mcm1_gfx_7.61_x86_64-pc-linux-gnu",
                     "slot_path": "/var/lib/boinc/slots/2",
                 },
+                "ready_to_report": False,
             },
             {
                 "name": "MCM1_0196917_7759_0",
@@ -146,6 +179,7 @@ def multi_result_dict() -> dict:
                 "report_deadline": 1677416632.000000,
                 "received_time": 1676898233.328302,
                 "estimated_cpu_time_remaining": 15050.234471,
+                "ready_to_report": False,
             },
         ]
     }
