@@ -2,6 +2,13 @@ import datetime as dt
 
 from marshmallow import Schema, fields, post_load, pre_load
 
+from boinc_client.models.helpers import (
+    create_indexes,
+    flatten_data,
+    normalise_none,
+    remove_key,
+)
+
 
 def _epoch_to_date(epoch_days: str) -> str:
     epoch = dt.date(1970, 1, 1)
@@ -15,9 +22,8 @@ class Transfer(Schema):
     down = fields.Float()
 
     @post_load
-    def _remove_date(self, data, **kwargs):
-        del data["when"]
-        return data
+    def _a_remove_when(self, data, **kwargs):
+        return remove_key(data, "when")
 
 
 class DailyTransfers(Schema):
@@ -26,14 +32,15 @@ class DailyTransfers(Schema):
     )
 
     @pre_load
-    def _convert_none_to_empty_dict(self, data, **kwargs):
-        data["daily_xfers"] = (
-            {} if not data["daily_xfers"] else data["daily_xfers"]["dx"]
-        )
-        return data
+    def _a_normalise_none(self, data, **kwargs):
+        return normalise_none(data, "daily_xfers")
 
     @pre_load
-    def _create_dict_keys(self, data, **kwargs):
+    def _b_flatten_data(self, data, **kwargs):
+        return flatten_data(data, "daily_xfers", "dx")
+
+    @pre_load
+    def _c_create_dict_keys(self, data, **kwargs):
         data["daily_xfers"] = {
             _epoch_to_date(dx["when"]): dx for dx in data["daily_xfers"]
         }

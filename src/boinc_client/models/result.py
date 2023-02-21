@@ -1,5 +1,7 @@
 from marshmallow import Schema, fields, pre_load
 
+from boinc_client.models.helpers import flatten_data, normalise_none
+
 
 class ActiveTask(Schema):
     active_task_state = fields.Int()
@@ -44,6 +46,9 @@ class Results(Schema):
     results = fields.Nested(Result(many=True))
 
     @pre_load
-    def _convert_none_to_empty_list(self, data, **kwargs):
-        data["results"] = data["results"]["result"] if data["results"] else []
-        return data
+    def _a_normalise_none(self, data, **kwargs):
+        return normalise_none(data, "results")
+
+    @pre_load
+    def _b_flatten_data(self, data, **kwargs):
+        return flatten_data(data, "results", "result")

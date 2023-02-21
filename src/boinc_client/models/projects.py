@@ -1,5 +1,7 @@
 from marshmallow import Schema, fields, pre_load
 
+from boinc_client.models.helpers import flatten_data, normalise_none
+
 
 class ProjectPlatform(Schema):
     name = fields.Str()
@@ -33,6 +35,9 @@ class Projects(Schema):
     projects = fields.Nested(Project(many=True))
 
     @pre_load
-    def _convert_none_to_empty_list(self, data, **kwargs):
-        data["projects"] = data["projects"]["project"] if data["projects"] else []
-        return data
+    def _a_normalise_none(self, data, **kwargs):
+        return normalise_none(data, "projects")
+
+    @pre_load
+    def _b_flatten_data(self, data, **kwargs):
+        return flatten_data(data, "projects", "project")
