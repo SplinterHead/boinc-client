@@ -15,9 +15,7 @@ class Message(Schema):
 
 
 class Messages(Schema):
-    messages = fields.Dict(
-        fields.Int(), fields.Nested(Message()), data_key="msgs"
-    )
+    messages = fields.Dict(fields.Int(), fields.Nested(Message()), data_key="msgs")
 
     @pre_load
     def _convert_none_to_empty_dict(self, data, **kwargs):

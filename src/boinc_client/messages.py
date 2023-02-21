@@ -1,8 +1,8 @@
 import xmltodict
 
 from boinc_client.clients.rpc_client import RpcClient
-from boinc_client.models.messages import Messages
 from boinc_client.models.message_count import MessageCount
+from boinc_client.models.messages import Messages
 from boinc_client.models.public_notice import Notices
 
 
