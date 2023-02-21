@@ -13,6 +13,7 @@ def daily_network_transfers(client: RpcClient) -> dict:
 
 
 def project_stats(client: RpcClient):
+    """Get statistics for the projects the client is attached to."""
     rpc_resp = client.make_request("<get_statistics/>")
     rpc_json = xmltodict.parse(
         rpc_resp, force_list=("project_statistics", "daily_statistics")
