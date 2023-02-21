@@ -2,51 +2,34 @@ from pytest import fixture
 
 
 @fixture
-def empty_network_transfer_report_xml() -> str:
-    return "<daily_xfers></daily_xfers>"
+def empty_network_transfer_report_xml(test_files) -> str:
+    return open(f"{test_files}/network_transfers/empty_network_transfers.xml").read()
 
 
 @fixture
 def empty_network_transfer_report_dict() -> dict:
-    return {"network_stats": {}}
+    return {"network_transfers": {}}
 
 
 @fixture
-def daily_network_transfer_report_xml() -> str:
-    return """<daily_xfers>
-        <dx>
-            <when>19358</when>
-            <up>1000.000</up>
-            <down>6000.000</down>
-        </dx>
-    </daily_xfers>"""
+def daily_network_transfer_report_xml(test_files) -> str:
+    return open(f"{test_files}/network_transfers/single_network_transfer.xml").read()
 
 
 @fixture
 def daily_network_transfer_report_dict() -> dict:
-    return {"network_stats": {"2023-01-01": {"up": 1000.000, "down": 6000.000}}}
+    return {"network_transfers": {"2023-01-01": {"up": 1000.000, "down": 6000.000}}}
 
 
 @fixture
-def multi_daily_network_transfer_report_xml() -> str:
-    return """<daily_xfers>
-        <dx>
-            <when>19358</when>
-            <up>1000.000</up>
-            <down>6000.000</down>
-        </dx>
-        <dx>
-            <when>19359</when>
-            <up>2000.000</up>
-            <down>5000.000</down>
-        </dx>
-    </daily_xfers>"""
+def multi_daily_network_transfer_report_xml(test_files) -> str:
+    return open(f"{test_files}/network_transfers/multiple_network_transfers.xml").read()
 
 
 @fixture
 def multi_daily_network_transfer_report_dict() -> dict:
     return {
-        "network_stats": {
+        "network_transfers": {
             "2023-01-01": {"up": 1000.000, "down": 6000.000},
             "2023-01-02": {"up": 2000.000, "down": 5000.000},
         }

@@ -1,0 +1,12 @@
+<daily_xfers>
+    <dx>
+        <when>19358</when>
+        <up>1000.000</up>
+        <down>6000.000</down>
+    </dx>
+    <dx>
+        <when>19359</when>
+        <up>2000.000</up>
+        <down>5000.000</down>
+    </dx>
+</daily_xfers>
