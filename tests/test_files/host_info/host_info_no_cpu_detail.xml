@@ -21,6 +21,5 @@
     <os_version>Ubuntu 20.04.2 LTS [5.15.49-linuxkit|libc 2.31 (Ubuntu GLIBC 2.31-0ubuntu9.2)]</os_version>
     <n_usable_coprocs>0</n_usable_coprocs>
     <wsl_available>0</wsl_available>
-    <coprocs>
-    </coprocs>
+    <coprocs></coprocs>
 </host_info>

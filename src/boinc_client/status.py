@@ -2,6 +2,7 @@ import xmltodict
 
 from boinc_client.clients.rpc_client import RpcClient
 from boinc_client.models.cc_status import CCStatus
+from boinc_client.models.disk_stats import DiskUsage
 from boinc_client.models.host_info import HostInfo
 
 
@@ -35,16 +36,8 @@ def cc_status(client: RpcClient) -> dict:
 def disk_stats(client: RpcClient) -> dict:
     """Show disk usage by project."""
     rpc_resp = client.make_request("<get_disk_usage/>")
-    rpc_json = xmltodict.parse(rpc_resp, force_list="project")
-    disk_stats = {"disk_stats": rpc_json.get("disk_usage_summary")}
-    if "project" in rpc_json.get("disk_usage_summary"):
-        disk_stats["disk_stats"]["projects"] = [
-            project for project in rpc_json["disk_usage_summary"]["project"]
-        ]
-        del disk_stats["disk_stats"]["project"]
-    else:
-        disk_stats["disk_stats"]["projects"] = []
-    return disk_stats
+    rpc_json = xmltodict.parse(rpc_resp, force_list=("project",))
+    return DiskUsage().load(rpc_json)
 
 
 def file_transfers(client: RpcClient) -> dict:

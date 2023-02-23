@@ -22,4 +22,4 @@ class Status(Schema):
 
 
 class CCStatus(Schema):
-    cc_status = fields.Nested(Status)
+    cc_status = fields.Nested(Status())
