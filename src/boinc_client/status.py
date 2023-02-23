@@ -4,6 +4,7 @@ from boinc_client.clients.rpc_client import RpcClient
 from boinc_client.models.cc_status import CCStatus
 from boinc_client.models.disk_stats import DiskUsage
 from boinc_client.models.host_info import HostInfo
+from boinc_client.models.screensaver_tasks import ScreensaverTasks
 
 
 def client_state(client: RpcClient) -> dict:
@@ -82,10 +83,4 @@ def screensaver_tasks(client: RpcClient) -> dict:
     """Show status of projects and active tasks."""
     rpc_resp = client.make_request("<get_screensaver_tasks/>")
     rpc_json = xmltodict.parse(rpc_resp, force_list=("result",))
-    results = {
-        "suspend_reason": rpc_json["handle_get_screensaver_tasks"]["suspend_reason"],
-        "results": rpc_json["handle_get_screensaver_tasks"]["result"]
-        if "result" in rpc_json["handle_get_screensaver_tasks"]
-        else [],
-    }
-    return {"screensaver_tasks": results}
+    return ScreensaverTasks().load(rpc_json)
