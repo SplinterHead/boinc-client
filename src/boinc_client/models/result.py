@@ -45,10 +45,7 @@ class Result(Schema):
 
     @pre_load
     def _set_ready(self, data, **kwargs):
-        if "ready_to_report" in data:
-            data["ready_to_report"] = True
-        else:
-            data["ready_to_report"] = False
+        data["ready_to_report"] = "ready_to_report" in data
         return data
 
 
