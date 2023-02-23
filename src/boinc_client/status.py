@@ -1,6 +1,7 @@
 import xmltodict
 
 from boinc_client.clients.rpc_client import RpcClient
+from boinc_client.models.cc_status import CCStatus
 
 
 def client_state(client: RpcClient) -> dict:
@@ -27,7 +28,7 @@ def cc_status(client: RpcClient) -> dict:
     """Show CPU/GPU/network run modes and network connection status."""
     rpc_resp = client.make_request("<get_cc_status/>")
     rpc_json = xmltodict.parse(rpc_resp)
-    return rpc_json
+    return CCStatus().load(rpc_json)
 
 
 def disk_stats(client: RpcClient) -> dict:
