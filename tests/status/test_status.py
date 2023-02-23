@@ -98,17 +98,30 @@ def test_get_multi_file_transfer(
     assert file_transfers(client=mock_rpc_client) == file_transfers_multi_transfer_dict
 
 
-def test_can_parse_host_info(
+def test_can_parse_host_info_no_coprocs(
     mocker,
     mock_rpc_client,
-    host_info_xml,
-    host_info_dict,
+    host_info_no_coprocs_xml,
+    host_info_no_coprocs_dict,
 ):
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
-        return_value=host_info_xml,
+        return_value=host_info_no_coprocs_xml,
     )
-    assert host_info(client=mock_rpc_client) == host_info_dict
+    assert host_info(client=mock_rpc_client) == host_info_no_coprocs_dict
+
+
+def test_can_parse_host_info_no_cpu_detail(
+    mocker,
+    mock_rpc_client,
+    host_info_no_cpu_detail_xml,
+    host_info_no_cpu_detail_dict,
+):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=host_info_no_cpu_detail_xml,
+    )
+    assert host_info(client=mock_rpc_client) == host_info_no_cpu_detail_dict
 
 
 def test_can_get_simple_gui_info_empty_result(

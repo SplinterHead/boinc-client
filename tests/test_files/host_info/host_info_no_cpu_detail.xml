@@ -1,0 +1,26 @@
+<host_info>
+    <timezone>0</timezone>
+    <domain_name>6435fb00540b</domain_name>
+    <ip_addr>172.17.0.2</ip_addr>
+    <host_cpid>66ad08359a0d486d9f44edd5ca67422e</host_cpid>
+    <p_ncpus>5</p_ncpus>
+    <p_vendor></p_vendor>
+    <p_model></p_model>
+    <p_features>fpu vme de pse tsc</p_features>
+    <p_fpops>1000000000.000000</p_fpops>
+    <p_iops>1000000000.000000</p_iops>
+    <p_membw>1000000000.000000</p_membw>
+    <p_calculated>1677059678.204386</p_calculated>
+    <p_vm_extensions_disabled>0</p_vm_extensions_disabled>
+    <m_nbytes>8232894464.000000</m_nbytes>
+    <m_cache>-1.000000</m_cache>
+    <m_swap>1073737728.000000</m_swap>
+    <d_total>62671097856.000000</d_total>
+    <d_free>41954885632.000000</d_free>
+    <os_name>Linux Ubuntu</os_name>
+    <os_version>Ubuntu 20.04.2 LTS [5.15.49-linuxkit|libc 2.31 (Ubuntu GLIBC 2.31-0ubuntu9.2)]</os_version>
+    <n_usable_coprocs>0</n_usable_coprocs>
+    <wsl_available>0</wsl_available>
+    <coprocs>
+    </coprocs>
+</host_info>

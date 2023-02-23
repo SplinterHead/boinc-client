@@ -1,0 +1,25 @@
+<host_info>
+    <timezone>0</timezone>
+    <domain_name>boincclient.local</domain_name>
+    <ip_addr>10.10.10.10</ip_addr>
+    <host_cpid>66ad08359a0d486d9f44edd5ca67422e</host_cpid>
+    <p_ncpus>32</p_ncpus>
+    <p_vendor>GenuineIntel</p_vendor>
+    <p_model>Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz [Family 6 Model 45 Stepping 7]</p_model>
+    <p_features>fpu vme de pse tsc</p_features>
+    <p_fpops>4245100250.752763</p_fpops>
+    <p_iops>96143762530.234589</p_iops>
+    <p_membw>1000000000.000000</p_membw>
+    <p_calculated>1676897876.373423</p_calculated>
+    <p_vm_extensions_disabled>0</p_vm_extensions_disabled>
+    <m_nbytes>42097815552.000000</m_nbytes>
+    <m_cache>20971520.000000</m_cache>
+    <m_swap>1034940416.000000</m_swap>
+    <d_total>982809350144.000000</d_total>
+    <d_free>380486336512.000000</d_free>
+    <os_name>Linux Ubuntu</os_name>
+    <os_version>Ubuntu 20.04.2 LTS [6.0.0-0.deb11.2-amd64|libc 2.31 (Ubuntu GLIBC 2.31-0ubuntu9.2)]</os_version>
+    <n_usable_coprocs>0</n_usable_coprocs>
+    <wsl_available>0</wsl_available>
+    <coprocs></coprocs>
+</host_info>

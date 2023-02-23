@@ -2,6 +2,7 @@ import xmltodict
 
 from boinc_client.clients.rpc_client import RpcClient
 from boinc_client.models.cc_status import CCStatus
+from boinc_client.models.host_info import HostInfo
 
 
 def client_state(client: RpcClient) -> dict:
@@ -61,7 +62,7 @@ def host_info(client: RpcClient) -> dict:
     """Get information about host hardware and usage."""
     rpc_resp = client.make_request("<get_host_info/>")
     rpc_json = xmltodict.parse(rpc_resp)
-    return rpc_json
+    return HostInfo().load(rpc_json)
 
 
 def simple_gui_info(client: RpcClient) -> dict:

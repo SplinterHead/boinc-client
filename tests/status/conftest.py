@@ -286,181 +286,73 @@ def file_transfers_multi_transfer_dict() -> dict:
 
 
 @fixture
-def host_info_xml() -> str:
-    return """<host_info>
-        <timezone>foo</timezone>
-        <domain_name>foo</domain_name>
-        <ip_addr>foo</ip_addr>
-        <host_cpid>foo</host_cpid>
-        <p_ncpus>foo</p_ncpus>
-        <p_vendor>foo</p_vendor>
-        <p_model>foo</p_model>
-        <p_features>foo</p_features>
-        <p_fpops>foo</p_fpops>
-        <p_iops>foo</p_iops>
-        <p_membw>foo</p_membw>
-        <p_calculated>foo</p_calculated>
-        <p_vm_extensions_disabled>foo</p_vm_extensions_disabled>
-        <m_nbytes>foo</m_nbytes>
-        <m_cache>foo</m_cache>
-        <m_swap>foo</m_swap>
-        <d_total>foo</d_total>
-        <d_free>foo</d_free>
-        <os_name>foo</os_name>
-        <os_version>foo</os_version>
-        <product_name>foo</product_name>
-        <virtualbox_version>foo</virtualbox_version>
-        <coprocs>
-            <coproc_intel_gpu>
-                <count>foo</count>
-                <name>foo</name>
-                <available_ram>foo</available_ram>
-                <have_opencl>foo</have_opencl>
-                <peak_flops>foo</peak_flops>
-                <version>foo</version>
-                <coproc_opencl>
-                    <name>foo</name>
-                    <vendor>foo</vendor>
-                    <vendor_id>foo</vendor_id>
-                    <available>foo</available>
-                    <half_fp_config>foo</half_fp_config>
-                    <single_fp_config>foo</single_fp_config>
-                    <double_fp_config>foo</double_fp_config>
-                    <endian_little>foo</endian_little>
-                    <execution_capabilities>foo</execution_capabilities>
-                    <extensions>foo</extensions>
-                    <global_mem_size>foo</global_mem_size>
-                    <local_mem_size>foo</local_mem_size>
-                    <max_clock_frequency>foo</max_clock_frequency>
-                    <max_compute_units>foo</max_compute_units>
-                    <nv_compute_capability_major>foo</nv_compute_capability_major>
-                    <nv_compute_capability_minor>foo</nv_compute_capability_minor>
-                    <amd_simd_per_compute_unit>foo</amd_simd_per_compute_unit>
-                    <amd_simd_width>foo</amd_simd_width>
-                    <amd_simd_instruction_width>foo</amd_simd_instruction_width>
-                    <opencl_platform_version>foo</opencl_platform_version>
-                    <opencl_device_version>foo</opencl_device_version>
-                    <opencl_driver_version>foo</opencl_driver_version>
-                </coproc_opencl>
-            </coproc_intel_gpu>
-        </coprocs>
-        <opencl_cpu_prop>
-            <platform_vendor>foo</platform_vendor>
-            <opencl_cpu_info>
-                <name>foo</name>
-                <vendor>foo</vendor>
-                <vendor_id>foo</vendor_id>
-                <available>foo</available>
-                <half_fp_config>foo</half_fp_config>
-                <single_fp_config>foo</single_fp_config>
-                <double_fp_config>foo</double_fp_config>
-                <endian_little>foo</endian_little>
-                <execution_capabilities>foo</execution_capabilities>
-                <extensions>foo</extensions>
-                <global_mem_size>foo</global_mem_size>
-                <local_mem_size>foo</local_mem_size>
-                <max_clock_frequency>foo</max_clock_frequency>
-                <max_compute_units>foo</max_compute_units>
-                <nv_compute_capability_major>foo</nv_compute_capability_major>
-                <nv_compute_capability_minor>foo</nv_compute_capability_minor>
-                <amd_simd_per_compute_unit>foo</amd_simd_per_compute_unit>
-                <amd_simd_width>foo</amd_simd_width>
-                <amd_simd_instruction_width>foo</amd_simd_instruction_width>
-                <opencl_platform_version>foo</opencl_platform_version>
-                <opencl_device_version>foo</opencl_device_version>
-                <opencl_driver_version>foo</opencl_driver_version>
-            </opencl_cpu_info>
-        </opencl_cpu_prop>
-    </host_info>"""
+def host_info_no_coprocs_xml(test_files) -> str:
+    return open(f"{test_files}/host_info/host_info_no_coprocs.xml").read()
 
 
 @fixture
-def host_info_dict() -> dict:
+def host_info_no_coprocs_dict() -> dict:
     return {
         "host_info": {
-            "timezone": "foo",
-            "domain_name": "foo",
-            "ip_addr": "foo",
-            "host_cpid": "foo",
-            "p_ncpus": "foo",
-            "p_vendor": "foo",
-            "p_model": "foo",
-            "p_features": "foo",
-            "p_fpops": "foo",
-            "p_iops": "foo",
-            "p_membw": "foo",
-            "p_calculated": "foo",
-            "p_vm_extensions_disabled": "foo",
-            "m_nbytes": "foo",
-            "m_cache": "foo",
-            "m_swap": "foo",
-            "d_total": "foo",
-            "d_free": "foo",
-            "os_name": "foo",
-            "os_version": "foo",
-            "product_name": "foo",
-            "virtualbox_version": "foo",
-            "coprocs": {
-                "coproc_intel_gpu": {
-                    "count": "foo",
-                    "name": "foo",
-                    "available_ram": "foo",
-                    "have_opencl": "foo",
-                    "peak_flops": "foo",
-                    "version": "foo",
-                    "coproc_opencl": {
-                        "name": "foo",
-                        "vendor": "foo",
-                        "vendor_id": "foo",
-                        "available": "foo",
-                        "half_fp_config": "foo",
-                        "single_fp_config": "foo",
-                        "double_fp_config": "foo",
-                        "endian_little": "foo",
-                        "execution_capabilities": "foo",
-                        "extensions": "foo",
-                        "global_mem_size": "foo",
-                        "local_mem_size": "foo",
-                        "max_clock_frequency": "foo",
-                        "max_compute_units": "foo",
-                        "nv_compute_capability_major": "foo",
-                        "nv_compute_capability_minor": "foo",
-                        "amd_simd_per_compute_unit": "foo",
-                        "amd_simd_width": "foo",
-                        "amd_simd_instruction_width": "foo",
-                        "opencl_platform_version": "foo",
-                        "opencl_device_version": "foo",
-                        "opencl_driver_version": "foo",
-                    },
-                }
-            },
-            "opencl_cpu_prop": {
-                "platform_vendor": "foo",
-                "opencl_cpu_info": {
-                    "name": "foo",
-                    "vendor": "foo",
-                    "vendor_id": "foo",
-                    "available": "foo",
-                    "half_fp_config": "foo",
-                    "single_fp_config": "foo",
-                    "double_fp_config": "foo",
-                    "endian_little": "foo",
-                    "execution_capabilities": "foo",
-                    "extensions": "foo",
-                    "global_mem_size": "foo",
-                    "local_mem_size": "foo",
-                    "max_clock_frequency": "foo",
-                    "max_compute_units": "foo",
-                    "nv_compute_capability_major": "foo",
-                    "nv_compute_capability_minor": "foo",
-                    "amd_simd_per_compute_unit": "foo",
-                    "amd_simd_width": "foo",
-                    "amd_simd_instruction_width": "foo",
-                    "opencl_platform_version": "foo",
-                    "opencl_device_version": "foo",
-                    "opencl_driver_version": "foo",
-                },
-            },
+            "timezone": 0,
+            "domain_name": "boincclient.local",
+            "ip_addr": "10.10.10.10",
+            "host_cpid": "66ad08359a0d486d9f44edd5ca67422e",
+            "p_ncpus": 32,
+            "p_vendor": "GenuineIntel",
+            "p_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz [Family 6 Model 45 Stepping 7]",
+            "p_features": "fpu vme de pse tsc",
+            "p_fpops": 4245100250.752763,
+            "p_iops": 96143762530.234589,
+            "p_membw": 1000000000.000000,
+            "p_calculated": 1676897876.373423,
+            "p_vm_extensions_disabled": False,
+            "m_nbytes": 42097815552.000000,
+            "m_cache": 20971520.000000,
+            "m_swap": 1034940416.000000,
+            "d_total": 982809350144.000000,
+            "d_free": 380486336512.000000,
+            "os_name": "Linux Ubuntu",
+            "os_version": "Ubuntu 20.04.2 LTS [6.0.0-0.deb11.2-amd64|libc 2.31 (Ubuntu GLIBC 2.31-0ubuntu9.2)]",
+            "n_usable_coprocs": 0,
+            "coprocs": [],
+            "wsl_available": False,
+        }
+    }
+
+
+@fixture
+def host_info_no_cpu_detail_xml(test_files) -> str:
+    return open(f"{test_files}/host_info/host_info_no_cpu_detail.xml").read()
+
+
+@fixture
+def host_info_no_cpu_detail_dict() -> dict:
+    return {
+        "host_info": {
+            "timezone": 0,
+            "domain_name": "6435fb00540b",
+            "ip_addr": "172.17.0.2",
+            "host_cpid": "66ad08359a0d486d9f44edd5ca67422e",
+            "p_ncpus": 5,
+            "p_vendor": "",
+            "p_model": "",
+            "p_features": "fpu vme de pse tsc",
+            "p_fpops": 1000000000.000000,
+            "p_iops": 1000000000.000000,
+            "p_membw": 1000000000.000000,
+            "p_calculated": 1677059678.204386,
+            "p_vm_extensions_disabled": False,
+            "m_nbytes": 8232894464.000000,
+            "m_cache": -1.000000,
+            "m_swap": 1073737728.000000,
+            "d_total": 62671097856.000000,
+            "d_free": 41954885632.000000,
+            "os_name": "Linux Ubuntu",
+            "os_version": "Ubuntu 20.04.2 LTS [5.15.49-linuxkit|libc 2.31 (Ubuntu GLIBC 2.31-0ubuntu9.2)]",
+            "n_usable_coprocs": 0,
+            "coprocs": [],
+            "wsl_available": False,
         }
     }
 
