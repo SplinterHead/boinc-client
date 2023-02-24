@@ -80,10 +80,10 @@ def test_client_state(boinc_client):
 
 # Status
 @mark.integration
-def test_project_state(boinc_client):
-    result = boinc_client.get_project_state()
+def test_project_status(boinc_client):
+    result = boinc_client.get_project_status()
     assert result
-    assert "project_states" in result
+    assert "project_status" in result
 
 
 # Status

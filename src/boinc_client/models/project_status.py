@@ -76,8 +76,8 @@ class ProjectState(Schema):
         return data
 
 
-class ProjectStates(Schema):
-    project_states = fields.Nested(ProjectState(many=True), data_key="projects")
+class ProjectStatus(Schema):
+    project_status = fields.Nested(ProjectState(many=True), data_key="projects")
 
     @pre_load
     def _a_normalise_none(self, data, **kwargs):

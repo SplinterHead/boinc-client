@@ -84,7 +84,7 @@ Response (abridged)
 
 ### Get Project State
 ```python
-boinc_client.get_project_state()
+boinc_client.get_project_status()
 ```
 Response
 ```json

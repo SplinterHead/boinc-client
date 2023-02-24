@@ -1288,24 +1288,24 @@ def client_state_dict() -> dict:
 
 
 @fixture
-def empty_project_state_xml() -> str:
+def empty_project_status_xml() -> str:
     return "<projects></projects>"
 
 
 @fixture
-def empty_project_state_dict() -> dict:
-    return {"project_states": []}
+def empty_project_status_dict() -> dict:
+    return {"project_status": []}
 
 
 @fixture
-def project_state_xml(test_files) -> str:
-    return open(f"{test_files}/project_state/single_project.xml").read()
+def project_status_xml(test_files) -> str:
+    return open(f"{test_files}/project_status/single_project.xml").read()
 
 
 @fixture
-def project_state_dict() -> dict:
+def project_status_dict() -> dict:
     return {
-        "project_states": [
+        "project_status": [
             {
                 "master_url": "http://www.worldcommunitygrid.org/",
                 "project_name": "World Community Grid",
