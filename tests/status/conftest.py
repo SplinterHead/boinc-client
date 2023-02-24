@@ -964,8 +964,8 @@ def client_state_dict() -> dict:
 
 
 @fixture
-def empty_project_status_xml() -> str:
-    return "<projects></projects>"
+def empty_project_status_xml(test_files) -> str:
+    return open(f"{test_files}/project_status/no_project.xml").read()
 
 
 @fixture
