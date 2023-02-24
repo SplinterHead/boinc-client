@@ -83,7 +83,7 @@ def test_client_state(boinc_client):
 def test_project_state(boinc_client):
     result = boinc_client.get_project_state()
     assert result
-    assert "projects" in result
+    assert "project_states" in result
 
 
 # Status

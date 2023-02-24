@@ -220,7 +220,7 @@ def test_can_get_client_state(
     assert client_state(client=mock_rpc_client) == client_state_dict
 
 
-def test_can_get_empty_project_status(
+def test_can_get_empty_project_state(
     mocker, mock_rpc_client, empty_project_state_xml, empty_project_state_dict
 ):
 
@@ -231,7 +231,7 @@ def test_can_get_empty_project_status(
     assert project_state(client=mock_rpc_client) == empty_project_state_dict
 
 
-def test_can_get_project_status(
+def test_can_get_project_state(
     mocker, mock_rpc_client, project_state_xml, project_state_dict
 ):
 

@@ -1294,131 +1294,100 @@ def empty_project_state_xml() -> str:
 
 @fixture
 def empty_project_state_dict() -> dict:
-    return {"projects": []}
+    return {"project_states": []}
 
 
 @fixture
-def project_state_xml() -> str:
-    return """<projects>
-    <project>
-        <master_url>foo</master_url>
-        <project_name>foo</project_name>
-        <symstore>foo</symstore>
-        <user_name>foo</user_name>
-        <team_name>foo</team_name>
-        <host_venue>foo</host_venue>
-        <email_hash>foo</email_hash>
-        <cross_project_id>foo</cross_project_id>
-        <external_cpid>foo</external_cpid>
-        <cpid_time>foo</cpid_time>
-        <user_total_credit>foo</user_total_credit>
-        <user_expavg_credit>foo</user_expavg_credit>
-        <user_create_time>foo</user_create_time>
-        <rpc_seqno>foo</rpc_seqno>
-        <userid>foo</userid>
-        <teamid>foo</teamid>
-        <hostid>foo</hostid>
-        <host_total_credit>foo</host_total_credit>
-        <host_expavg_credit>foo</host_expavg_credit>
-        <host_create_time>foo</host_create_time>
-        <nrpc_failures>foo</nrpc_failures>
-        <master_fetch_failures>foo</master_fetch_failures>
-        <min_rpc_time>foo</min_rpc_time>
-        <next_rpc_time>foo</next_rpc_time>
-        <rec>foo</rec>
-        <rec_time>foo</rec_time>
-        <resource_share>foo</resource_share>
-        <disk_usage>foo</disk_usage>
-        <disk_share>foo</disk_share>
-        <desired_disk_usage>foo</desired_disk_usage>
-        <duration_correction_factor>foo</duration_correction_factor>
-        <sched_rpc_pending>foo</sched_rpc_pending>
-        <send_time_stats_log>foo</send_time_stats_log>
-        <send_job_log>foo</send_job_log>
-        <njobs_success>foo</njobs_success>
-        <njobs_error>foo</njobs_error>
-        <elapsed_time>foo</elapsed_time>
-        <last_rpc_time>foo</last_rpc_time>
-        <dont_use_dcf>foo</dont_use_dcf>
-        <rsc_backoff_time>
-            <name>CPU</name>
-            <value>foo</value>
-        </rsc_backoff_time>
-        <rsc_backoff_interval>
-            <name>CPU</name>
-            <value>foo</value>
-        </rsc_backoff_interval>
-    <gui_urls>
-       <gui_url>
-          <name>Research Overview</name>
-          <description>Learn about the projects hosted at Foo Network</description>
-          <url>https://www.foo.org/research/viewAllProjects.do</url>
-       </gui_url>
-    </gui_urls>
-        <sched_priority>foo</sched_priority>
-        <project_files_downloaded_time>foo</project_files_downloaded_time>
-        <project_dir>foo</project_dir>
-    </project>
-</projects>
-"""
+def project_state_xml(test_files) -> str:
+    return open(f"{test_files}/project_state/single_project.xml").read()
 
 
 @fixture
 def project_state_dict() -> dict:
     return {
-        "projects": [
+        "project_states": [
             {
-                "master_url": "foo",
-                "project_name": "foo",
-                "symstore": "foo",
-                "user_name": "foo",
-                "team_name": "foo",
-                "host_venue": "foo",
-                "email_hash": "foo",
-                "cross_project_id": "foo",
-                "external_cpid": "foo",
-                "cpid_time": "foo",
-                "user_total_credit": "foo",
-                "user_expavg_credit": "foo",
-                "user_create_time": "foo",
-                "rpc_seqno": "foo",
-                "userid": "foo",
-                "teamid": "foo",
-                "hostid": "foo",
-                "host_total_credit": "foo",
-                "host_expavg_credit": "foo",
-                "host_create_time": "foo",
-                "nrpc_failures": "foo",
-                "master_fetch_failures": "foo",
-                "min_rpc_time": "foo",
-                "next_rpc_time": "foo",
-                "rec": "foo",
-                "rec_time": "foo",
-                "resource_share": "foo",
-                "disk_usage": "foo",
-                "disk_share": "foo",
-                "desired_disk_usage": "foo",
-                "duration_correction_factor": "foo",
-                "sched_rpc_pending": "foo",
-                "send_time_stats_log": "foo",
-                "send_job_log": "foo",
-                "njobs_success": "foo",
-                "njobs_error": "foo",
-                "elapsed_time": "foo",
-                "last_rpc_time": "foo",
-                "dont_use_dcf": "foo",
-                "rsc_backoff_time": {"name": "CPU", "value": "foo"},
-                "rsc_backoff_interval": {"name": "CPU", "value": "foo"},
+                "master_url": "http://www.worldcommunitygrid.org/",
+                "project_name": "World Community Grid",
+                "symstore": None,
+                "user_name": "user_name",
+                "team_name": None,
+                "host_venue": None,
+                "email_hash": "35cfa58b4e0b46de6a651ce508082d61",
+                "cross_project_id": "037befc40287d29bb9590d8e0edd8198",
+                "external_cpid": "192792945b257453b6da6c7cad1c1381",
+                "cpid_time": 1665410370.000000,
+                "user_total_credit": 341094.533876,
+                "user_expavg_credit": 2900.946548,
+                "user_create_time": 1665410370.000000,
+                "rpc_seqno": 655,
+                "userid": 1156486,
+                "teamid": 0,
+                "hostid": 8667640,
+                "host_total_credit": 339691.861332,
+                "host_expavg_credit": 2900.715440,
+                "host_create_time": 1665650589.000000,
+                "nrpc_failures": 0,
+                "master_fetch_failures": 0,
+                "min_rpc_time": 1677187523.062822,
+                "next_rpc_time": 1677446601.862822,
+                "rec": 4267.417546,
+                "rec_time": 1677189666.165000,
+                "resource_share": 100.000000,
+                "disk_usage": 1410613248.000000,
+                "disk_share": 410497975500.800049,
+                "desired_disk_usage": 0.000000,
+                "duration_correction_factor": 1.000000,
+                "sched_rpc_pending": 0,
+                "send_time_stats_log": 0,
+                "send_job_log": 0,
+                "njobs_success": 3872,
+                "njobs_error": 86,
+                "elapsed_time": 43580057.333979,
+                "last_rpc_time": 1677187401.862822,
+                "dont_use_dcf": True,
+                "rsc_backoff_time": {"name": "CPU", "value": 0.000000},
+                "rsc_backoff_interval": {"name": "CPU", "value": 0.000000},
                 "gui_urls": [
                     {
                         "name": "Research Overview",
-                        "description": "Learn about the projects hosted at Foo Network",
-                        "url": "https://www.foo.org/research/viewAllProjects.do",
+                        "description": "Learn about the projects hosted at World Community Grid",
+                        "url": "https://www.worldcommunitygrid.org/research/viewAllProjects.do",
+                    },
+                    {
+                        "name": "News and Updates",
+                        "description": "The latest information about World Community Grid and its research projects",
+                        "url": "https://www.worldcommunitygrid.org/about_us/displayNews.do",
+                    },
+                    {
+                        "name": "My Contribution",
+                        "description": "Your statistics and settings",
+                        "url": "https://www.worldcommunitygrid.org/ms/viewMyMemberPage.do",
+                    },
+                    {
+                        "name": "Results Status",
+                        "description": "View the status of your assigned work",
+                        "url": "https://www.worldcommunitygrid.org/ms/viewBoincResults.do",
+                    },
+                    {
+                        "name": "Device Profiles",
+                        "description": "Update your device settings",
+                        "url": "https://www.worldcommunitygrid.org/ms/device/viewProfiles.do",
+                    },
+                    {
+                        "name": "Forums",
+                        "description": "Visit the World Community Grid forums",
+                        "url": "https://www.worldcommunitygrid.org/forumLogin.do",
+                    },
+                    {
+                        "name": "Help",
+                        "description": "Search for help in our help system",
+                        "url": "https://www.worldcommunitygrid.org/help/viewHelp.do",
                     },
                 ],
-                "sched_priority": "foo",
-                "project_files_downloaded_time": "foo",
-                "project_dir": "foo",
+                "sched_priority": -1.041667,
+                "project_files_downloaded_time": 0.000000,
+                "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
             }
         ]
     }

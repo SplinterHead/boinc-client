@@ -4,6 +4,7 @@ from boinc_client.clients.rpc_client import RpcClient
 from boinc_client.models.cc_status import CCStatus
 from boinc_client.models.disk_stats import DiskUsage
 from boinc_client.models.host_info import HostInfo
+from boinc_client.models.project_state import ProjectStates
 from boinc_client.models.screensaver_tasks import ScreensaverTasks
 
 
@@ -18,13 +19,7 @@ def project_state(client: RpcClient) -> dict:
     """Show status of all attached projects."""
     rpc_resp = client.make_request("<get_project_status/>")
     rpc_json = xmltodict.parse(rpc_resp, force_list=("project", "gui_url"))
-    if rpc_json["projects"]:
-        projects = rpc_json["projects"]["project"]
-        for p in projects:
-            p["gui_urls"] = p["gui_urls"]["gui_url"]
-    else:
-        projects = []
-    return {"projects": projects}
+    return ProjectStates().load(rpc_json)
 
 
 def cc_status(client: RpcClient) -> dict:
