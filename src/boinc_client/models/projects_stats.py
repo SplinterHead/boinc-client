@@ -2,7 +2,7 @@ from datetime import datetime
 
 from marshmallow import Schema, fields, post_load, pre_load
 
-from boinc_client.models.helpers import flatten_data, normalise_none, remove_key
+from boinc_client.models.helpers import flatten_data, normalise_none_to_list, remove_key
 
 
 def _convert_epoch(epoch: str):
@@ -39,7 +39,7 @@ class ProjectStats(Schema):
 
     @pre_load
     def _a_normalise_none(self, data, **kwargs):
-        return normalise_none(data, "statistics")
+        return normalise_none_to_list(data, "statistics")
 
     @pre_load
     def _b_flatten_data(self, data, **kwargs):

@@ -8,7 +8,7 @@ def flatten_data(data, key: str, subkey: str):
     return data
 
 
-def normalise_none(data, key: str):
+def normalise_none_to_list(data, key: str):
     data[key] = [] if not data[key] else data[key]
     return data
 

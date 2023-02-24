@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields, post_load, pre_load
 
-from boinc_client.models.helpers import normalise_none
+from boinc_client.models.helpers import normalise_none_to_list
 
 
 class CoProc(Schema):
@@ -34,7 +34,7 @@ class Host(Schema):
 
     @pre_load
     def _a_normalise_none(self, data, **kwargs):
-        return normalise_none(data, "coprocs")
+        return normalise_none_to_list(data, "coprocs")
 
     @post_load
     def _a_replace_none_string(self, data, **kwargs):

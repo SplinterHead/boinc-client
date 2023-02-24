@@ -3,7 +3,7 @@ from marshmallow import Schema, fields, post_load, pre_load
 from boinc_client.models.helpers import (
     create_indexes,
     flatten_data,
-    normalise_none,
+    normalise_none_to_list,
     remove_key,
 )
 
@@ -29,7 +29,7 @@ class Notices(Schema):
 
     @pre_load
     def _a_normalise_none(self, data, **kwargs):
-        return normalise_none(data, "notices")
+        return normalise_none_to_list(data, "notices")
 
     @pre_load
     def _b_flatten_data(self, data, **kwargs):

@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields, pre_load
 
-from boinc_client.models.helpers import flatten_data, normalise_none
+from boinc_client.models.helpers import flatten_data, normalise_none_to_list
 
 
 class RscBackoffTime(Schema):
@@ -81,7 +81,7 @@ class ProjectStatus(Schema):
 
     @pre_load
     def _a_normalise_none(self, data, **kwargs):
-        return normalise_none(data, "projects")
+        return normalise_none_to_list(data, "projects")
 
     @pre_load
     def _b_flatten_data(self, data, **kwargs):
