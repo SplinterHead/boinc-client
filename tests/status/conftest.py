@@ -975,6 +975,7 @@ def screensaver_tasks_single_result_dict() -> dict:
                     "received_time": 1676983278.925136,
                     "estimated_cpu_time_remaining": 4153.559242,
                     "ready_to_report": False,
+                    "edf_scheduled": False,
                     "active_task": {
                         "active_task_state": 1,
                         "app_version_num": 761,
@@ -1027,6 +1028,7 @@ def screensaver_tasks_multi_result_dict() -> dict:
                     "received_time": 1676983278.925136,
                     "estimated_cpu_time_remaining": 4153.559242,
                     "ready_to_report": False,
+                    "edf_scheduled": False,
                     "active_task": {
                         "active_task_state": 1,
                         "app_version_num": 761,
@@ -1063,6 +1065,7 @@ def screensaver_tasks_multi_result_dict() -> dict:
                     "received_time": 1676983278.925136,
                     "estimated_cpu_time_remaining": 4810.885500,
                     "ready_to_report": False,
+                    "edf_scheduled": False,
                     "active_task": {
                         "active_task_state": 1,
                         "app_version_num": 761,

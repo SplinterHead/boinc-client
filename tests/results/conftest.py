@@ -35,6 +35,7 @@ def single_pending_result_dict() -> dict:
                 "received_time": 1676898233.328302,
                 "estimated_cpu_time_remaining": 15050.234471,
                 "ready_to_report": False,
+                "edf_scheduled": False,
             }
         ]
     }
@@ -63,7 +64,7 @@ def single_active_result_dict() -> dict:
                 "report_deadline": 1677415612.000000,
                 "received_time": 1676897213.611195,
                 "estimated_cpu_time_remaining": 11407.838430,
-                "edf_scheduled": None,
+                "edf_scheduled": True,
                 "active_task": {
                     "active_task_state": 1,
                     "app_version_num": 761,
@@ -115,6 +116,7 @@ def single_completed_result_dict() -> dict:
                 "estimated_cpu_time_remaining": 0.000000,
                 "ready_to_report": True,
                 "completed_time": 1676979676.425968,
+                "edf_scheduled": False,
             }
         ]
     }
@@ -143,6 +145,7 @@ def multi_result_dict() -> dict:
                 "report_deadline": 1677415612.000000,
                 "received_time": 1676897213.611195,
                 "estimated_cpu_time_remaining": 11407.838430,
+                "edf_scheduled": False,
                 "active_task": {
                     "active_task_state": 1,
                     "app_version_num": 761,
@@ -180,6 +183,7 @@ def multi_result_dict() -> dict:
                 "received_time": 1676898233.328302,
                 "estimated_cpu_time_remaining": 15050.234471,
                 "ready_to_report": False,
+                "edf_scheduled": False,
             },
         ]
     }

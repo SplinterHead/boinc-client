@@ -38,7 +38,7 @@ class Result(Schema):
     report_deadline = fields.Float()
     received_time = fields.Float()
     estimated_cpu_time_remaining = fields.Float()
-    edf_scheduled = fields.Str(allow_none=True)
+    edf_scheduled = fields.Bool()
     active_task = fields.Nested(ActiveTask())
     ready_to_report = fields.Bool()
     completed_time = fields.Float()
@@ -46,6 +46,11 @@ class Result(Schema):
     @pre_load
     def _set_ready(self, data, **kwargs):
         data["ready_to_report"] = "ready_to_report" in data
+        return data
+
+    @pre_load
+    def _set_scheduled(self, data, **kwargs):
+        data["edf_scheduled"] = "edf_scheduled" in data
         return data
 
 
