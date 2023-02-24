@@ -100,8 +100,8 @@ def disk_stats_multi_project_dict() -> dict:
 
 
 @fixture
-def file_transfers_empty_transfer_xml() -> str:
-    return "<file_transfers></file_transfers>"
+def file_transfers_empty_transfer_xml(test_files) -> str:
+    return open(f"{test_files}/file_transfers/no_file_transfers.xml").read()
 
 
 @fixture
@@ -110,31 +110,8 @@ def file_transfers_empty_transfer_dict() -> dict:
 
 
 @fixture
-def file_transfers_single_transfer_xml() -> str:
-    return """<file_transfers>
-        <file_transfer>
-            <project_url>foo</project_url>
-            <project_name>foo</project_name>
-            <name>foo</name>
-            <nbytes>foo</nbytes>
-            <max_nbytes>foo</max_nbytes>
-            <status>foo</status>
-            <persistent_file_xfer>
-                <num_retries>foo</num_retries>
-                <first_request_time>foo</first_request_time>
-                <next_request_time>foo</next_request_time>
-                <time_so_far>foo</time_so_far>
-                <last_bytes_xferred>foo</last_bytes_xferred>
-                <is_upload>foo</is_upload>
-            </persistent_file_xfer>
-            <file_xfer>
-                <bytes_xferred>foo</bytes_xferred>
-                <file_offset>foo</file_offset>
-                <xfer_speed>foo</xfer_speed>
-                <url>foo</url>
-            </file_xfer>
-        </file_transfer>
-    </file_transfers>"""
+def file_transfers_single_transfer_xml(test_files) -> str:
+    return open(f"{test_files}/file_transfers/single_file_transfer.xml").read()
 
 
 @fixture
@@ -168,53 +145,8 @@ def file_transfers_single_transfer_dict() -> dict:
 
 
 @fixture
-def file_transfers_multi_transfer_xml() -> str:
-    return """<file_transfers>
-        <file_transfer>
-            <project_url>foo</project_url>
-            <project_name>foo</project_name>
-            <name>foo</name>
-            <nbytes>foo</nbytes>
-            <max_nbytes>foo</max_nbytes>
-            <status>foo</status>
-            <persistent_file_xfer>
-                <num_retries>foo</num_retries>
-                <first_request_time>foo</first_request_time>
-                <next_request_time>foo</next_request_time>
-                <time_so_far>foo</time_so_far>
-                <last_bytes_xferred>foo</last_bytes_xferred>
-                <is_upload>foo</is_upload>
-            </persistent_file_xfer>
-            <file_xfer>
-                <bytes_xferred>foo</bytes_xferred>
-                <file_offset>foo</file_offset>
-                <xfer_speed>foo</xfer_speed>
-                <url>foo</url>
-            </file_xfer>
-        </file_transfer>
-        <file_transfer>
-            <project_url>bar</project_url>
-            <project_name>bar</project_name>
-            <name>bar</name>
-            <nbytes>bar</nbytes>
-            <max_nbytes>bar</max_nbytes>
-            <status>bar</status>
-            <persistent_file_xfer>
-                <num_retries>bar</num_retries>
-                <first_request_time>bar</first_request_time>
-                <next_request_time>bar</next_request_time>
-                <time_so_far>bar</time_so_far>
-                <last_bytes_xferred>bar</last_bytes_xferred>
-                <is_upload>bar</is_upload>
-            </persistent_file_xfer>
-            <file_xfer>
-                <bytes_xferred>bar</bytes_xferred>
-                <file_offset>bar</file_offset>
-                <xfer_speed>bar</xfer_speed>
-                <url>bar</url>
-            </file_xfer>
-        </file_transfer>
-    </file_transfers>"""
+def file_transfers_multi_transfer_xml(test_files) -> str:
+    return open(f"{test_files}/file_transfers/multi_file_transfer.xml").read()
 
 
 @fixture

@@ -3,6 +3,7 @@ import xmltodict
 from boinc_client.clients.rpc_client import RpcClient
 from boinc_client.models.cc_status import CCStatus
 from boinc_client.models.disk_stats import DiskUsage
+from boinc_client.models.file_transfer import FileTransfers
 from boinc_client.models.host_info import HostInfo
 from boinc_client.models.project_status import ProjectStatus
 from boinc_client.models.screensaver_tasks import ScreensaverTasks
@@ -41,11 +42,7 @@ def file_transfers(client: RpcClient) -> dict:
     """Show all current file transfers."""
     rpc_resp = client.make_request("<get_file_transfers/>")
     rpc_json = xmltodict.parse(rpc_resp, force_list=("file_transfer",))
-    file_transfers = {"file_transfers": []}
-    if rpc_json["file_transfers"]:
-        for transfer in rpc_json["file_transfers"]["file_transfer"]:
-            file_transfers["file_transfers"].append(transfer)
-    return file_transfers
+    return FileTransfers().load(rpc_json)
 
 
 def host_info(client: RpcClient) -> dict:
