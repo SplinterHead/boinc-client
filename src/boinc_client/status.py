@@ -6,6 +6,7 @@ from boinc_client.models.disk_stats import DiskUsage
 from boinc_client.models.host_info import HostInfo
 from boinc_client.models.project_status import ProjectStatus
 from boinc_client.models.screensaver_tasks import ScreensaverTasks
+from boinc_client.models.simple_gui_info import SimpleGuiInfo
 
 
 def client_state(client: RpcClient) -> dict:
@@ -57,21 +58,8 @@ def host_info(client: RpcClient) -> dict:
 def simple_gui_info(client: RpcClient) -> dict:
     """Show status of projects and active tasks."""
     rpc_resp = client.make_request("<get_simple_gui_info/>")
-    rpc_json = xmltodict.parse(rpc_resp, force_list=("project", "result"))
-    projects = (
-        [proj for proj in rpc_json["simple_gui_info"]["project"]]
-        if rpc_json["simple_gui_info"]
-        else []
-    )
-    for project in projects:
-        gui_urls = project["gui_urls"]["gui_url"]
-        project["gui_urls"] = gui_urls
-    results = (
-        [res for res in rpc_json["simple_gui_info"]["result"]]
-        if rpc_json["simple_gui_info"]
-        else []
-    )
-    return {"gui_info": {"projects": projects, "results": results}}
+    rpc_json = xmltodict.parse(rpc_resp, force_list=("project", "result", "gui_url"))
+    return SimpleGuiInfo().load(rpc_json)
 
 
 def screensaver_tasks(client: RpcClient) -> dict:
