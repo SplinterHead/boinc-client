@@ -30,8 +30,8 @@ class Boinc:
     def get_message_count(self) -> dict:
         return message_count(client=self.rpc_client)
 
-    def get_public_notices(self) -> dict:
-        return public_notices(client=self.rpc_client)
+    def get_public_notices(self, start: int = 0) -> dict:
+        return public_notices(client=self.rpc_client, start=start)
 
     # Projects
     def get_all_projects(self) -> dict:
