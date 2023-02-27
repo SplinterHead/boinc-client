@@ -698,101 +698,119 @@ def screensaver_tasks_multi_result_dict() -> dict:
 
 
 @fixture
-def client_state_xml() -> str:
-    return """<client_state>
-    <host_info>
-        <timezone>foo</timezone>
-        <domain_name>foo</domain_name>
-        <ip_addr>foo</ip_addr>
-        <host_cpid>foo</host_cpid>
-        <p_ncpus>foo</p_ncpus>
-        <p_vendor>foo</p_vendor>
-        <p_model>foo</p_model>
-        <p_features>foo</p_features>
-        <p_fpops>foo</p_fpops>
-        <p_iops>foo</p_iops>
-        <p_membw>foo</p_membw>
-        <p_calculated>foo</p_calculated>
-        <p_vm_extensions_disabled>foo</p_vm_extensions_disabled>
-        <m_nbytes>foo</m_nbytes>
-        <m_cache>foo</m_cache>
-        <m_swap>foo</m_swap>
-        <d_total>foo</d_total>
-        <d_free>foo</d_free>
-        <os_name>foo</os_name>
-        <os_version>foo</os_version>
-        <n_usable_coprocs>foo</n_usable_coprocs>
-        <wsl_available>foo</wsl_available>
-    </host_info>
-    <net_stats>
-        <bwup>foo</bwup>
-        <avg_up>foo</avg_up>
-        <avg_time_up>foo</avg_time_up>
-        <bwdown>foo</bwdown>
-        <avg_down>foo</avg_down>
-        <avg_time_down>foo</avg_time_down>
-    </net_stats>
-    <time_stats>
-        <on_frac>foo</on_frac>
-        <connected_frac>foo</connected_frac>
-        <cpu_and_network_available_frac>foo</cpu_and_network_available_frac>
-        <active_frac>foo</active_frac>
-        <gpu_active_frac>foo</gpu_active_frac>
-        <client_start_time>foo</client_start_time>
-        <total_start_time>foo</total_start_time>
-        <total_duration>foo</total_duration>
-        <total_active_duration>foo</total_active_duration>
-        <total_gpu_active_duration>foo</total_gpu_active_duration>
-        <now>foo</now>
-        <previous_uptime>foo</previous_uptime>
-        <session_active_duration>foo</session_active_duration>
-        <session_gpu_active_duration>foo</session_gpu_active_duration>
-    </time_stats>
-    <platform_name>foo</platform_name>
-    <core_client_major_version>foo</core_client_major_version>
-    <core_client_minor_version>foo</core_client_minor_version>
-    <core_client_release>foo</core_client_release>
-    <executing_as_daemon>foo</executing_as_daemon>
-    <platform>foo</platform>
-    <global_preferences>
-       <source_project>foo</source_project>
-       <mod_time>foo</mod_time>
-       <battery_charge_min_pct>foo</battery_charge_min_pct>
-       <battery_max_temperature>foo</battery_max_temperature>
-       <run_on_batteries>foo</run_on_batteries>
-       <run_if_user_active>foo</run_if_user_active>
-       <run_gpu_if_user_active>foo</run_gpu_if_user_active>
-       <suspend_if_no_recent_input>foo</suspend_if_no_recent_input>
-       <suspend_cpu_usage>foo</suspend_cpu_usage>
-       <start_hour>foo</start_hour>
-       <end_hour>foo</end_hour>
-       <net_start_hour>foo</net_start_hour>
-       <net_end_hour>foo</net_end_hour>
-       <leave_apps_in_memory>foo</leave_apps_in_memory>
-       <confirm_before_connecting>foo</confirm_before_connecting>
-       <hangup_if_dialed>foo</hangup_if_dialed>
-       <dont_verify_images>foo</dont_verify_images>
-       <work_buf_min_days>foo</work_buf_min_days>
-       <work_buf_additional_days>foo</work_buf_additional_days>
-       <max_ncpus_pct>foo</max_ncpus_pct>
-       <cpu_scheduling_period_minutes>foo</cpu_scheduling_period_minutes>
-       <disk_interval>foo</disk_interval>
-       <disk_max_used_gb>foo</disk_max_used_gb>
-       <disk_max_used_pct>foo</disk_max_used_pct>
-       <disk_min_free_gb>foo</disk_min_free_gb>
-       <vm_max_used_pct>foo</vm_max_used_pct>
-       <ram_max_used_busy_pct>foo</ram_max_used_busy_pct>
-       <ram_max_used_idle_pct>foo</ram_max_used_idle_pct>
-       <idle_time_to_run>foo</idle_time_to_run>
-       <max_bytes_sec_up>foo</max_bytes_sec_up>
-       <max_bytes_sec_down>foo</max_bytes_sec_down>
-       <cpu_usage_limit>foo</cpu_usage_limit>
-       <daily_xfer_limit_mb>foo</daily_xfer_limit_mb>
-       <daily_xfer_period_days>foo</daily_xfer_period_days>
-       <override_file_present>foo</override_file_present>
-       <network_wifi_only>foo</network_wifi_only>
-    </global_preferences>
-</client_state>"""
+def blank_client_state_xml(test_files) -> str:
+    return open(f"{test_files}/client_state/no_projects_no_results.xml").read()
+
+
+@fixture
+def blank_client_state_dict() -> dict:
+    return {
+        "client_state": {
+            "host_info": {
+                "timezone": 0,
+                "domain_name": "boincclient.local",
+                "ip_addr": "10.10.10.10",
+                "host_cpid": "66ad08359a0d486d9f44edd5ca67422e",
+                "p_ncpus": 32,
+                "p_vendor": "GenuineIntel",
+                "p_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz [Family 6 Model 45 Stepping 7]",
+                "p_features": "fpu vme de pse tsc",
+                "p_fpops": 4245100250.752763,
+                "p_iops": 96143762530.234589,
+                "p_membw": 1000000000.000000,
+                "p_calculated": 1676897876.373423,
+                "p_vm_extensions_disabled": False,
+                "m_nbytes": 42097815552.000000,
+                "m_cache": 20971520.000000,
+                "m_swap": 1034940416.000000,
+                "d_total": 982809350144.000000,
+                "d_free": 380486336512.000000,
+                "os_name": "Linux Ubuntu",
+                "os_version": "Ubuntu 20.04.2 LTS [6.0.0-0.deb11.2-amd64|libc 2.31 (Ubuntu GLIBC 2.31-0ubuntu9.2)]",
+                "n_usable_coprocs": 0,
+                "wsl_available": False,
+                "coprocs": [],
+            },
+            "net_stats": {
+                "bwup": 43134.653340,
+                "avg_up": 498502.308487,
+                "avg_time_up": 1676981888.039070,
+                "bwdown": 5198125.722543,
+                "avg_down": 936117.076837,
+                "avg_time_down": 1676981868.731456,
+            },
+            "time_stats": {
+                "on_frac": 0.375389,
+                "connected_frac": -1.000000,
+                "cpu_and_network_available_frac": 0.999917,
+                "active_frac": 0.999917,
+                "gpu_active_frac": 0.999917,
+                "client_start_time": 1676897845.254088,
+                "total_start_time": 1665649931.082055,
+                "total_duration": 2875082.038856,
+                "total_active_duration": 2874920.336383,
+                "total_gpu_active_duration": 2874920.336383,
+                "now": 1676982120.755017,
+                "previous_uptime": 19.825332,
+                "session_active_duration": 84243.166578,
+                "session_gpu_active_duration": 84243.166578,
+            },
+            "project": {},
+            "apps": [],
+            "app_versions": [],
+            "workunits": [],
+            "results": [],
+            "platform_name": "x86_64-pc-linux-gnu",
+            "core_client_major_version": 7,
+            "core_client_minor_version": 16,
+            "core_client_release": 17,
+            "executing_as_daemon": False,
+            "platform": "x86_64-pc-linux-gnu",
+            "global_preferences": {
+                "source_project": None,
+                "mod_time": 1665411924.000000,
+                "battery_charge_min_pct": 90.000000,
+                "battery_max_temperature": 40.000000,
+                "run_on_batteries": 0,
+                "run_if_user_active": 1,
+                "run_gpu_if_user_active": 0,
+                "suspend_if_no_recent_input": 0.000000,
+                "suspend_cpu_usage": 25.000000,
+                "start_hour": 0.000000,
+                "end_hour": 0.000000,
+                "net_start_hour": 0.000000,
+                "net_end_hour": 0.000000,
+                "leave_apps_in_memory": 0,
+                "confirm_before_connecting": 1,
+                "hangup_if_dialed": 0,
+                "dont_verify_images": 0,
+                "work_buf_min_days": 0.100000,
+                "work_buf_additional_days": 0.500000,
+                "max_ncpus_pct": 50.000000,
+                "cpu_scheduling_period_minutes": 60.000000,
+                "disk_interval": 180.000000,
+                "disk_max_used_gb": 0.000000,
+                "disk_max_used_pct": 90.000000,
+                "disk_min_free_gb": 1.000000,
+                "vm_max_used_pct": 75.000000,
+                "ram_max_used_busy_pct": 50.000000,
+                "ram_max_used_idle_pct": 90.000000,
+                "idle_time_to_run": 3.000000,
+                "max_bytes_sec_up": 0.000000,
+                "max_bytes_sec_down": 0.000000,
+                "cpu_usage_limit": 100.000000,
+                "daily_xfer_limit_mb": 0.000000,
+                "daily_xfer_period_days": 0,
+                "override_file_present": 0,
+                "network_wifi_only": 1,
+            },
+        }
+    }
+
+
+@fixture
+def client_state_xml(test_files) -> str:
+    return open(f"{test_files}/client_state/short_client_state.xml").read()
 
 
 @fixture
@@ -800,96 +818,259 @@ def client_state_dict() -> dict:
     return {
         "client_state": {
             "host_info": {
-                "timezone": "foo",
-                "domain_name": "foo",
-                "ip_addr": "foo",
-                "host_cpid": "foo",
-                "p_ncpus": "foo",
-                "p_vendor": "foo",
-                "p_model": "foo",
-                "p_features": "foo",
-                "p_fpops": "foo",
-                "p_iops": "foo",
-                "p_membw": "foo",
-                "p_calculated": "foo",
-                "p_vm_extensions_disabled": "foo",
-                "m_nbytes": "foo",
-                "m_cache": "foo",
-                "m_swap": "foo",
-                "d_total": "foo",
-                "d_free": "foo",
-                "os_name": "foo",
-                "os_version": "foo",
-                "n_usable_coprocs": "foo",
-                "wsl_available": "foo",
+                "timezone": 0,
+                "domain_name": "boincclient.local",
+                "ip_addr": "10.10.10.10",
+                "host_cpid": "66ad08359a0d486d9f44edd5ca67422e",
+                "p_ncpus": 32,
+                "p_vendor": "GenuineIntel",
+                "p_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz [Family 6 Model 45 Stepping 7]",
+                "p_features": "fpu vme de pse tsc",
+                "p_fpops": 4245100250.752763,
+                "p_iops": 96143762530.234589,
+                "p_membw": 1000000000.000000,
+                "p_calculated": 1676897876.373423,
+                "p_vm_extensions_disabled": False,
+                "m_nbytes": 42097815552.000000,
+                "m_cache": 20971520.000000,
+                "m_swap": 1034940416.000000,
+                "d_total": 982809350144.000000,
+                "d_free": 380486336512.000000,
+                "os_name": "Linux Ubuntu",
+                "os_version": "Ubuntu 20.04.2 LTS [6.0.0-0.deb11.2-amd64|libc 2.31 (Ubuntu GLIBC 2.31-0ubuntu9.2)]",
+                "n_usable_coprocs": 0,
+                "wsl_available": False,
+                "coprocs": [],
             },
             "net_stats": {
-                "bwup": "foo",
-                "avg_up": "foo",
-                "avg_time_up": "foo",
-                "bwdown": "foo",
-                "avg_down": "foo",
-                "avg_time_down": "foo",
+                "bwup": 43134.653340,
+                "avg_up": 498502.308487,
+                "avg_time_up": 1676981888.039070,
+                "bwdown": 5198125.722543,
+                "avg_down": 936117.076837,
+                "avg_time_down": 1676981868.731456,
             },
             "time_stats": {
-                "on_frac": "foo",
-                "connected_frac": "foo",
-                "cpu_and_network_available_frac": "foo",
-                "active_frac": "foo",
-                "gpu_active_frac": "foo",
-                "client_start_time": "foo",
-                "total_start_time": "foo",
-                "total_duration": "foo",
-                "total_active_duration": "foo",
-                "total_gpu_active_duration": "foo",
-                "now": "foo",
-                "previous_uptime": "foo",
-                "session_active_duration": "foo",
-                "session_gpu_active_duration": "foo",
+                "on_frac": 0.375389,
+                "connected_frac": -1.000000,
+                "cpu_and_network_available_frac": 0.999917,
+                "active_frac": 0.999917,
+                "gpu_active_frac": 0.999917,
+                "client_start_time": 1676897845.254088,
+                "total_start_time": 1665649931.082055,
+                "total_duration": 2875082.038856,
+                "total_active_duration": 2874920.336383,
+                "total_gpu_active_duration": 2874920.336383,
+                "now": 1676982120.755017,
+                "previous_uptime": 19.825332,
+                "session_active_duration": 84243.166578,
+                "session_gpu_active_duration": 84243.166578,
             },
-            "platform_name": "foo",
-            "core_client_major_version": "foo",
-            "core_client_minor_version": "foo",
-            "core_client_release": "foo",
-            "executing_as_daemon": "foo",
-            "platform": "foo",
+            "project": {
+                "master_url": "http://www.worldcommunitygrid.org/",
+                "project_name": "World Community Grid",
+                "symstore": None,
+                "user_name": "user_name",
+                "team_name": None,
+                "host_venue": None,
+                "email_hash": "35cfa58b4e0b46de6a651ce508082d61",
+                "cross_project_id": "037befc40287d29bb9590d8e0edd8198",
+                "external_cpid": "192792945b257453b6da6c7cad1c1381",
+                "cpid_time": 1665410370.000000,
+                "user_total_credit": 341094.533876,
+                "user_expavg_credit": 2900.946548,
+                "user_create_time": 1665410370.000000,
+                "rpc_seqno": 655,
+                "userid": 1156486,
+                "teamid": 0,
+                "hostid": 8667640,
+                "host_total_credit": 339691.861332,
+                "host_expavg_credit": 2900.715440,
+                "host_create_time": 1665650589.000000,
+                "nrpc_failures": 0,
+                "master_fetch_failures": 0,
+                "min_rpc_time": 1677187523.062822,
+                "next_rpc_time": 1677446601.862822,
+                "rec": 4267.417546,
+                "rec_time": 1677189666.165000,
+                "resource_share": 100.000000,
+                "disk_usage": 1410613248.000000,
+                "disk_share": 410497975500.800049,
+                "desired_disk_usage": 0.000000,
+                "duration_correction_factor": 1.000000,
+                "sched_rpc_pending": 0,
+                "send_time_stats_log": 0,
+                "send_job_log": 0,
+                "njobs_success": 3872,
+                "njobs_error": 86,
+                "elapsed_time": 43580057.333979,
+                "last_rpc_time": 1677187401.862822,
+                "dont_use_dcf": True,
+                "rsc_backoff_time": {"name": "CPU", "value": 0.000000},
+                "rsc_backoff_interval": {"name": "CPU", "value": 0.000000},
+                "gui_urls": [
+                    {
+                        "name": "Research Overview",
+                        "description": "Learn about the projects hosted at World Community Grid",
+                        "url": "https://www.worldcommunitygrid.org/research/viewAllProjects.do",
+                    }
+                ],
+                "sched_priority": -1.041667,
+                "project_files_downloaded_time": 0.000000,
+                "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
+            },
+            "apps": [
+                {
+                    "name": "opn1",
+                    "user_friendly_name": "OpenPandemics - COVID 19",
+                    "non_cpu_intensive": False,
+                }
+            ],
+            "app_versions": [
+                {
+                    "app_name": "opn1",
+                    "version_num": 721,
+                    "platform": "x86_64-pc-linux-gnu",
+                    "avg_ncpus": 1.000000,
+                    "flops": 4060616317.600932,
+                    "api_version": "7.7.0",
+                    "file_ref": [
+                        {
+                            "file_name": "wcgrid_opn1_autodock_7.21_x86_64-pc-linux-gnu",
+                            "main_program": True,
+                        },
+                        {
+                            "file_name": "opn1_image09_7.21.tga",
+                            "main_program": False,
+                            "open_name": "Courier.txf",
+                        },
+                    ],
+                }
+            ],
+            "workunits": [
+                {
+                    "name": "MCM1_0196931_1689",
+                    "app_name": "mcm1",
+                    "version_num": 761,
+                    "rsc_fpops_est": 31961417063548.000000,
+                    "rsc_fpops_bound": 15980708531774000.000000,
+                    "rsc_memory_bound": 419430400.000000,
+                    "rsc_disk_bound": 524288000.000000,
+                    "command_line": "-SettingsFile MCM1_0196931_1689.txt -DatabaseFile dataset-sarc1.txt",
+                    "file_ref": [
+                        {
+                            "file_name": "MCM1_0196931_1689_MCM1_0196931_1689.txt",
+                            "open_name": "MCM1_0196931_1689.txt",
+                            "main_program": False,
+                        },
+                        {
+                            "file_name": "mcm1.dataset-sarc1.txt",
+                            "open_name": "dataset-sarc1.txt",
+                            "main_program": False,
+                        },
+                    ],
+                }
+            ],
+            "results": [
+                {
+                    "name": "MCM1_0196931_1633_1",
+                    "wu_name": "MCM1_0196931_1633",
+                    "platform": "x86_64-pc-linux-gnu",
+                    "version_num": 761,
+                    "plan_class": None,
+                    "project_url": "http://www.worldcommunitygrid.org/",
+                    "final_cpu_time": 18111.560000,
+                    "final_elapsed_time": 18205.122296,
+                    "exit_status": 0,
+                    "state": 5,
+                    "report_deadline": 1677444048.000000,
+                    "received_time": 1676925648.893159,
+                    "estimated_cpu_time_remaining": 0.000000,
+                    "ready_to_report": True,
+                    "edf_scheduled": False,
+                    "completed_time": 1676979676.425968,
+                },
+                {
+                    "name": "MCM1_0196961_6759_0",
+                    "wu_name": "MCM1_0196961_6759",
+                    "platform": "x86_64-pc-linux-gnu",
+                    "version_num": 761,
+                    "plan_class": None,
+                    "project_url": "http://www.worldcommunitygrid.org/",
+                    "final_cpu_time": 0.000000,
+                    "final_elapsed_time": 0.000000,
+                    "exit_status": 0,
+                    "state": 2,
+                    "report_deadline": 1677472761.000000,
+                    "received_time": 1676954361.932330,
+                    "estimated_cpu_time_remaining": 51.163306,
+                    "ready_to_report": False,
+                    "edf_scheduled": False,
+                    "active_task": {
+                        "active_task_state": 1,
+                        "app_version_num": 761,
+                        "slot": 11,
+                        "pid": 337,
+                        "scheduler_state": 2,
+                        "checkpoint_cpu_time": 17428.570000,
+                        "fraction_done": 0.997183,
+                        "current_cpu_time": 18025.920000,
+                        "elapsed_time": 18113.109104,
+                        "swap_size": 94289920.000000,
+                        "working_set_size": 93564928.000000,
+                        "working_set_size_smoothed": 93551148.758726,
+                        "page_fault_rate": 0.000000,
+                        "bytes_sent": 0.000000,
+                        "bytes_received": 0.000000,
+                        "progress_rate": 0.000055,
+                        "graphics_exec_path": "/var/lib/boinc/projects/www.worldcommunitygrid.org/wcgrid_mcm1_gfx_7.61_x86_64-pc-linux-gnu",
+                        "slot_path": "/var/lib/boinc/slots/11",
+                    },
+                },
+            ],
+            "platform_name": "x86_64-pc-linux-gnu",
+            "core_client_major_version": 7,
+            "core_client_minor_version": 16,
+            "core_client_release": 17,
+            "executing_as_daemon": False,
+            "platform": "x86_64-pc-linux-gnu",
             "global_preferences": {
-                "source_project": "foo",
-                "mod_time": "foo",
-                "battery_charge_min_pct": "foo",
-                "battery_max_temperature": "foo",
-                "run_on_batteries": "foo",
-                "run_if_user_active": "foo",
-                "run_gpu_if_user_active": "foo",
-                "suspend_if_no_recent_input": "foo",
-                "suspend_cpu_usage": "foo",
-                "start_hour": "foo",
-                "end_hour": "foo",
-                "net_start_hour": "foo",
-                "net_end_hour": "foo",
-                "leave_apps_in_memory": "foo",
-                "confirm_before_connecting": "foo",
-                "hangup_if_dialed": "foo",
-                "dont_verify_images": "foo",
-                "work_buf_min_days": "foo",
-                "work_buf_additional_days": "foo",
-                "max_ncpus_pct": "foo",
-                "cpu_scheduling_period_minutes": "foo",
-                "disk_interval": "foo",
-                "disk_max_used_gb": "foo",
-                "disk_max_used_pct": "foo",
-                "disk_min_free_gb": "foo",
-                "vm_max_used_pct": "foo",
-                "ram_max_used_busy_pct": "foo",
-                "ram_max_used_idle_pct": "foo",
-                "idle_time_to_run": "foo",
-                "max_bytes_sec_up": "foo",
-                "max_bytes_sec_down": "foo",
-                "cpu_usage_limit": "foo",
-                "daily_xfer_limit_mb": "foo",
-                "daily_xfer_period_days": "foo",
-                "override_file_present": "foo",
-                "network_wifi_only": "foo",
+                "source_project": "https://scienceunited.org/",
+                "mod_time": 1665411924.000000,
+                "battery_charge_min_pct": 90.000000,
+                "battery_max_temperature": 40.000000,
+                "run_on_batteries": 0,
+                "run_if_user_active": 1,
+                "run_gpu_if_user_active": 0,
+                "suspend_if_no_recent_input": 0.000000,
+                "suspend_cpu_usage": 25.000000,
+                "start_hour": 0.000000,
+                "end_hour": 0.000000,
+                "net_start_hour": 0.000000,
+                "net_end_hour": 0.000000,
+                "leave_apps_in_memory": 1,
+                "confirm_before_connecting": 0,
+                "hangup_if_dialed": 0,
+                "dont_verify_images": 0,
+                "work_buf_min_days": 0.100000,
+                "work_buf_additional_days": 0.500000,
+                "max_ncpus_pct": 50.000000,
+                "cpu_scheduling_period_minutes": 60.000000,
+                "disk_interval": 180.000000,
+                "disk_max_used_gb": 0.000000,
+                "disk_max_used_pct": 90.000000,
+                "disk_min_free_gb": 1.000000,
+                "vm_max_used_pct": 75.000000,
+                "ram_max_used_busy_pct": 50.000000,
+                "ram_max_used_idle_pct": 90.000000,
+                "idle_time_to_run": 3.000000,
+                "max_bytes_sec_up": 0.000000,
+                "max_bytes_sec_down": 0.000000,
+                "cpu_usage_limit": 100.000000,
+                "daily_xfer_limit_mb": 0.000000,
+                "daily_xfer_period_days": 0,
+                "override_file_present": 0,
+                "network_wifi_only": 1,
             },
         }
     }

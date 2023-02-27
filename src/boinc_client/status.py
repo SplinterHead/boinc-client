@@ -2,6 +2,7 @@ import xmltodict
 
 from boinc_client.clients.rpc_client import RpcClient
 from boinc_client.models.cc_status import CCStatus
+from boinc_client.models.client_state import ClientState
 from boinc_client.models.disk_stats import DiskUsage
 from boinc_client.models.file_transfer import FileTransfers
 from boinc_client.models.host_info import HostInfo
@@ -13,8 +14,16 @@ from boinc_client.models.simple_gui_info import SimpleGuiInfo
 def client_state(client: RpcClient) -> dict:
     """Get the entire state."""
     rpc_resp = client.make_request("<get_state/>")
-    rpc_json = xmltodict.parse(rpc_resp)
-    return rpc_json
+    rpc_json = xmltodict.parse(
+        rpc_resp,
+        force_list=(
+            "app",
+            "app_version",
+            "workunit",
+            "gui_url",
+        ),
+    )
+    return ClientState().load(rpc_json)
 
 
 def project_status(client: RpcClient) -> dict:

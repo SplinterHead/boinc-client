@@ -209,6 +209,17 @@ def test_can_get_screensaver_tasks_multi_result(
     )
 
 
+def test_can_get_blank_client_state(
+    mocker, mock_rpc_client, blank_client_state_xml, blank_client_state_dict
+):
+
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=blank_client_state_xml,
+    )
+    assert client_state(client=mock_rpc_client) == blank_client_state_dict
+
+
 def test_can_get_client_state(
     mocker, mock_rpc_client, client_state_xml, client_state_dict
 ):
