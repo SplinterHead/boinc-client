@@ -12,21 +12,8 @@ def empty_project_list_dict() -> dict:
 
 
 @fixture
-def single_project_single_platform_xml() -> str:
-    return """<projects>
-            <project>
-                <name>test_project</name>
-                <url>test_url</url>
-                <general_area>test_area</general_area>
-                <specific_area>test_s_area</specific_area>
-                <description>test_desc</description>
-                <home>test_home</home>
-                <platforms>
-                    <name>test_platform</name>
-                </platforms>
-                <summary>test_summary</summary>
-            </project>
-        </projects>"""
+def single_project_single_platform_xml(test_files) -> str:
+    return open(f"{test_files}/projects/single_project_single_platform.xml").read()
 
 
 @fixture
@@ -34,39 +21,28 @@ def single_project_single_platform_dict() -> dict:
     return {
         "projects": [
             {
-                "name": "test_project",
-                "url": "test_url",
-                "general_area": "test_area",
-                "specific_area": "test_s_area",
-                "description": "test_desc",
-                "home": "test_home",
+                "id": 51,
+                "name": "SIDock@home",
+                "url": "https://www.sidock.si/sidock/",
+                "web_url": "https://www.sidock.si/sidock/",
+                "general_area": "Biology and Medicine",
+                "specific_area": "Biomedicine",
+                "description": "Study drugs to fight SARS-CoV-2",
+                "home": "The COVID.SI project and the Karelian Research Center of the Russian Academy of Sciences",
                 "platforms": [
-                    {"name": "test_platform"},
+                    {"name": "x86_64-pc-linux-gnu"},
                 ],
-                "summary": "test_summary",
+                "image": "https://boinc.berkeley.edu/images/sidock.png",
+                "summary": "Study drugs to fight SARS-CoV-2",
+                "keywords": "9 13 64 20 44",
             }
         ]
     }
 
 
 @fixture
-def single_project_multi_platform_xml() -> str:
-    return """<projects>
-            <project>
-                <name>test_project</name>
-                <url>test_url</url>
-                <general_area>test_area</general_area>
-                <specific_area>test_s_area</specific_area>
-                <description>test_desc</description>
-                <home>test_home</home>
-                <platforms>
-                    <name>test_platform</name>
-                    <name>test_platform2</name>
-                    <name>test_platform3</name>
-                </platforms>
-                <summary>test_summary</summary>
-            </project>
-        </projects>"""
+def single_project_multi_platform_xml(test_files) -> str:
+    return open(f"{test_files}/projects/single_project_multi_platform.xml").read()
 
 
 @fixture
@@ -74,41 +50,31 @@ def single_project_multi_platform_dict() -> dict:
     return {
         "projects": [
             {
-                "name": "test_project",
-                "url": "test_url",
-                "general_area": "test_area",
-                "specific_area": "test_s_area",
-                "description": "test_desc",
-                "home": "test_home",
+                "id": 51,
+                "name": "SIDock@home",
+                "url": "https://www.sidock.si/sidock/",
+                "web_url": "https://www.sidock.si/sidock/",
+                "general_area": "Biology and Medicine",
+                "specific_area": "Biomedicine",
+                "description": "Study drugs to fight SARS-CoV-2",
+                "home": "The COVID.SI project and the Karelian Research Center of the Russian Academy of Sciences",
                 "platforms": [
-                    {"name": "test_platform"},
-                    {"name": "test_platform2"},
-                    {"name": "test_platform3"},
+                    {"name": "windows_x86_64"},
+                    {"name": "x86_64-pc-linux-gnu"},
+                    {"name": "arm-unknown-linux-gnueabihf"},
+                    {"name": "x86_64-openwrt-linux-musl"},
                 ],
-                "summary": "test_summary",
+                "image": "https://boinc.berkeley.edu/images/sidock.png",
+                "summary": "Study drugs to fight SARS-CoV-2",
+                "keywords": "9 13 64 20 44",
             }
         ]
     }
 
 
 @fixture
-def multi_project_single_platform_xml() -> str:
-    return """<projects>
-            <project>
-                <name>test_project</name>
-                <platforms>
-                    <name>test_platform</name>
-                </platforms>
-                <summary>test_summary</summary>
-            </project>
-            <project>
-                <name>test_project2</name>
-                <platforms>
-                    <name>test_platform2</name>
-                </platforms>
-                <summary>test_summary2</summary>
-            </project>
-        </projects>"""
+def multi_project_single_platform_xml(test_files) -> str:
+    return open(f"{test_files}/projects/multi_project_multi_platform.xml").read()
 
 
 @fixture
@@ -116,18 +82,42 @@ def multi_project_single_platform_dict() -> dict:
     return {
         "projects": [
             {
-                "name": "test_project",
+                "id": 51,
+                "name": "SIDock@home",
+                "url": "https://www.sidock.si/sidock/",
+                "web_url": "https://www.sidock.si/sidock/",
+                "general_area": "Biology and Medicine",
+                "specific_area": "Biomedicine",
+                "description": "Study drugs to fight SARS-CoV-2",
+                "home": "The COVID.SI project and the Karelian Research Center of the Russian Academy of Sciences",
                 "platforms": [
-                    {"name": "test_platform"},
+                    {"name": "windows_x86_64"},
+                    {"name": "x86_64-pc-linux-gnu"},
+                    {"name": "arm-unknown-linux-gnueabihf"},
+                    {"name": "x86_64-openwrt-linux-musl"},
                 ],
-                "summary": "test_summary",
+                "image": "https://boinc.berkeley.edu/images/sidock.png",
+                "summary": "Study drugs to fight SARS-CoV-2",
+                "keywords": "9 13 64 20 44",
             },
             {
-                "name": "test_project2",
+                "id": 4,
+                "name": "DENIS@Home",
+                "url": "https://denis.usj.es/denisathome/",
+                "web_url": "https://denis.usj.es/denisathome/",
+                "general_area": "Biology and Medicine",
+                "specific_area": "Medical physiology",
+                "description": "DENIS@Home does cardiac electrophysiological simulations, studying the electrical activity of the heart.",
+                "home": "San Jorge University, Zaragoza, Spain",
                 "platforms": [
-                    {"name": "test_platform2"},
+                    {"name": "windows_x86_64"},
+                    {"name": "x86_64-pc-linux-gnu"},
+                    {"name": "x86_64-apple-darwin"},
+                    {"name": "aarch64-unknown-linux-gnu"},
+                    {"name": "arm64-apple-darwin"},
                 ],
-                "summary": "test_summary2",
+                "summary": "Study the physiology of the heart",
+                "keywords": "9 20 30",
             },
         ]
     }

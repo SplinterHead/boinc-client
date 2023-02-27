@@ -4,7 +4,7 @@ from boinc_client.status import (
     disk_stats,
     file_transfers,
     host_info,
-    project_state,
+    project_status,
     screensaver_tasks,
     simple_gui_info,
 )
@@ -98,17 +98,30 @@ def test_get_multi_file_transfer(
     assert file_transfers(client=mock_rpc_client) == file_transfers_multi_transfer_dict
 
 
-def test_can_parse_host_info(
+def test_can_parse_host_info_no_coprocs(
     mocker,
     mock_rpc_client,
-    host_info_xml,
-    host_info_dict,
+    host_info_no_coprocs_xml,
+    host_info_no_coprocs_dict,
 ):
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
-        return_value=host_info_xml,
+        return_value=host_info_no_coprocs_xml,
     )
-    assert host_info(client=mock_rpc_client) == host_info_dict
+    assert host_info(client=mock_rpc_client) == host_info_no_coprocs_dict
+
+
+def test_can_parse_host_info_no_cpu_detail(
+    mocker,
+    mock_rpc_client,
+    host_info_no_cpu_detail_xml,
+    host_info_no_cpu_detail_dict,
+):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=host_info_no_cpu_detail_xml,
+    )
+    assert host_info(client=mock_rpc_client) == host_info_no_cpu_detail_dict
 
 
 def test_can_get_simple_gui_info_empty_result(
@@ -196,6 +209,17 @@ def test_can_get_screensaver_tasks_multi_result(
     )
 
 
+def test_can_get_blank_client_state(
+    mocker, mock_rpc_client, blank_client_state_xml, blank_client_state_dict
+):
+
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=blank_client_state_xml,
+    )
+    assert client_state(client=mock_rpc_client) == blank_client_state_dict
+
+
 def test_can_get_client_state(
     mocker, mock_rpc_client, client_state_xml, client_state_dict
 ):
@@ -208,22 +232,22 @@ def test_can_get_client_state(
 
 
 def test_can_get_empty_project_status(
-    mocker, mock_rpc_client, empty_project_state_xml, empty_project_state_dict
+    mocker, mock_rpc_client, empty_project_status_xml, empty_project_status_dict
 ):
 
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
-        return_value=empty_project_state_xml,
+        return_value=empty_project_status_xml,
     )
-    assert project_state(client=mock_rpc_client) == empty_project_state_dict
+    assert project_status(client=mock_rpc_client) == empty_project_status_dict
 
 
 def test_can_get_project_status(
-    mocker, mock_rpc_client, project_state_xml, project_state_dict
+    mocker, mock_rpc_client, project_status_xml, project_status_dict
 ):
 
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
-        return_value=project_state_xml,
+        return_value=project_status_xml,
     )
-    assert project_state(client=mock_rpc_client) == project_state_dict
+    assert project_status(client=mock_rpc_client) == project_status_dict

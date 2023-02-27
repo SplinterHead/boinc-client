@@ -2,51 +2,34 @@ from pytest import fixture
 
 
 @fixture
-def empty_network_transfer_report_xml() -> str:
-    return "<daily_xfers></daily_xfers>"
+def empty_network_transfer_report_xml(test_files) -> str:
+    return open(f"{test_files}/network_transfers/empty_network_transfers.xml").read()
 
 
 @fixture
 def empty_network_transfer_report_dict() -> dict:
-    return {"network_stats": {}}
+    return {"network_transfers": {}}
 
 
 @fixture
-def daily_network_transfer_report_xml() -> str:
-    return """<daily_xfers>
-        <dx>
-            <when>19358</when>
-            <up>1000.000</up>
-            <down>6000.000</down>
-        </dx>
-    </daily_xfers>"""
+def daily_network_transfer_report_xml(test_files) -> str:
+    return open(f"{test_files}/network_transfers/single_network_transfer.xml").read()
 
 
 @fixture
 def daily_network_transfer_report_dict() -> dict:
-    return {"network_stats": {"2023-01-01": {"up": 1000.000, "down": 6000.000}}}
+    return {"network_transfers": {"2023-01-01": {"up": 1000.000, "down": 6000.000}}}
 
 
 @fixture
-def multi_daily_network_transfer_report_xml() -> str:
-    return """<daily_xfers>
-        <dx>
-            <when>19358</when>
-            <up>1000.000</up>
-            <down>6000.000</down>
-        </dx>
-        <dx>
-            <when>19359</when>
-            <up>2000.000</up>
-            <down>5000.000</down>
-        </dx>
-    </daily_xfers>"""
+def multi_daily_network_transfer_report_xml(test_files) -> str:
+    return open(f"{test_files}/network_transfers/multiple_network_transfers.xml").read()
 
 
 @fixture
 def multi_daily_network_transfer_report_dict() -> dict:
     return {
-        "network_stats": {
+        "network_transfers": {
             "2023-01-01": {"up": 1000.000, "down": 6000.000},
             "2023-01-02": {"up": 2000.000, "down": 5000.000},
         }
@@ -54,8 +37,8 @@ def multi_daily_network_transfer_report_dict() -> dict:
 
 
 @fixture
-def empty_project_stats_xml() -> str:
-    return "<statistics></statistics>"
+def empty_project_stats_xml(test_files) -> str:
+    return open(f"{test_files}/project_stats/empty_project_stats.xml").read()
 
 
 @fixture
@@ -64,19 +47,10 @@ def empty_project_stats_dict() -> dict:
 
 
 @fixture
-def single_project_single_day_stats_xml() -> str:
-    return """<statistics>
-        <project_statistics>
-            <master_url>foo_url</master_url>
-            <daily_statistics>
-                <day>foo_day</day>
-                <user_total_credit>foo</user_total_credit>
-                <user_expavg_credit>foo</user_expavg_credit>
-                <host_total_credit>foo</host_total_credit>
-                <host_expavg_credit>foo</host_expavg_credit>
-            </daily_statistics>
-        </project_statistics>
-    </statistics>"""
+def single_project_single_day_stats_xml(test_files) -> str:
+    return open(
+        f"{test_files}/project_stats/single_project_single_day_stats.xml"
+    ).read()
 
 
 @fixture
@@ -84,13 +58,13 @@ def single_project_single_day_stats_dict() -> dict:
     return {
         "project_stats": [
             {
-                "master_url": "foo_url",
+                "master_url": "http://www.worldcommunitygrid.org/",
                 "daily_statistics": {
-                    "foo_day": {
-                        "user_total_credit": "foo",
-                        "user_expavg_credit": "foo",
-                        "host_total_credit": "foo",
-                        "host_expavg_credit": "foo",
+                    "2023-01-22": {
+                        "user_total_credit": 252425.687796,
+                        "user_expavg_credit": 1433.823904,
+                        "host_total_credit": 251023.015252,
+                        "host_expavg_credit": 1428.390798,
                     }
                 },
             }
@@ -99,26 +73,8 @@ def single_project_single_day_stats_dict() -> dict:
 
 
 @fixture
-def single_project_multi_day_stats_xml() -> str:
-    return """<statistics>
-        <project_statistics>
-            <master_url>foo_url</master_url>
-            <daily_statistics>
-                <day>foo_day</day>
-                <user_total_credit>foo</user_total_credit>
-                <user_expavg_credit>foo</user_expavg_credit>
-                <host_total_credit>foo</host_total_credit>
-                <host_expavg_credit>foo</host_expavg_credit>
-            </daily_statistics>
-            <daily_statistics>
-                <day>bar_day</day>
-                <user_total_credit>bar</user_total_credit>
-                <user_expavg_credit>bar</user_expavg_credit>
-                <host_total_credit>bar</host_total_credit>
-                <host_expavg_credit>bar</host_expavg_credit>
-            </daily_statistics>
-        </project_statistics>
-    </statistics>"""
+def single_project_multi_day_stats_xml(test_files) -> str:
+    return open(f"{test_files}/project_stats/single_project_multi_day_stats.xml").read()
 
 
 @fixture
@@ -126,19 +82,19 @@ def single_project_multi_day_stats_dict() -> dict:
     return {
         "project_stats": [
             {
-                "master_url": "foo_url",
+                "master_url": "http://www.worldcommunitygrid.org/",
                 "daily_statistics": {
-                    "foo_day": {
-                        "user_total_credit": "foo",
-                        "user_expavg_credit": "foo",
-                        "host_total_credit": "foo",
-                        "host_expavg_credit": "foo",
+                    "2023-01-22": {
+                        "user_total_credit": 252425.687796,
+                        "user_expavg_credit": 1433.823904,
+                        "host_total_credit": 251023.015252,
+                        "host_expavg_credit": 1428.390798,
                     },
-                    "bar_day": {
-                        "user_total_credit": "bar",
-                        "user_expavg_credit": "bar",
-                        "host_total_credit": "bar",
-                        "host_expavg_credit": "bar",
+                    "2023-01-23": {
+                        "user_total_credit": 256712.775099,
+                        "user_expavg_credit": 1754.946077,
+                        "host_total_credit": 255310.102555,
+                        "host_expavg_credit": 1749.852530,
                     },
                 },
             }
@@ -147,29 +103,8 @@ def single_project_multi_day_stats_dict() -> dict:
 
 
 @fixture
-def multi_project_single_day_stats_xml() -> str:
-    return """<statistics>
-        <project_statistics>
-            <master_url>foo_url</master_url>
-            <daily_statistics>
-                <day>foo_day</day>
-                <user_total_credit>foo</user_total_credit>
-                <user_expavg_credit>foo</user_expavg_credit>
-                <host_total_credit>foo</host_total_credit>
-                <host_expavg_credit>foo</host_expavg_credit>
-            </daily_statistics>
-        </project_statistics>
-        <project_statistics>
-            <master_url>bar_url</master_url>
-            <daily_statistics>
-                <day>bar_day</day>
-                <user_total_credit>bar</user_total_credit>
-                <user_expavg_credit>bar</user_expavg_credit>
-                <host_total_credit>bar</host_total_credit>
-                <host_expavg_credit>bar</host_expavg_credit>
-            </daily_statistics>
-        </project_statistics>
-    </statistics>"""
+def multi_project_single_day_stats_xml(test_files) -> str:
+    return open(f"{test_files}/project_stats/multi_project_single_day_stats.xml").read()
 
 
 @fixture
@@ -177,24 +112,24 @@ def multi_project_single_day_stats_dict() -> dict:
     return {
         "project_stats": [
             {
-                "master_url": "foo_url",
+                "master_url": "http://www.worldcommunitygrid.org/",
                 "daily_statistics": {
-                    "foo_day": {
-                        "user_total_credit": "foo",
-                        "user_expavg_credit": "foo",
-                        "host_total_credit": "foo",
-                        "host_expavg_credit": "foo",
-                    }
+                    "2023-01-22": {
+                        "user_total_credit": 252425.687796,
+                        "user_expavg_credit": 1433.823904,
+                        "host_total_credit": 251023.015252,
+                        "host_expavg_credit": 1428.390798,
+                    },
                 },
             },
             {
-                "master_url": "bar_url",
+                "master_url": "http://www.spacecommunitygrid.org/",
                 "daily_statistics": {
-                    "bar_day": {
-                        "user_total_credit": "bar",
-                        "user_expavg_credit": "bar",
-                        "host_total_credit": "bar",
-                        "host_expavg_credit": "bar",
+                    "2023-02-15": {
+                        "user_total_credit": 252425.687796,
+                        "user_expavg_credit": 1433.823904,
+                        "host_total_credit": 251023.015252,
+                        "host_expavg_credit": 1428.390798,
                     }
                 },
             },

@@ -1,7 +1,7 @@
 from boinc_client.stats import daily_network_transfers, project_stats
 
 
-def test_can_get_empty_network_transfer_reports(
+def test_can_get_empty_daily_network_transfer_reports(
     mocker,
     mock_rpc_client,
     empty_network_transfer_report_xml,
@@ -17,7 +17,7 @@ def test_can_get_empty_network_transfer_reports(
     )
 
 
-def test_can_get_daily_network_transfer_reports(
+def test_can_get_single_daily_network_transfer_reports(
     mocker,
     mock_rpc_client,
     daily_network_transfer_report_xml,

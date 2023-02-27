@@ -1,0 +1,24 @@
+<notices>
+    <notice>
+        <title>Notice A</title>
+        <description>This is a notice</description>
+        <create_time>123</create_time>
+        <arrival_time>124</arrival_time>
+        <is_private>false</is_private>
+        <project_name>proja</project_name>
+        <category>test</category>
+        <link>https://linky.link</link>
+        <seqno>1</seqno>
+    </notice>
+    <notice>
+        <title>Notice B</title>
+        <description>This is another notice</description>
+        <create_time>456</create_time>
+        <arrival_time>457</arrival_time>
+        <is_private>false</is_private>
+        <project_name>projb</project_name>
+        <category>test2</category>
+        <link>https://linky2.link</link>
+        <seqno>2</seqno>
+    </notice>
+</notices>

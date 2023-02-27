@@ -19,6 +19,16 @@ def test_can_get_single_message(
     assert messages(client=mock_rpc_client) == single_messages_dict
 
 
+def test_can_get_none_project_message(
+    mocker, mock_rpc_client, none_proj_messages_xml, none_proj_messages_dict
+):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=none_proj_messages_xml,
+    )
+    assert messages(client=mock_rpc_client) == none_proj_messages_dict
+
+
 def test_can_get_multiple_message(
     mocker, mock_rpc_client, multi_messages_xml, multi_messages_dict
 ):

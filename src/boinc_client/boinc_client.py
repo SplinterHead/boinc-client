@@ -10,7 +10,7 @@ from .status import (
     disk_stats,
     file_transfers,
     host_info,
-    project_state,
+    project_status,
     screensaver_tasks,
     simple_gui_info,
 )
@@ -30,8 +30,8 @@ class Boinc:
     def get_message_count(self) -> dict:
         return message_count(client=self.rpc_client)
 
-    def get_public_notices(self) -> dict:
-        return public_notices(client=self.rpc_client)
+    def get_public_notices(self, start: int = 0) -> dict:
+        return public_notices(client=self.rpc_client, start=start)
 
     # Projects
     def get_all_projects(self) -> dict:
@@ -55,8 +55,8 @@ class Boinc:
     def get_client_state(self) -> dict:
         return client_state(client=self.rpc_client)
 
-    def get_project_state(self) -> dict:
-        return project_state(client=self.rpc_client)
+    def get_project_status(self) -> dict:
+        return project_status(client=self.rpc_client)
 
     def get_cc_status(self) -> dict:
         return cc_status(client=self.rpc_client)

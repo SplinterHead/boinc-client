@@ -12,6 +12,7 @@ issues = "https://github.com/SplinterHead/boinc-client/issues"
 [tool.poetry.dependencies]
 python = "^3.9"
 xmltodict = "^0.13.0"
+marshmallow = "^3.19.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.12.0"
@@ -20,6 +21,7 @@ pytest = "^7.2.1"
 pytest-cov = "^4.0.0"
 pytest-mock = "^3.10.0"
 testcontainers-core = "^0.0.1rc1"
+xmlformatter = "^0.2.4"
 
 [build-system]
 requires = ["poetry-core"]

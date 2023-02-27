@@ -1,0 +1,24 @@
+<file_transfers>
+    <file_transfer>
+        <project_url>foo</project_url>
+        <project_name>foo</project_name>
+        <name>foo</name>
+        <nbytes>foo</nbytes>
+        <max_nbytes>foo</max_nbytes>
+        <status>foo</status>
+        <persistent_file_xfer>
+            <num_retries>foo</num_retries>
+            <first_request_time>foo</first_request_time>
+            <next_request_time>foo</next_request_time>
+            <time_so_far>foo</time_so_far>
+            <last_bytes_xferred>foo</last_bytes_xferred>
+            <is_upload>foo</is_upload>
+        </persistent_file_xfer>
+        <file_xfer>
+            <bytes_xferred>foo</bytes_xferred>
+            <file_offset>foo</file_offset>
+            <xfer_speed>foo</xfer_speed>
+            <url>foo</url>
+        </file_xfer>
+    </file_transfer>
+</file_transfers>

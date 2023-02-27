@@ -1,0 +1,20 @@
+<msgs>
+    <msg>
+        <project>World Community Grid</project>
+        <pri>1</pri>
+        <seqno>109</seqno>
+        <body><![CDATA[
+        Finished download of MCM1_FILENAME.txt
+        ]]></body>
+        <time>1676897897</time>
+    </msg>
+    <msg>
+        <project>World Community Grid</project>
+        <pri>1</pri>
+        <seqno>110</seqno>
+        <body><![CDATA[
+        Started download of MCM2_FILENAME.txt
+        ]]></body>
+        <time>1676897897</time>
+    </msg>
+</msgs>
