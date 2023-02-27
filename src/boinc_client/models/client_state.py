@@ -40,12 +40,18 @@ class AppDetails(Schema):
 
 class AppFileRef(Schema):
     file_name = fields.Str()
-    main_program = fields.Bool(allow_none=True)
+    main_program = fields.Bool()
     open_name = fields.Str(allow_none=True)
+    copy_file = fields.Bool()
 
     @pre_load
     def _set_main_program(self, data, **kwargs):
         data["main_program"] = "main_program" in data
+        return data
+
+    @pre_load
+    def _set_copy_file(self, data, **kwargs):
+        data["copy_file"] = "copy_file" in data
         return data
 
 

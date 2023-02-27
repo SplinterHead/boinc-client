@@ -938,10 +938,12 @@ def client_state_dict() -> dict:
                         {
                             "file_name": "wcgrid_opn1_autodock_7.21_x86_64-pc-linux-gnu",
                             "main_program": True,
+                            "copy_file": False,
                         },
                         {
                             "file_name": "opn1_image09_7.21.tga",
                             "main_program": False,
+                            "copy_file": True,
                             "open_name": "Courier.txf",
                         },
                     ],
@@ -962,11 +964,13 @@ def client_state_dict() -> dict:
                             "file_name": "MCM1_0196931_1689_MCM1_0196931_1689.txt",
                             "open_name": "MCM1_0196931_1689.txt",
                             "main_program": False,
+                            "copy_file": False,
                         },
                         {
                             "file_name": "mcm1.dataset-sarc1.txt",
                             "open_name": "dataset-sarc1.txt",
                             "main_program": False,
+                            "copy_file": False,
                         },
                     ],
                 }

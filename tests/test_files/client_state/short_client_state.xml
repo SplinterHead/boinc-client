@@ -126,6 +126,7 @@
         <file_ref>
             <file_name>opn1_image09_7.21.tga</file_name>
             <open_name>Courier.txf</open_name>
+            <copy_file/>
         </file_ref>
     </app_version>
     <workunit>
