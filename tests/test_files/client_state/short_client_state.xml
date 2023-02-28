@@ -242,5 +242,6 @@
         <daily_xfer_period_days>0</daily_xfer_period_days>
         <override_file_present>0</override_file_present>
         <network_wifi_only>1</network_wifi_only>
+        <max_cpus>32</max_cpus>
     </global_preferences>
 </client_state>

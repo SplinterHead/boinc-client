@@ -114,6 +114,7 @@ class GlobalPreferences(Schema):
     daily_xfer_period_days = fields.Int()
     override_file_present = fields.Int()
     network_wifi_only = fields.Int()
+    max_cpus = fields.Int()
 
 
 class State(Schema):

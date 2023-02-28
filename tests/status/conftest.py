@@ -1075,6 +1075,7 @@ def client_state_dict() -> dict:
                 "daily_xfer_period_days": 0,
                 "override_file_present": 0,
                 "network_wifi_only": 1,
+                "max_cpus": 32,
             },
         }
     }
