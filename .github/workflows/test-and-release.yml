@@ -54,6 +54,8 @@ jobs:
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
       - name: Setup Poetry
         uses: abatilo/actions-poetry@v2
         with:
@@ -76,7 +78,10 @@ jobs:
       - name: Commit Release to repo
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Create ${{ steps.semver.outputs.next }} Release"
+          commit_message: |
+            Create ${{ steps.semver.outputs.next }} Release
+            
+            [skip ci]
           tagging_message: ${{ steps.semver.outputs.next }}
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0
