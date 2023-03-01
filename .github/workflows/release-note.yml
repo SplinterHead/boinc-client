@@ -12,7 +12,6 @@ jobs:
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v3
         with:
-          configuration: "configuration.json"
           owner: "SplinterHead"
           repo: "boinc-client"
           ignorePreReleases: true
