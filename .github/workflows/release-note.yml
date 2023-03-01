@@ -18,6 +18,7 @@ jobs:
           ignorePreReleases: true
           fromTag: "v1.0.0"
           toTag: "v1.0.1"
+          commitMode: true
           token: ${{ secrets.GH_TOKEN }}
           outputFile: "RELEASE_NOTE.md"
       - uses: actions/upload-artifact@v3
