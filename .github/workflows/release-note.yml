@@ -21,6 +21,11 @@ jobs:
           commitMode: true
           token: ${{ secrets.GH_TOKEN }}
           outputFile: "RELEASE_NOTE.md"
+      - name: Print output
+        run: |
+          echo ${{ steps.github_release.outputs.fromTag }}
+          echo ${{ steps.github_release.outputs.toTag }}
+          echo ${{ steps.github_release.outputs.changelog }}
       - uses: actions/upload-artifact@v3
         with:
           name: release-note
