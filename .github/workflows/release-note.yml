@@ -15,9 +15,9 @@ jobs:
           owner: "SplinterHead"
           repo: "boinc-client"
           ignorePreReleases: true
-          fromTag: "v1.0.0"
+          fromTag: "v0.18.0"
           toTag: "v1.0.1"
-          commitMode: true
+          commitMode: false
           token: ${{ secrets.GH_TOKEN }}
           outputFile: "RELEASE_NOTE.md"
       - name: Print output
