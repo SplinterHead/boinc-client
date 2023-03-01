@@ -1,0 +1,26 @@
+name: 'Create Release Note'
+on:
+  push:
+    branches:
+      - 'feat/auto_release_notes'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Changelog
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          configuration: "configuration.json"
+          owner: "SplinterHead"
+          repo: "boinc-client"
+          ignorePreReleases: true
+          fromTag: "v1.0.0"
+          toTag: "v1.0.1"
+          token: ${{ secrets.GH_TOKEN }}
+          outputFile: "RELEASE_NOTE.md"
+      - uses: actions/upload-artifact@v3
+        with:
+          name: release-note
+          path: RELEASE_NOTE.md
