@@ -1,7 +1,10 @@
 import re
 import socket
-import xml.etree.ElementTree as et
 from hashlib import md5
+
+from lxml import etree
+
+xml_parser = etree.XMLParser(resolve_entities=False)
 
 
 class RpcClient:
@@ -35,14 +38,16 @@ class RpcClient:
         # Docs: https://boinc.berkeley.edu/trac/wiki/GuiRpcProtocol#Authentication
         # Send the auth1 request and return the nonce
         auth1_resp = self._call(req_string="<auth1/>")
-        nonce_resp = et.fromstring(auth1_resp)
+        nonce_resp = etree.fromstring(auth1_resp, parser=xml_parser)
         return nonce_resp[0].text
 
     def send_password(self, nonce: str) -> str:
         # Combine nonce with password and hash
         auth2_cred = md5(f"{nonce}{self.password}".encode()).hexdigest()
         auth2_req = f"<auth2>\n<nonce_hash>{auth2_cred}</nonce_hash>\n</auth2>"
-        auth2_resp = et.fromstring(self._call(req_string=auth2_req))
+        auth2_resp = etree.fromstring(
+            self._call(req_string=auth2_req), parser=xml_parser
+        )
         return auth2_resp[0].tag
 
     def make_request(self, req_str: str) -> str:
