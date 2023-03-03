@@ -1,5 +1,8 @@
 # BOINC Client
 
+![Test and Release](https://github.com/SplinterHead/boinc-client/actions/workflows/test-and-release.yml/badge.svg)
+[![boinc-client](https://snyk.io/advisor/python/boinc-client/badge.svg)](https://snyk.io/advisor/python/boinc-client)
+
 Python native library for interacting with a BOINC client via RPC. This library has been designed to have consistent response types.
 
 ## Usage
@@ -42,34 +45,13 @@ The following options can be passed when creating a `Boinc` instance
 
 * [Unauthorised Operations](docs/unauthorised.md)
 
-## Contributing
+## Contributors
 
-This project uses [Poetry](https://python-poetry.org/) to manage dependencies, environments and execution.
-It also uses [Docker](https://www.docker.com/) for running integration tests
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 
-Install all dependencies:
-```bash
-poetry install
-```
-Everything should be covered by tests, this project has been put together following TDD using `pytest`
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
-Check all the tests are executing properly:
-```bash
-# Run only the Unit tests
-poetry run pytest -m "not integration"
-
-# Run only the Integration tests
-poetry run pytest -m integration
-
-# Run all tests (recommended)
-poetry run pytest
-```
-
-Once changes have been made, use `black` and `isort` to format all the files:
-```bash
-# Format with black
-poetry run black src/ tests/
-
-# Format with isort
-poetry run isort --profile=black src/ tests/
-```
+<!-- ALL-CONTRIBUTORS-LIST:END -->
