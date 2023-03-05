@@ -70,7 +70,7 @@ jobs:
         uses: ietf-tools/semver-action@v1
         with:
           branch: main
-          patchList: fix,bugfix
+          patchList: fix,bugfix,security
           noVersionBumpBehavior: silent
           token: ${{ secrets.GH_TOKEN }}
       - name: Bump Poetry Version
@@ -84,7 +84,7 @@ jobs:
             [skip ci]
           tagging_message: ${{ steps.semver.outputs.next }}
       - name: Create Release
-        uses: ncipollo/release-action@v1.12.0
+        uses: ncipollo/release-action@v1
         if: ${{ steps.semver.outputs.next != null }}
         with:
           name: ${{ steps.semver.outputs.next }}
