@@ -87,8 +87,8 @@
         <njobs_error>86</njobs_error>
         <elapsed_time>43580057.333979</elapsed_time>
         <last_rpc_time>1677187401.862822</last_rpc_time>
-        <master_url_fetch_pending/>
-        <scheduler_rpc_in_progress/>
+        <master_url_fetch_pending></master_url_fetch_pending>
+        <scheduler_rpc_in_progress></scheduler_rpc_in_progress>
         <rsc_backoff_time>
             <name>CPU</name>
             <value>0.000000</value>
