@@ -871,7 +871,7 @@ def client_state_dict() -> dict:
                 "session_gpu_active_duration": 84243.166578,
             },
             "project": {
-                "master_url": "http://www.worldcommunitygrid.com/",
+                "master_url": "http://www.worldcommunitygrid.org/",
                 "project_name": "World Community Grid",
                 "symstore": "",
                 "user_name": "user_name",
@@ -1150,7 +1150,7 @@ def new_project_attach_client_state_dict() -> dict:
             "work_units": [],
             "results": [],
             "project": {
-                "master_url": "https://www.worldcommunitygrid.com/",
+                "master_url": "https://www.worldcommunitygrid.org/",
                 "project_name": "World Community Grid",
                 "symstore": "",
                 "user_name": "",
