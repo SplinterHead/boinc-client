@@ -30,5 +30,6 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 markers = [
+    "authenticated: Tests that require a form of credential",
     "integration: Integration tests that run against a containerised BOINC client"
 ]

@@ -121,3 +121,33 @@ def multi_project_single_platform_dict() -> dict:
             },
         ]
     }
+
+
+@fixture
+def mock_project_url() -> str:
+    return "https://mockprojectgrid.org/"
+
+
+@fixture
+def mock_project_key() -> str:
+    return "mock_1234567890"
+
+
+@fixture
+def project_attach_poll_success_xml(test_files) -> str:
+    return open(f"{test_files}/project_attach/poll_success.xml").read()
+
+
+@fixture
+def project_attach_poll_success_dict() -> dict:
+    return {"project_attach_reply": {"error_num": 0}}
+
+
+@fixture
+def project_attach_poll_failure_xml(test_files) -> str:
+    return open(f"{test_files}/project_attach/poll_failure.xml").read()
+
+
+@fixture
+def project_attach_poll_failure_dict() -> dict:
+    return {"project_attach_reply": {"messages": ["Failed to connect"], "error_num": 1}}

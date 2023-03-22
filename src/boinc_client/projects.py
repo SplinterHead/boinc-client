@@ -1,6 +1,7 @@
 import xmltodict
 
 from boinc_client.clients.rpc_client import RpcClient
+from boinc_client.models.project_attach import ProjectAttach, ProjectAttachPoll
 from boinc_client.models.projects import Projects
 
 EMPTY_PROJECT_LIST = "<projects></projects>"
@@ -13,3 +14,25 @@ def all_projects(client: RpcClient) -> dict:
         rpc_resp = EMPTY_PROJECT_LIST
     rpc_json = xmltodict.parse(rpc_resp, force_list="project")
     return Projects().load(rpc_json)
+
+
+def attach_project(
+    client: RpcClient, project_name: str, project_url: str, project_key: str
+) -> dict:
+    """Attach the client to a project."""
+    request_xml = f"""<project_attach>
+        <project_url>{project_url}</project_url>
+        <project_name>{project_name}</project_name>
+        <authenticator>{project_key}</authenticator>
+    </project_attach>"""
+    rpc_resp = client.make_request(request_xml)
+    rpc_json = xmltodict.parse(rpc_resp)
+    return ProjectAttach().load(rpc_json)
+
+
+def poll_attach_project(client: RpcClient) -> dict:
+    """Poll the state of a project attachment."""
+    request_xml = "<project_attach_poll/>"
+    rpc_resp = client.make_request(request_xml)
+    rpc_json = xmltodict.parse(rpc_resp, force_list=("message",))
+    return ProjectAttachPoll().load(rpc_json)

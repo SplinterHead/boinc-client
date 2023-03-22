@@ -1,3 +1,5 @@
+import os
+
 import pytest
 from testcontainers.core.container import DockerContainer
 from testcontainers.core.waiting_utils import wait_for_logs
@@ -37,3 +39,8 @@ def rpc_client(boinc_test_container) -> RpcClient:
 @pytest.fixture(scope="session")
 def boinc_client(rpc_client) -> Boinc:
     return Boinc(rpc_client=rpc_client)
+
+
+@pytest.fixture
+def project_weak_key() -> str:
+    return os.getenv("BOINC_PROJECT_KEY", "mockkey_123456789")
