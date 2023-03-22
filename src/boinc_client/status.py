@@ -19,8 +19,9 @@ def client_state(client: RpcClient) -> dict:
         force_list=(
             "app",
             "app_version",
-            "workunit",
             "gui_url",
+            "result",
+            "workunit",
         ),
     )
     return ClientState().load(rpc_json)

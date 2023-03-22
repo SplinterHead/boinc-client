@@ -87,7 +87,6 @@
         <njobs_error>86</njobs_error>
         <elapsed_time>43580057.333979</elapsed_time>
         <last_rpc_time>1677187401.862822</last_rpc_time>
-        <dont_use_dcf></dont_use_dcf>
         <rsc_backoff_time>
             <name>CPU</name>
             <value>0.000000</value>
@@ -126,7 +125,7 @@
         <file_ref>
             <file_name>opn1_image09_7.21.tga</file_name>
             <open_name>Courier.txf</open_name>
-            <copy_file/>
+            <copy_file></copy_file>
         </file_ref>
     </app_version>
     <workunit>
