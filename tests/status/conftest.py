@@ -758,7 +758,7 @@ def blank_client_state_dict() -> dict:
             "project": {},
             "apps": [],
             "app_versions": [],
-            "workunits": [],
+            "work_units": [],
             "results": [],
             "platform_name": "x86_64-pc-linux-gnu",
             "core_client_major_version": 7,
@@ -949,7 +949,7 @@ def client_state_dict() -> dict:
                     ],
                 }
             ],
-            "workunits": [
+            "work_units": [
                 {
                     "name": "MCM1_0196931_1689",
                     "app_name": "mcm1",

@@ -1,6 +1,12 @@
-from marshmallow import Schema, fields, pre_load
+from marshmallow import Schema, fields, post_load, pre_load
 
-from boinc_client.models.helpers import flatten_data, normalise_none_to_list
+from boinc_client.models.helpers import (
+    create_lists,
+    flatten_data,
+    normalise_none_to_list,
+    replace_none_string,
+    set_bools,
+)
 
 
 class RscBackoffTime(Schema):
@@ -67,13 +73,23 @@ class ProjectState(Schema):
     project_dir = fields.Str()
 
     @pre_load
-    def _a_flatten_data(self, data, **kwargs):
+    def _a_create_keys(self, data, **kwargs):
+        return create_lists(data, ["gui_urls"])
+
+    @pre_load
+    def _b_flatten_data(self, data, **kwargs):
         return flatten_data(data, "gui_urls", "gui_url")
 
     @pre_load
-    def _b_set_use_dcf(self, data, **kwargs):
-        data["dont_use_dcf"] = "dont_use_dcf" in data
-        return data
+    def _c_set_bools(self, data, **kwargs):
+        return set_bools(
+            data,
+            ["dont_use_dcf", "master_url_fetch_pending", "scheduler_rpc_in_progress"],
+        )
+
+    @post_load
+    def _a_replace_none_string(self, data, **kwargs):
+        return replace_none_string(data)
 
 
 class ProjectStatus(Schema):
@@ -85,5 +101,4 @@ class ProjectStatus(Schema):
 
     @pre_load
     def _b_flatten_data(self, data, **kwargs):
-        data = flatten_data(data, "projects", "project")
-        return data
+        return flatten_data(data, "projects", "project")
