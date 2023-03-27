@@ -23,7 +23,7 @@ jobs:
     - name: Install Dependencies
       run: poetry install
     - name: Test with PyTest
-      run: coverage run -m pytest -m "not integration and not authenticated"
+      run: poetry run coverage run -m pytest -m "not integration and not authenticated"
       env:
         COVERAGE_FILE: unit_test.coverage
     - uses: actions/upload-artifact@master
@@ -49,7 +49,7 @@ jobs:
     - name: Install Dependencies
       run: poetry install
     - name: Test with PyTest
-      run: coverage run -m pytest -m "integration and not authenticated"
+      run: poetry run coverage run -m pytest -m "integration and not authenticated"
       env:
         COVERAGE_FILE: integration.coverage
     - uses: actions/upload-artifact@master
