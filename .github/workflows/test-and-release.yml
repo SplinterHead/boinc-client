@@ -86,9 +86,6 @@ jobs:
         path: integration.coverage
     - name: Combine test results
       run: |
-        ls -la 
-        ls -la ${{steps.download_unit.outputs.download-path}}
-        ls -la ${{steps.download_int.outputs.download-path}}
         coverage combine ${{steps.download_unit.outputs.download-path}}/*.coverage ${{steps.download_int.outputs.download-path}}/*.coverage
         coverage report --show-missing --include "src/boinc_client/*" --omit src/boinc_client/clients/rpc_client.py --fail-under 100 
 
