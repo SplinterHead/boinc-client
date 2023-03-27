@@ -80,7 +80,7 @@ jobs:
         name: int-cov
         path: integration.coverage
     - name: Combine test results
-      run: coverage report --show-missing --include "src/boinc_client/*" --omit src/boinc_client/clients/rpc_client.py --fail-under 100
+      run: coverage report --show-missing --include "src/boinc_client/*" --omit src/boinc_client/clients/rpc_client.py --fail-under 100 *.coverage
 
   Release:
     runs-on: ubuntu-latest
