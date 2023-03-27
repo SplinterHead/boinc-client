@@ -72,15 +72,19 @@ jobs:
     - name: Install coverage
       run: pip install coverage
     - uses: actions/download-artifact@master
+      name: Download Unit Test results
+      id: download_unit
       with:
         name: unit-cov
         path: unit_test.coverage
     - uses: actions/download-artifact@master
+      name: Download Integration Test results
+      id: download_int
       with:
         name: int-cov
         path: integration.coverage
     - name: Combine test results
-      run: coverage report --show-missing --include "src/boinc_client/*" --omit src/boinc_client/clients/rpc_client.py --fail-under 100 *.coverage
+      run: coverage report --show-missing --include "src/boinc_client/*" --omit src/boinc_client/clients/rpc_client.py --fail-under 100 ${{steps.download_unit.outputs.download-path}} ${{steps.download_int.outputs.download-path}}
 
   Release:
     runs-on: ubuntu-latest
