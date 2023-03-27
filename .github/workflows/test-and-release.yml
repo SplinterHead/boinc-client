@@ -2,7 +2,7 @@ name: Test and Release
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "ci/coverage_reporting" ]
 
 jobs:
   Unit_Test:
@@ -10,46 +10,80 @@ jobs:
     strategy:
       fail-fast: true
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup Poetry
-        uses: abatilo/actions-poetry@v2
-        with:
-          poetry-version: 1.3.2
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
-          cache: "poetry"
-      - name: Install Dependencies
-        run: poetry install
-      - name: Test with PyTest
-        run: poetry run pytest -m "not integration"
+    - uses: actions/checkout@v3
+    - name: Setup Poetry
+      uses: abatilo/actions-poetry@v2
+      with:
+        poetry-version: 1.3.2
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+        cache: "poetry"
+    - name: Install Dependencies
+      run: poetry install
+    - name: Test with PyTest
+      run: coverage run -m pytest -m "not integration and not authenticated"
+      env:
+        COVERAGE_FILE: unit_test.coverage
+    - uses: actions/upload-artifact@master
+      with:
+        name: unit-cov
+        path: unit_test.coverage
 
   Integration_Test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup Poetry
-        uses: abatilo/actions-poetry@v2
-        with:
-          poetry-version: 1.3.2
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
-          cache: "poetry"
-      - name: Install Dependencies
-        run: poetry install
-      - name: Test with PyTest
-        run: poetry run pytest -m "integration"
+    - uses: actions/checkout@v3
+    - name: Setup Poetry
+      uses: abatilo/actions-poetry@v2
+      with:
+        poetry-version: 1.3.2
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+        cache: "poetry"
+    - name: Install Dependencies
+      run: poetry install
+    - name: Test with PyTest
+      run: coverage run -m pytest -m "integration and not authenticated"
+      env:
+        COVERAGE_FILE: integration.coverage
+    - uses: actions/upload-artifact@master
+      with:
+        name: int-cov
+        path: integration.coverage
+
+  Validate:
+    runs-on: ubuntu-latest
+    needs:
+    - Unit_Test
+    - Integration_Test
+    strategy:
+      fail-fast: true
+    steps:
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - uses: actions/download-artifact@master
+      with:
+        name: ut-cov
+        path: unit_test.coverage
+    - uses: actions/download-artifact@master
+      with:
+        name: int-cov
+        path: integration.coverage
+    - name: Combine test results
+      run: coverage report --show-missing --include "src/boinc_client/*" --omit src/boinc_client/clients/rpc_client.py --fail-under 100
 
   Release:
     runs-on: ubuntu-latest
     needs:
-      - Unit_Test
-      - Integration_Test
+    - Validate
     strategy:
       fail-fast: false
     steps:
