@@ -1,4 +1,9 @@
-from boinc_client.projects import all_projects, attach_project, poll_attach_project
+from boinc_client.projects import (
+    all_projects,
+    attach_project,
+    detach_project,
+    poll_attach_project,
+)
 
 
 def test_can_get_empty_list(
@@ -120,3 +125,26 @@ def test_project_attach_poll_returns_error(
     assert (
         poll_attach_project(client=mock_rpc_client) == project_attach_poll_failure_dict
     )
+
+
+def test_can_detach_from_project(mocker, mock_rpc_client, mock_project_url):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value="<success/>",
+    )
+    assert detach_project(client=mock_rpc_client, project_url=mock_project_url) == {
+        "success": True
+    }
+
+
+def test_can_return_error_when_detaching_project(
+    mocker, mock_rpc_client, mock_project_url
+):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value="<error>No such project</error>",
+    )
+    assert detach_project(client=mock_rpc_client, project_url=mock_project_url) == {
+        "success": False,
+        "error": "No such project",
+    }

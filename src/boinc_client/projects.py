@@ -1,7 +1,8 @@
 import xmltodict
 
 from boinc_client.clients.rpc_client import RpcClient
-from boinc_client.models.project_attach import ProjectAttach, ProjectAttachPoll
+from boinc_client.models.generic_response import GenericResponse
+from boinc_client.models.project_attach import ProjectAttachPoll
 from boinc_client.models.projects import Projects
 
 EMPTY_PROJECT_LIST = "<projects></projects>"
@@ -27,7 +28,7 @@ def attach_project(
     </project_attach>"""
     rpc_resp = client.make_request(request_xml)
     rpc_json = xmltodict.parse(rpc_resp)
-    return ProjectAttach().load(rpc_json)
+    return GenericResponse().load(rpc_json)
 
 
 def poll_attach_project(client: RpcClient) -> dict:
@@ -36,3 +37,13 @@ def poll_attach_project(client: RpcClient) -> dict:
     rpc_resp = client.make_request(request_xml)
     rpc_json = xmltodict.parse(rpc_resp, force_list=("message",))
     return ProjectAttachPoll().load(rpc_json)
+
+
+def detach_project(client: RpcClient, project_url: str) -> dict:
+    """Attach the client to a project."""
+    request_xml = f"""<project_detach>
+        <project_url>{project_url}</project_url>
+    </project_detach>"""
+    rpc_resp = client.make_request(request_xml)
+    rpc_json = xmltodict.parse(rpc_resp)
+    return GenericResponse().load(rpc_json)

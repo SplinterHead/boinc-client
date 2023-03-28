@@ -1,7 +1,7 @@
 from boinc_client.clients.rpc_client import RpcClient
 
 from .messages import message_count, messages, public_notices
-from .projects import all_projects, attach_project, poll_attach_project
+from .projects import all_projects, attach_project, detach_project, poll_attach_project
 from .results import old_results, results
 from .stats import daily_network_transfers, project_stats
 from .status import (
@@ -88,3 +88,6 @@ class Boinc:
 
     def poll_attach_project(self):
         return poll_attach_project(self.rpc_client)
+
+    def detach_project(self, url: str) -> dict:
+        return detach_project(self.rpc_client, url)
