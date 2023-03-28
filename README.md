@@ -44,6 +44,7 @@ The following options can be passed when creating a `Boinc` instance
 ### Interacting with Boinc
 
 * [Unauthorised Operations](docs/unauthorised.md)
+* [Project Operations](docs/project.md)
 
 ## Contributors
 
