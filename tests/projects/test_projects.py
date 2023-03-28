@@ -75,7 +75,9 @@ def test_can_attach_to_project(
     )
 
 
-def test_project_attach_returns_error(mocker, mock_rpc_client, mock_project_url, mock_project_key):
+def test_project_attach_returns_error(
+    mocker, mock_rpc_client, mock_project_url, mock_project_key
+):
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
         return_value="<error>Already attached to project</error>",

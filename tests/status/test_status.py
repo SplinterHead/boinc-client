@@ -231,6 +231,17 @@ def test_can_get_client_state(
     assert client_state(client=mock_rpc_client) == client_state_dict
 
 
+def test_can_get_client_state_with_multiple_projects(
+    mocker, mock_rpc_client, multi_project_no_result_xml, multi_project_no_result_dict
+):
+
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=multi_project_no_result_xml,
+    )
+    assert client_state(client=mock_rpc_client) == multi_project_no_result_dict
+
+
 def test_can_get_new_project_attach_client_state(
     mocker,
     mock_rpc_client,

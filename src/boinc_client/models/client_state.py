@@ -129,7 +129,9 @@ class State(Schema):
     host_info = fields.Nested(Host())
     net_stats = fields.Nested(NetStats())
     time_stats = fields.Nested(TimeStats())
-    project = fields.Nested(ProjectState(), data_key="project", load_default={})
+    projects = fields.Nested(
+        ProjectState(many=True), data_key="project", load_default=[]
+    )
     apps = fields.Nested(AppDetails(many=True), data_key="app", allow_none=True)
     app_versions = fields.Nested(
         AppVersion(many=True), data_key="app_version", allow_none=True
@@ -148,7 +150,14 @@ class State(Schema):
 
     @pre_load
     def _a_create_keys(self, data, **kwargs):
-        return create_lists(data, ["app", "app_version", "workunit"])
+        return create_lists(data, ["app", "app_version", "project", "workunit"])
+
+    @pre_load
+    def _b_wrap_dict(self, data, **kwargs):
+        data["project"] = (
+            [data["project"]] if type(data["project"]) is not list else data["project"]
+        )
+        return data
 
 
 class ClientState(Schema):
