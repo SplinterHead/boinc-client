@@ -11,4 +11,4 @@ dist/
 
 # Test Reports
 .coverage
-coverage.xml
+cov/
