@@ -3,6 +3,7 @@ from boinc_client.projects import (
     attach_project,
     detach_project,
     poll_attach_project,
+    update_project,
 )
 
 
@@ -125,6 +126,16 @@ def test_project_attach_poll_returns_error(
     assert (
         poll_attach_project(client=mock_rpc_client) == project_attach_poll_failure_dict
     )
+
+
+def test_can_update_project(mocker, mock_rpc_client, mock_project_url):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value="<success/>",
+    )
+    assert update_project(client=mock_rpc_client, project_url=mock_project_url) == {
+        "success": True
+    }
 
 
 def test_can_detach_from_project(mocker, mock_rpc_client, mock_project_url):

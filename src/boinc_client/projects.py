@@ -39,6 +39,16 @@ def poll_attach_project(client: RpcClient) -> dict:
     return ProjectAttachPoll().load(rpc_json)
 
 
+def update_project(client: RpcClient, project_url: str) -> dict:
+    """Update the state of a project."""
+    request_xml = f"""<project_update>
+        <project_url>{project_url}</project_url>
+    </project_update>"""
+    rpc_resp = client.make_request(request_xml)
+    rpc_json = xmltodict.parse(rpc_resp)
+    return GenericResponse().load(rpc_json)
+
+
 def detach_project(client: RpcClient, project_url: str) -> dict:
     """Attach the client to a project."""
     request_xml = f"""<project_detach>

@@ -168,6 +168,24 @@ def test_can_attach_and_detach_project(boinc_client, project_weak_key):
 
 @mark.authenticated
 @mark.integration
+def test_can_attach_and_update_project(boinc_client, project_weak_key):
+    boinc_client.attach_project(
+        "World Community Grid",
+        "https://www.worldcommunitygrid.org/",
+        project_weak_key,
+    )
+    pre_update_time = boinc_client.get_client_state()["client_state"]["time_stats"][
+        "now"
+    ]
+    boinc_client.update_project("https://www.worldcommunitygrid.org/")
+    post_update_time = boinc_client.get_client_state()["client_state"]["time_stats"][
+        "now"
+    ]
+    assert pre_update_time != post_update_time
+
+
+@mark.authenticated
+@mark.integration
 def test_can_attach_to_multiple_projects(boinc_client, project_weak_key):
     boinc_client.attach_project(
         "World Community Grid",
