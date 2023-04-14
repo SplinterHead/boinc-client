@@ -9,15 +9,15 @@ fmtxml: fmt
 
 .PHONY: unittest
 unittest: fmt
-	poetry run coverage run --data-file cov/unittest.coverage -m pytest -m "not integration and not authenticated" -vv -s
+	poetry run coverage run --data-file cov/unittest.coverage -m pytest -m "not integration and not authenticated" -vv
 
 .PHONY: integration
 integration: fmt
-	poetry run coverage run --data-file cov/integration.coverage -m pytest -m "integration and not authenticated" -vv -s
+	poetry run coverage run --data-file cov/integration.coverage -m pytest -m "integration" -vv
 
 .PHONY: authenticated
 authenticated: fmt
-	poetry run coverage run --data-file cov/authenticated.coverage -m pytest -m "authenticated" -vv -s
+	poetry run coverage run --data-file cov/authenticated.coverage -m pytest -m "authenticated" -vv
 
 .PHONY: test
 test: unittest integration authenticated
