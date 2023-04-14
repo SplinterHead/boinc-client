@@ -36,6 +36,24 @@ Response
 }
 ```
 
+### Update Project
+```python
+boinc_client.update_project()
+```
+
+#### Arguments
+| Argument | Description                       | Required | Default |
+|----------|-----------------------------------|----------|---------|
+| `url`    | URL of the project to detach from | Yes      | None    |
+
+Response
+```python
+{
+    "success": False,
+    "error": "Failed to detach from project"
+}
+```
+
 ### Detach Project
 ```python
 boinc_client.detach_project()

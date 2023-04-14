@@ -78,7 +78,6 @@ def test_client_state(boinc_client):
     assert "client_state" in result
 
 
-# Status
 @mark.integration
 def test_project_status(boinc_client):
     result = boinc_client.get_project_status()
@@ -86,7 +85,6 @@ def test_project_status(boinc_client):
     assert "project_status" in result
 
 
-# Status
 @mark.integration
 def test_cc_state(boinc_client):
     result = boinc_client.get_cc_status()
@@ -94,7 +92,6 @@ def test_cc_state(boinc_client):
     assert "cc_status" in result
 
 
-# Status
 @mark.integration
 def test_disk_stats(boinc_client):
     result = boinc_client.get_disk_stats()
@@ -102,7 +99,6 @@ def test_disk_stats(boinc_client):
     assert "disk_stats" in result
 
 
-# Status
 @mark.integration
 def test_file_transfers(boinc_client):
     result = boinc_client.get_file_transfers()
@@ -110,7 +106,6 @@ def test_file_transfers(boinc_client):
     assert "file_transfers" in result
 
 
-# Status
 @mark.integration
 def test_host_info(boinc_client):
     result = boinc_client.get_host_info()
@@ -118,7 +113,6 @@ def test_host_info(boinc_client):
     assert "host_info" in result
 
 
-# Status
 @mark.integration
 def test_simple_gui_info(boinc_client):
     result = boinc_client.get_simple_gui_info()
@@ -126,7 +120,6 @@ def test_simple_gui_info(boinc_client):
     assert "gui_info" in result
 
 
-# Status
 @mark.integration
 def test_screensaver_tasks(boinc_client):
     result = boinc_client.get_screensaver_tasks()
