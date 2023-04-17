@@ -202,3 +202,21 @@ def test_can_attach_to_multiple_projects(boinc_test_client, project_weak_key):
         boinc_test_client.get_project_status()["project_status"][1]["project_name"]
         == "World Community Grid"
     )
+
+
+@mark.authenticated
+def test_can_suspend_and_resume_project(boinc_test_client, project_weak_key):
+    boinc_test_client.attach_project(
+        "World Community Grid",
+        "https://www.worldcommunitygrid.org/",
+        project_weak_key,
+    )
+    boinc_test_client.suspend_project("https://www.worldcommunitygrid.org/")
+    assert boinc_test_client.get_project_status()["project_status"][0][
+        "suspended_via_gui"
+    ]
+
+    boinc_test_client.resume_project("https://www.worldcommunitygrid.org/")
+    assert not boinc_test_client.get_project_status()["project_status"][0][
+        "suspended_via_gui"
+    ]

@@ -73,6 +73,7 @@ class ProjectState(Schema):
     sched_priority = fields.Float()
     project_files_downloaded_time = fields.Float()
     project_dir = fields.Str()
+    suspended_via_gui = fields.Bool()
 
     @pre_load
     def _a_create_keys(self, data, **kwargs):
@@ -86,7 +87,12 @@ class ProjectState(Schema):
     def _c_set_bools(self, data, **kwargs):
         return set_bools(
             data,
-            ["dont_use_dcf", "master_url_fetch_pending", "scheduler_rpc_in_progress"],
+            [
+                "dont_use_dcf",
+                "master_url_fetch_pending",
+                "scheduler_rpc_in_progress",
+                "suspended_via_gui",
+            ],
         )
 
     @post_load

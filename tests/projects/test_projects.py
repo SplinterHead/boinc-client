@@ -3,6 +3,8 @@ from boinc_client.projects import (
     attach_project,
     detach_project,
     poll_attach_project,
+    resume_project,
+    suspend_project,
     update_project,
 )
 
@@ -158,4 +160,24 @@ def test_can_return_error_when_detaching_project(
     assert detach_project(client=mock_rpc_client, project_url=mock_project_url) == {
         "success": False,
         "error": "No such project",
+    }
+
+
+def test_can_suspend_project(mocker, mock_rpc_client, mock_project_url):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value="<success/>",
+    )
+    assert suspend_project(client=mock_rpc_client, project_url=mock_project_url) == {
+        "success": True
+    }
+
+
+def test_can_resume_project(mocker, mock_rpc_client, mock_project_url):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value="<success/>",
+    )
+    assert resume_project(client=mock_rpc_client, project_url=mock_project_url) == {
+        "success": True
     }

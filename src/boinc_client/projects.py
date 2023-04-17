@@ -50,10 +50,30 @@ def update_project(client: RpcClient, project_url: str) -> dict:
 
 
 def detach_project(client: RpcClient, project_url: str) -> dict:
-    """Attach the client to a project."""
+    """Detach from a project."""
     request_xml = f"""<project_detach>
         <project_url>{project_url}</project_url>
     </project_detach>"""
+    rpc_resp = client.make_request(request_xml)
+    rpc_json = xmltodict.parse(rpc_resp)
+    return GenericResponse().load(rpc_json)
+
+
+def suspend_project(client: RpcClient, project_url: str) -> dict:
+    """Suspend a project."""
+    request_xml = f"""<project_suspend>
+        <project_url>{project_url}</project_url>
+    </project_suspend>"""
+    rpc_resp = client.make_request(request_xml)
+    rpc_json = xmltodict.parse(rpc_resp)
+    return GenericResponse().load(rpc_json)
+
+
+def resume_project(client: RpcClient, project_url: str) -> dict:
+    """Resume a project."""
+    request_xml = f"""<project_resume>
+        <project_url>{project_url}</project_url>
+    </project_resume>"""
     rpc_resp = client.make_request(request_xml)
     rpc_json = xmltodict.parse(rpc_resp)
     return GenericResponse().load(rpc_json)

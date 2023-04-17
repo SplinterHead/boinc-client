@@ -144,7 +144,8 @@ Response
             ],
             "sched_priority": -1.041667,
             "project_files_downloaded_time": 0.000000,
-            "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org"
+            "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
+            "suspended_via_gui": False,
         }
     ]
 }

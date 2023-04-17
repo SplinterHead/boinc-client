@@ -6,6 +6,8 @@ from .projects import (
     attach_project,
     detach_project,
     poll_attach_project,
+    resume_project,
+    suspend_project,
     update_project,
 )
 from .results import old_results, results
@@ -100,3 +102,9 @@ class Boinc:
 
     def detach_project(self, url: str) -> dict:
         return detach_project(self.rpc_client, url)
+
+    def suspend_project(self, url: str) -> dict:
+        return suspend_project(self.rpc_client, url)
+
+    def resume_project(self, url: str) -> dict:
+        return resume_project(self.rpc_client, url)

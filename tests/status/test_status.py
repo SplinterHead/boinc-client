@@ -276,3 +276,14 @@ def test_can_get_project_status(
         return_value=project_status_xml,
     )
     assert project_status(client=mock_rpc_client) == project_status_dict
+
+
+def test_can_get_suspended_project_status(
+    mocker, mock_rpc_client, suspended_project_status_xml, suspended_project_status_dict
+):
+
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=suspended_project_status_xml,
+    )
+    assert project_status(client=mock_rpc_client) == suspended_project_status_dict

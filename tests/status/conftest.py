@@ -347,6 +347,7 @@ def simple_gui_info_singles_dict() -> dict:
                     "sched_priority": -1.041667,
                     "project_files_downloaded_time": 0.000000,
                     "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
+                    "suspended_via_gui": False,
                 }
             ],
             "results": [
@@ -466,6 +467,7 @@ def simple_gui_info_multi_dict() -> dict:
                     "sched_priority": -1.181306,
                     "project_files_downloaded_time": 0.000000,
                     "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
+                    "suspended_via_gui": False,
                 }
             ],
             "results": [
@@ -935,6 +937,7 @@ def multi_project_no_result_dict() -> dict:
                     "sched_priority": -1.041667,
                     "project_files_downloaded_time": 0.000000,
                     "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
+                    "suspended_via_gui": False,
                 },
                 {
                     "master_url": "http://www.spacecommunitygrid.org/",
@@ -990,6 +993,7 @@ def multi_project_no_result_dict() -> dict:
                     "sched_priority": -1.041667,
                     "project_files_downloaded_time": 0.000000,
                     "project_dir": "/var/lib/boinc/projects/www.spacecommunitygrid.org",
+                    "suspended_via_gui": False,
                 },
             ],
             "global_preferences": {
@@ -1147,6 +1151,7 @@ def client_state_dict() -> dict:
                     "sched_priority": -1.041667,
                     "project_files_downloaded_time": 0.000000,
                     "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
+                    "suspended_via_gui": False,
                 }
             ],
             "apps": [
@@ -1422,6 +1427,7 @@ def new_project_attach_client_state_dict() -> dict:
                     "sched_priority": -1.041667,
                     "project_files_downloaded_time": 0.000000,
                     "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
+                    "suspended_via_gui": False,
                 }
             ],
             "platform_name": "x86_64-pc-linux-gnu",
@@ -1575,6 +1581,76 @@ def project_status_dict() -> dict:
                 "sched_priority": -1.041667,
                 "project_files_downloaded_time": 0.000000,
                 "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
+                "suspended_via_gui": False,
+            }
+        ]
+    }
+
+
+@fixture
+def suspended_project_status_xml(test_files) -> str:
+    return open(f"{test_files}/project_status/suspended_project.xml").read()
+
+
+@fixture
+def suspended_project_status_dict() -> dict:
+    return {
+        "project_status": [
+            {
+                "master_url": "http://www.worldcommunitygrid.org/",
+                "project_name": "World Community Grid",
+                "symstore": "",
+                "user_name": "user_name",
+                "team_name": "",
+                "host_venue": "",
+                "email_hash": "35cfa58b4e0b46de6a651ce508082d61",
+                "cross_project_id": "037befc40287d29bb9590d8e0edd8198",
+                "external_cpid": "192792945b257453b6da6c7cad1c1381",
+                "cpid_time": 1665410370.000000,
+                "user_total_credit": 341094.533876,
+                "user_expavg_credit": 2900.946548,
+                "user_create_time": 1665410370.000000,
+                "rpc_seqno": 655,
+                "userid": 1156486,
+                "teamid": 0,
+                "hostid": 8667640,
+                "host_total_credit": 339691.861332,
+                "host_expavg_credit": 2900.715440,
+                "host_create_time": 1665650589.000000,
+                "nrpc_failures": 0,
+                "master_fetch_failures": 0,
+                "min_rpc_time": 1677187523.062822,
+                "next_rpc_time": 1677446601.862822,
+                "rec": 4267.417546,
+                "rec_time": 1677189666.165000,
+                "resource_share": 100.000000,
+                "disk_usage": 1410613248.000000,
+                "disk_share": 410497975500.800049,
+                "desired_disk_usage": 0.000000,
+                "duration_correction_factor": 1.000000,
+                "sched_rpc_pending": 0,
+                "send_time_stats_log": 0,
+                "send_job_log": 0,
+                "njobs_success": 3872,
+                "njobs_error": 86,
+                "elapsed_time": 43580057.333979,
+                "last_rpc_time": 1677187401.862822,
+                "dont_use_dcf": True,
+                "master_url_fetch_pending": False,
+                "scheduler_rpc_in_progress": False,
+                "rsc_backoff_time": {"name": "CPU", "value": 0.000000},
+                "rsc_backoff_interval": {"name": "CPU", "value": 0.000000},
+                "gui_urls": [
+                    {
+                        "name": "Research Overview",
+                        "description": "Learn about the projects hosted at World Community Grid",
+                        "url": "https://www.worldcommunitygrid.org/research/viewAllProjects.do",
+                    }
+                ],
+                "sched_priority": -1.041667,
+                "project_files_downloaded_time": 0.000000,
+                "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
+                "suspended_via_gui": True,
             }
         ]
     }
