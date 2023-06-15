@@ -21,12 +21,12 @@ class RpcClient:
         self.port = port
         self.timeout = timeout
         self.password = password
-        self.socket = self.create_connection()
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.settimeout(self.timeout)
+        self.create_connection()
 
     def create_connection(self) -> socket:
-        return socket.create_connection(
-            address=(self.hostname, self.port), timeout=self.timeout
-        )
+        return self.socket.connect((self.hostname, self.port))
 
     def authenticate(self) -> bool:
         if self.password:

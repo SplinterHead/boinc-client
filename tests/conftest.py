@@ -8,7 +8,7 @@ from boinc_client.clients.rpc_client import RpcClient
 
 @fixture
 def mock_rpc_client(mocker) -> RpcClient:
-    mocker.patch("socket.create_connection")
+    mocker.patch("socket.socket.connect")
     return RpcClient(hostname="localhost", port=12345)
 
 
