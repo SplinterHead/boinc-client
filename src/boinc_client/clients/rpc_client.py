@@ -1,5 +1,6 @@
 import re
 import socket
+import threading
 from hashlib import md5
 
 from lxml import etree
@@ -13,6 +14,7 @@ class RpcClient:
     timeout: int
     password: str
     socket: socket.socket
+    _call_lock: threading.Lock
 
     def __init__(
         self, hostname: str, port: int = 31416, timeout: int = 30, password: str = None
@@ -24,6 +26,7 @@ class RpcClient:
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.settimeout(self.timeout)
         self.create_connection()
+        self._call_lock = threading.Lock()
 
     def create_connection(self) -> socket:
         return self.socket.connect((self.hostname, self.port))
@@ -51,7 +54,9 @@ class RpcClient:
         return auth2_resp[0].tag
 
     def make_request(self, req_str: str) -> str:
+        self._call_lock.acquire()
         response = self._call(req_string=req_str)
+        self._call_lock.release()
         return re.sub("<(/)?boinc_gui_rpc_reply>(\\n)?", "", response)
 
     def _call(self, req_string: str) -> str:

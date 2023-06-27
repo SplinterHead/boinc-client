@@ -212,7 +212,6 @@ def test_can_get_screensaver_tasks_multi_result(
 def test_can_get_blank_client_state(
     mocker, mock_rpc_client, blank_client_state_xml, blank_client_state_dict
 ):
-
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
         return_value=blank_client_state_xml,
@@ -223,7 +222,6 @@ def test_can_get_blank_client_state(
 def test_can_get_client_state(
     mocker, mock_rpc_client, client_state_xml, client_state_dict
 ):
-
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
         return_value=client_state_xml,
@@ -234,7 +232,6 @@ def test_can_get_client_state(
 def test_can_get_client_state_with_multiple_projects(
     mocker, mock_rpc_client, multi_project_no_result_xml, multi_project_no_result_dict
 ):
-
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
         return_value=multi_project_no_result_xml,
@@ -248,7 +245,6 @@ def test_can_get_new_project_attach_client_state(
     new_project_attach_client_state_xml,
     new_project_attach_client_state_dict,
 ):
-
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
         return_value=new_project_attach_client_state_xml,
@@ -259,7 +255,6 @@ def test_can_get_new_project_attach_client_state(
 def test_can_get_empty_project_status(
     mocker, mock_rpc_client, empty_project_status_xml, empty_project_status_dict
 ):
-
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
         return_value=empty_project_status_xml,
@@ -270,7 +265,6 @@ def test_can_get_empty_project_status(
 def test_can_get_project_status(
     mocker, mock_rpc_client, project_status_xml, project_status_dict
 ):
-
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
         return_value=project_status_xml,
@@ -281,7 +275,6 @@ def test_can_get_project_status(
 def test_can_get_suspended_project_status(
     mocker, mock_rpc_client, suspended_project_status_xml, suspended_project_status_dict
 ):
-
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
         return_value=suspended_project_status_xml,
