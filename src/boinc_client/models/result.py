@@ -42,6 +42,7 @@ class Result(Schema):
     active_task = fields.Nested(ActiveTask())
     ready_to_report = fields.Bool()
     completed_time = fields.Float()
+    project_suspended_via_gui = fields.Bool()
 
     @pre_load
     def _set_ready(self, data, **kwargs):
@@ -51,6 +52,11 @@ class Result(Schema):
     @pre_load
     def _set_scheduled(self, data, **kwargs):
         data["edf_scheduled"] = "edf_scheduled" in data
+        return data
+
+    @pre_load
+    def _set_suspended(self, data, **kwargs):
+        data["project_suspended_via_gui"] = "project_suspended_via_gui" in data
         return data
 
 

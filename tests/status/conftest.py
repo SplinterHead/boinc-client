@@ -387,6 +387,7 @@ def simple_gui_info_singles_dict() -> dict:
                         "slot_path": "/var/lib/boinc/slots/2",
                     },
                     "ready_to_report": False,
+                    "project_suspended_via_gui": False,
                 }
             ],
         }
@@ -507,6 +508,7 @@ def simple_gui_info_multi_dict() -> dict:
                         "slot_path": "/var/lib/boinc/slots/12",
                     },
                     "ready_to_report": False,
+                    "project_suspended_via_gui": False,
                 },
                 {
                     "name": "OPN1_0114551_01137_0",
@@ -544,6 +546,7 @@ def simple_gui_info_multi_dict() -> dict:
                         "slot_path": "/var/lib/boinc/slots/13",
                     },
                     "ready_to_report": False,
+                    "project_suspended_via_gui": False,
                 },
             ],
         }
@@ -607,6 +610,7 @@ def screensaver_tasks_single_result_dict() -> dict:
                         "graphics_exec_path": "/var/lib/boinc/projects/www.worldcommunitygrid.org/wcgrid_mcm1_gfx_7.61_x86_64-pc-linux-gnu",
                         "slot_path": "/var/lib/boinc/slots/14",
                     },
+                    "project_suspended_via_gui": False,
                 },
             ],
         },
@@ -660,6 +664,7 @@ def screensaver_tasks_multi_result_dict() -> dict:
                         "graphics_exec_path": "/var/lib/boinc/projects/www.worldcommunitygrid.org/wcgrid_mcm1_gfx_7.61_x86_64-pc-linux-gnu",
                         "slot_path": "/var/lib/boinc/slots/14",
                     },
+                    "project_suspended_via_gui": False,
                 },
                 {
                     "name": "MCM1_0196982_3346_0",
@@ -697,6 +702,7 @@ def screensaver_tasks_multi_result_dict() -> dict:
                         "graphics_exec_path": "/var/lib/boinc/projects/www.worldcommunitygrid.org/wcgrid_mcm1_gfx_7.61_x86_64-pc-linux-gnu",
                         "slot_path": "/var/lib/boinc/slots/6",
                     },
+                    "project_suspended_via_gui": False,
                 },
             ],
         }
@@ -1228,6 +1234,7 @@ def client_state_dict() -> dict:
                     "ready_to_report": True,
                     "edf_scheduled": False,
                     "completed_time": 1676979676.425968,
+                    "project_suspended_via_gui": False,
                 },
                 {
                     "name": "MCM1_0196961_6759_0",
@@ -1265,6 +1272,7 @@ def client_state_dict() -> dict:
                         "graphics_exec_path": "/var/lib/boinc/projects/www.worldcommunitygrid.org/wcgrid_mcm1_gfx_7.61_x86_64-pc-linux-gnu",
                         "slot_path": "/var/lib/boinc/slots/11",
                     },
+                    "project_suspended_via_gui": False,
                 },
             ],
             "platform_name": "x86_64-pc-linux-gnu",

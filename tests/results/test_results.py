@@ -27,6 +27,19 @@ def test_can_get_single_pending_result(
     assert results(client=mock_rpc_client) == single_pending_result_dict
 
 
+def test_can_get_single_suspended_result(
+    mocker,
+    mock_rpc_client,
+    single_suspended_result_xml,
+    single_suspended_result_dict,
+):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=single_suspended_result_xml,
+    )
+    assert results(client=mock_rpc_client) == single_suspended_result_dict
+
+
 def test_can_get_single_active_result(
     mocker,
     mock_rpc_client,
