@@ -98,6 +98,29 @@ def single_notice_dict() -> dict:
 
 
 @fixture
+def nulled_notice_xml(test_files) -> str:
+    return open(f"{test_files}/notices/nulled_notice.xml").read()
+
+
+@fixture
+def nulled_notice_dict() -> dict:
+    return {
+        "notices": {
+            1: {
+                "title": None,
+                "description": "This is a notice",
+                "create_time": 1688708837.806547,
+                "arrival_time": 1688708837.806547,
+                "is_private": False,
+                "project_name": "proja",
+                "category": "client",
+                "link": None,
+            }
+        }
+    }
+
+
+@fixture
 def multi_notice_xml(test_files) -> str:
     return open(f"{test_files}/notices/multi_notices.xml").read()
 

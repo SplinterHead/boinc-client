@@ -9,14 +9,14 @@ from boinc_client.models.helpers import (
 
 
 class Notice(Schema):
-    title = fields.Str()
+    title = fields.Str(allow_none=True)
     description = fields.Str()
-    create_time = fields.Int()
-    arrival_time = fields.Int()
+    create_time = fields.Float()
+    arrival_time = fields.Float()
     is_private = fields.Bool()
     project_name = fields.Str()
     category = fields.Str()
-    link = fields.Url()
+    link = fields.Url(allow_none=True)
     seqno = fields.Int()
 
     @post_load

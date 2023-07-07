@@ -70,6 +70,16 @@ def test_can_get_single_public_notice(
     assert public_notices(client=mock_rpc_client) == single_notice_dict
 
 
+def test_can_get_nulled_public_notice(
+    mocker, mock_rpc_client, nulled_notice_xml, nulled_notice_dict
+):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=nulled_notice_xml,
+    )
+    assert public_notices(client=mock_rpc_client) == nulled_notice_dict
+
+
 def test_can_get_multi_public_notice(
     mocker, mock_rpc_client, multi_notice_xml, multi_notice_dict
 ):
