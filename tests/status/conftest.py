@@ -1590,6 +1590,7 @@ def project_status_dict() -> dict:
                 "project_files_downloaded_time": 0.000000,
                 "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
                 "suspended_via_gui": False,
+                "upload_backoff": 12843.957831,
             }
         ]
     }

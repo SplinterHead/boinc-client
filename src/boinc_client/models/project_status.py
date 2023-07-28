@@ -74,6 +74,7 @@ class ProjectState(Schema):
     project_files_downloaded_time = fields.Float()
     project_dir = fields.Str()
     suspended_via_gui = fields.Bool()
+    upload_backoff = fields.Float()
 
     @pre_load
     def _a_create_keys(self, data, **kwargs):

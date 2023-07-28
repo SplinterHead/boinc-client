@@ -85,6 +85,7 @@
             </gui_url>
         </gui_urls>
         <sched_priority>-1.041667</sched_priority>
+        <upload_backoff>12843.957831</upload_backoff>
         <project_files_downloaded_time>0.000000</project_files_downloaded_time>
         <project_dir>/var/lib/boinc/projects/www.worldcommunitygrid.org</project_dir>
     </project>
