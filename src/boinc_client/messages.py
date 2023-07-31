@@ -22,7 +22,7 @@ def message_count(client: RpcClient) -> dict:
     return MessageCount().load(rpc_json)
 
 
-def public_notices(client: RpcClient, start: int = 0) -> dict:
+def public_notices(client: RpcClient, start: int = 1) -> dict:
     """Returns only non-private notices, doesn't require authentication."""
     rpc_resp = client.make_request(
         f"<get_notices_public><seqno>{start}</seqno></get_notices_public>"
