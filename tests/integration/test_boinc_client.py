@@ -179,6 +179,23 @@ def test_can_attach_and_update_project(boinc_test_client, project_weak_key):
 
 
 @mark.authenticated
+def test_can_attach_and_reset_project(boinc_test_client, project_weak_key):
+    boinc_test_client.attach_project(
+        "World Community Grid",
+        "https://www.worldcommunitygrid.org/",
+        project_weak_key,
+    )
+    pre_update_time = boinc_test_client.get_client_state()["client_state"][
+        "time_stats"
+    ]["now"]
+    boinc_test_client.reset_project("https://www.worldcommunitygrid.org/")
+    post_update_time = boinc_test_client.get_client_state()["client_state"][
+        "time_stats"
+    ]["now"]
+    assert pre_update_time < post_update_time
+
+
+@mark.authenticated
 def test_can_attach_to_multiple_projects(boinc_test_client, project_weak_key):
     boinc_test_client.attach_project(
         "World Community Grid",
