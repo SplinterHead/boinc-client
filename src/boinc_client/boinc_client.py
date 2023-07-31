@@ -6,6 +6,7 @@ from .projects import (
     attach_project,
     detach_project,
     poll_attach_project,
+    reset_project,
     resume_project,
     suspend_project,
     update_project,
@@ -108,3 +109,6 @@ class Boinc:
 
     def resume_project(self, url: str) -> dict:
         return resume_project(self.rpc_client, url)
+
+    def reset_project(self, url: str) -> dict:
+        return reset_project(self.rpc_client, url)

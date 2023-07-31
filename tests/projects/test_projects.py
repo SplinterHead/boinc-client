@@ -3,6 +3,7 @@ from boinc_client.projects import (
     attach_project,
     detach_project,
     poll_attach_project,
+    reset_project,
     resume_project,
     suspend_project,
     update_project,
@@ -179,5 +180,15 @@ def test_can_resume_project(mocker, mock_rpc_client, mock_project_url):
         return_value="<success/>",
     )
     assert resume_project(client=mock_rpc_client, project_url=mock_project_url) == {
+        "success": True
+    }
+
+
+def test_can_reset_project(mocker, mock_rpc_client, mock_project_url):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value="<success/>",
+    )
+    assert reset_project(client=mock_rpc_client, project_url=mock_project_url) == {
         "success": True
     }

@@ -77,3 +77,13 @@ def resume_project(client: RpcClient, project_url: str) -> dict:
     rpc_resp = client.make_request(request_xml)
     rpc_json = xmltodict.parse(rpc_resp)
     return GenericResponse().load(rpc_json)
+
+
+def reset_project(client: RpcClient, project_url: str) -> dict:
+    """Reset a project."""
+    request_xml = f"""<project_reset>
+        <project_url>{project_url}</project_url>
+    </project_reset>"""
+    rpc_resp = client.make_request(request_xml)
+    rpc_json = xmltodict.parse(rpc_resp)
+    return GenericResponse().load(rpc_json)
