@@ -9,11 +9,11 @@ from boinc_client.models.helpers import (
 
 
 class Message(Schema):
-    project = fields.Str(allow_none=True)
-    pri = fields.Str()
     body = fields.Str(allow_none=True)
-    time = fields.Int()
+    pri = fields.Str()
+    project = fields.Str(allow_none=True)
     seqno = fields.Int()
+    time = fields.Int()
 
     @post_load
     def _a_remove_seqno(self, data, **kwargs):

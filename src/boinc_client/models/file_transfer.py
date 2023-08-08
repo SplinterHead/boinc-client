@@ -4,30 +4,30 @@ from boinc_client.models.helpers import flatten_data, normalise_none_to_list
 
 
 class PersistentFileTransfer(Schema):
-    num_retries = fields.Str()
     first_request_time = fields.Str()
-    next_request_time = fields.Str()
-    time_so_far = fields.Str()
-    last_bytes_xferred = fields.Str()
     is_upload = fields.Str()
+    last_bytes_xferred = fields.Str()
+    next_request_time = fields.Str()
+    num_retries = fields.Str()
+    time_so_far = fields.Str()
 
 
 class FileTransferDetail(Schema):
     bytes_xferred = fields.Str()
     file_offset = fields.Str()
-    xfer_speed = fields.Str()
     url = fields.Str()
+    xfer_speed = fields.Str()
 
 
 class FileTransfer(Schema):
-    project_url = fields.Str()
-    project_name = fields.Str()
+    file_xfer = fields.Nested(FileTransferDetail())
+    max_nbytes = fields.Str()
     name = fields.Str()
     nbytes = fields.Str()
-    max_nbytes = fields.Str()
-    status = fields.Str()
     persistent_file_xfer = fields.Nested(PersistentFileTransfer())
-    file_xfer = fields.Nested(FileTransferDetail())
+    project_name = fields.Str()
+    project_url = fields.Str()
+    status = fields.Str()
 
 
 class FileTransfers(Schema):

@@ -2,8 +2,8 @@ from marshmallow import Schema, fields
 
 
 class ProjectAttachPollMessages(Schema):
-    messages = fields.List(fields.Str(), allow_none=True, data_key="message")
     error_num = fields.Int()
+    messages = fields.List(fields.Str(), allow_none=True, data_key="message")
 
 
 class ProjectAttachPoll(Schema):

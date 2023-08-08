@@ -12,10 +12,10 @@ def _convert_epoch(epoch: str):
 
 class DailyStats(Schema):
     day = fields.Float()
-    user_total_credit = fields.Float()
-    user_expavg_credit = fields.Float()
-    host_total_credit = fields.Float()
     host_expavg_credit = fields.Float()
+    host_total_credit = fields.Float()
+    user_expavg_credit = fields.Float()
+    user_total_credit = fields.Float()
 
     @post_load
     def _remove_day(self, data, **kwargs):
@@ -23,8 +23,8 @@ class DailyStats(Schema):
 
 
 class Project(Schema):
-    master_url = fields.Str()
     daily_statistics = fields.Dict(fields.Str(), fields.Nested(DailyStats()))
+    master_url = fields.Str()
 
     @pre_load
     def _create_dict_keys(self, data, **kwargs):
