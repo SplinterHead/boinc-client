@@ -5,7 +5,7 @@ fmt:
 
 .PHONY: fmtxml
 fmtxml: fmt
-	find tests/test_files -type f -name "*.xml" -exec poetry run xmlformat --indent 4 --overwrite {} \;
+	find tests/test_files -type f -name "*.xml" -exec echo "- {}" \; -exec poetry run xmlformat --indent 4 --overwrite {} \;
 
 .PHONY: unittest
 unittest: fmt
