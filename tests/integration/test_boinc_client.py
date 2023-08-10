@@ -142,6 +142,13 @@ def test_container_update(boinc_session_client):
     assert "update" in result
 
 
+@mark.integration
+def test_global_preferences(boinc_session_client):
+    result = boinc_session_client.get_global_prefs_file()
+    assert result
+    assert "error" in result  # No global_preferences file available
+
+
 @mark.authenticated
 def test_can_attach_and_detach_project(boinc_test_client, project_weak_key):
     boinc_test_client.attach_project(

@@ -126,5 +126,8 @@ class Boinc:
     def get_client_update(self) -> dict:
         return client_update(client=self.rpc_client)
 
+    ##############
+    # Preferences
+    ##############
     def get_global_prefs_file(self) -> dict:
         return get_global_prefs_file(self.rpc_client)
