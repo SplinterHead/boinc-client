@@ -244,3 +244,21 @@ def test_can_suspend_and_resume_project(boinc_test_client, project_weak_key):
     assert not boinc_test_client.get_project_status()["project_status"][0][
         "suspended_via_gui"
     ]
+
+
+@mark.authenticated
+def test_can_set_and_unset_nomorework_on_project(boinc_test_client, project_weak_key):
+    boinc_test_client.attach_project(
+        "World Community Grid",
+        "https://www.worldcommunitygrid.org/",
+        project_weak_key,
+    )
+    boinc_test_client.project_no_more_work("https://www.worldcommunitygrid.org/")
+    assert boinc_test_client.get_project_status()["project_status"][0][
+        "dont_request_more_work"
+    ]
+
+    boinc_test_client.project_allow_more_work("https://www.worldcommunitygrid.org/")
+    assert not boinc_test_client.get_project_status()["project_status"][0][
+        "dont_request_more_work"
+    ]

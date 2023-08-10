@@ -31,6 +31,7 @@ class ProjectState(Schema):
     desired_disk_usage = fields.Float()
     disk_share = fields.Float()
     disk_usage = fields.Float()
+    dont_request_more_work = fields.Bool()
     dont_use_dcf = fields.Bool()
     duration_correction_factor = fields.Float()
     elapsed_time = fields.Float()
@@ -89,6 +90,7 @@ class ProjectState(Schema):
         return set_bools(
             data,
             [
+                "dont_request_more_work",
                 "dont_use_dcf",
                 "master_url_fetch_pending",
                 "scheduler_rpc_in_progress",

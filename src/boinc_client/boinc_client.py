@@ -7,6 +7,8 @@ from .projects import (
     attach_project,
     detach_project,
     poll_attach_project,
+    project_allow_more_work,
+    project_no_more_work,
     reset_project,
     resume_project,
     suspend_project,
@@ -116,6 +118,15 @@ class Boinc:
 
     def get_screensaver_tasks(self) -> dict:
         return screensaver_tasks(client=self.rpc_client)
+
+    ########
+    # Tasks
+    ########
+    def project_no_more_work(self, url: str) -> dict:
+        return project_no_more_work(client=self.rpc_client, project_url=url)
+
+    def project_allow_more_work(self, url: str) -> dict:
+        return project_allow_more_work(client=self.rpc_client, project_url=url)
 
     ###########
     # Versions
