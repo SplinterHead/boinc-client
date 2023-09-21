@@ -142,6 +142,13 @@ def test_container_update(boinc_session_client):
     assert "update" in result
 
 
+@mark.integration
+def test_global_preferences(boinc_session_client):
+    result = boinc_session_client.get_global_prefs_file()
+    assert result
+    assert "error" in result  # No global_preferences file available
+
+
 @mark.authenticated
 def test_can_attach_and_detach_project(boinc_test_client, project_weak_key):
     boinc_test_client.attach_project(
@@ -172,6 +179,23 @@ def test_can_attach_and_update_project(boinc_test_client, project_weak_key):
         "time_stats"
     ]["now"]
     boinc_test_client.update_project("https://www.worldcommunitygrid.org/")
+    post_update_time = boinc_test_client.get_client_state()["client_state"][
+        "time_stats"
+    ]["now"]
+    assert pre_update_time < post_update_time
+
+
+@mark.authenticated
+def test_can_attach_and_reset_project(boinc_test_client, project_weak_key):
+    boinc_test_client.attach_project(
+        "World Community Grid",
+        "https://www.worldcommunitygrid.org/",
+        project_weak_key,
+    )
+    pre_update_time = boinc_test_client.get_client_state()["client_state"][
+        "time_stats"
+    ]["now"]
+    boinc_test_client.reset_project("https://www.worldcommunitygrid.org/")
     post_update_time = boinc_test_client.get_client_state()["client_state"][
         "time_stats"
     ]["now"]
@@ -219,4 +243,22 @@ def test_can_suspend_and_resume_project(boinc_test_client, project_weak_key):
     boinc_test_client.resume_project("https://www.worldcommunitygrid.org/")
     assert not boinc_test_client.get_project_status()["project_status"][0][
         "suspended_via_gui"
+    ]
+
+
+@mark.authenticated
+def test_can_set_and_unset_nomorework_on_project(boinc_test_client, project_weak_key):
+    boinc_test_client.attach_project(
+        "World Community Grid",
+        "https://www.worldcommunitygrid.org/",
+        project_weak_key,
+    )
+    boinc_test_client.project_no_more_work("https://www.worldcommunitygrid.org/")
+    assert boinc_test_client.get_project_status()["project_status"][0][
+        "dont_request_more_work"
+    ]
+
+    boinc_test_client.project_allow_more_work("https://www.worldcommunitygrid.org/")
+    assert not boinc_test_client.get_project_status()["project_status"][0][
+        "dont_request_more_work"
     ]

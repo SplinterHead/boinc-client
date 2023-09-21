@@ -39,6 +39,7 @@
         <elapsed_time>43580057.333979</elapsed_time>
         <last_rpc_time>1677187401.862822</last_rpc_time>
         <dont_use_dcf></dont_use_dcf>
+        <dont_request_more_work></dont_request_more_work>
         <rsc_backoff_time>
             <name>CPU</name>
             <value>0.000000</value>

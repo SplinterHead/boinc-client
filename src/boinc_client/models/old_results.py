@@ -4,14 +4,14 @@ from boinc_client.models.helpers import flatten_data, normalise_none_to_list
 
 
 class OldResult(Schema):
+    app_name = fields.Str()
+    completed_time = fields.Float()
+    cpu_time = fields.Float()
+    create_time = fields.Float()
+    elapsed_time = fields.Float()
+    exit_status = fields.Int()
     project_url = fields.Url()
     result_name = fields.Str()
-    app_name = fields.Str()
-    exit_status = fields.Int()
-    elapsed_time = fields.Float()
-    cpu_time = fields.Float()
-    completed_time = fields.Float()
-    create_time = fields.Float()
 
 
 class OldResults(Schema):

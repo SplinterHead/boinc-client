@@ -333,6 +333,7 @@ def simple_gui_info_singles_dict() -> dict:
                     "elapsed_time": 43580057.333979,
                     "last_rpc_time": 1677187401.862822,
                     "dont_use_dcf": True,
+                    "dont_request_more_work": False,
                     "master_url_fetch_pending": False,
                     "scheduler_rpc_in_progress": False,
                     "rsc_backoff_time": {"name": "CPU", "value": 0.000000},
@@ -444,6 +445,7 @@ def simple_gui_info_multi_dict() -> dict:
                     "elapsed_time": 43564806.320009,
                     "last_rpc_time": 1677187401.862822,
                     "dont_use_dcf": True,
+                    "dont_request_more_work": False,
                     "master_url_fetch_pending": False,
                     "scheduler_rpc_in_progress": False,
                     "rsc_backoff_time": {"name": "CPU", "value": 0.000000},
@@ -929,6 +931,7 @@ def multi_project_no_result_dict() -> dict:
                     "elapsed_time": 43580057.333979,
                     "last_rpc_time": 1677187401.862822,
                     "dont_use_dcf": False,
+                    "dont_request_more_work": False,
                     "master_url_fetch_pending": False,
                     "scheduler_rpc_in_progress": False,
                     "rsc_backoff_time": {"name": "CPU", "value": 0.000000},
@@ -985,6 +988,7 @@ def multi_project_no_result_dict() -> dict:
                     "elapsed_time": 43580057.333979,
                     "last_rpc_time": 1677187401.862822,
                     "dont_use_dcf": False,
+                    "dont_request_more_work": False,
                     "master_url_fetch_pending": False,
                     "scheduler_rpc_in_progress": False,
                     "rsc_backoff_time": {"name": "CPU", "value": 0.000000},
@@ -1143,6 +1147,7 @@ def client_state_dict() -> dict:
                     "elapsed_time": 43580057.333979,
                     "last_rpc_time": 1677187401.862822,
                     "dont_use_dcf": False,
+                    "dont_request_more_work": False,
                     "master_url_fetch_pending": False,
                     "scheduler_rpc_in_progress": False,
                     "rsc_backoff_time": {"name": "CPU", "value": 0.000000},
@@ -1427,6 +1432,7 @@ def new_project_attach_client_state_dict() -> dict:
                     "elapsed_time": 43580057.333979,
                     "last_rpc_time": 1677187401.862822,
                     "dont_use_dcf": False,
+                    "dont_request_more_work": False,
                     "master_url_fetch_pending": True,
                     "scheduler_rpc_in_progress": True,
                     "rsc_backoff_time": {"name": "CPU", "value": 0.000000},
@@ -1545,6 +1551,7 @@ def project_status_dict() -> dict:
                 "elapsed_time": 43580057.333979,
                 "last_rpc_time": 1677187401.862822,
                 "dont_use_dcf": True,
+                "dont_request_more_work": False,
                 "master_url_fetch_pending": False,
                 "scheduler_rpc_in_progress": False,
                 "rsc_backoff_time": {"name": "CPU", "value": 0.000000},
@@ -1590,6 +1597,108 @@ def project_status_dict() -> dict:
                 "project_files_downloaded_time": 0.000000,
                 "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
                 "suspended_via_gui": False,
+                "upload_backoff": 12843.957831,
+            }
+        ]
+    }
+
+
+@fixture
+def no_more_work_project_xml(test_files) -> str:
+    return open(f"{test_files}/project_status/no_more_work.xml").read()
+
+
+@fixture
+def no_more_work_project_dict() -> dict:
+    return {
+        "project_status": [
+            {
+                "master_url": "http://www.worldcommunitygrid.org/",
+                "project_name": "World Community Grid",
+                "symstore": "",
+                "user_name": "user_name",
+                "team_name": "",
+                "host_venue": "",
+                "email_hash": "35cfa58b4e0b46de6a651ce508082d61",
+                "cross_project_id": "037befc40287d29bb9590d8e0edd8198",
+                "external_cpid": "192792945b257453b6da6c7cad1c1381",
+                "cpid_time": 1665410370.000000,
+                "user_total_credit": 341094.533876,
+                "user_expavg_credit": 2900.946548,
+                "user_create_time": 1665410370.000000,
+                "rpc_seqno": 655,
+                "userid": 1156486,
+                "teamid": 0,
+                "hostid": 8667640,
+                "host_total_credit": 339691.861332,
+                "host_expavg_credit": 2900.715440,
+                "host_create_time": 1665650589.000000,
+                "nrpc_failures": 0,
+                "master_fetch_failures": 0,
+                "min_rpc_time": 1677187523.062822,
+                "next_rpc_time": 1677446601.862822,
+                "rec": 4267.417546,
+                "rec_time": 1677189666.165000,
+                "resource_share": 100.000000,
+                "disk_usage": 1410613248.000000,
+                "disk_share": 410497975500.800049,
+                "desired_disk_usage": 0.000000,
+                "duration_correction_factor": 1.000000,
+                "sched_rpc_pending": 0,
+                "send_time_stats_log": 0,
+                "send_job_log": 0,
+                "njobs_success": 3872,
+                "njobs_error": 86,
+                "elapsed_time": 43580057.333979,
+                "last_rpc_time": 1677187401.862822,
+                "dont_use_dcf": True,
+                "dont_request_more_work": True,
+                "master_url_fetch_pending": False,
+                "scheduler_rpc_in_progress": False,
+                "rsc_backoff_time": {"name": "CPU", "value": 0.000000},
+                "rsc_backoff_interval": {"name": "CPU", "value": 0.000000},
+                "gui_urls": [
+                    {
+                        "name": "Research Overview",
+                        "description": "Learn about the projects hosted at World Community Grid",
+                        "url": "https://www.worldcommunitygrid.org/research/viewAllProjects.do",
+                    },
+                    {
+                        "name": "News and Updates",
+                        "description": "The latest information about World Community Grid and its research projects",
+                        "url": "https://www.worldcommunitygrid.org/about_us/displayNews.do",
+                    },
+                    {
+                        "name": "My Contribution",
+                        "description": "Your statistics and settings",
+                        "url": "https://www.worldcommunitygrid.org/ms/viewMyMemberPage.do",
+                    },
+                    {
+                        "name": "Results Status",
+                        "description": "View the status of your assigned work",
+                        "url": "https://www.worldcommunitygrid.org/ms/viewBoincResults.do",
+                    },
+                    {
+                        "name": "Device Profiles",
+                        "description": "Update your device settings",
+                        "url": "https://www.worldcommunitygrid.org/ms/device/viewProfiles.do",
+                    },
+                    {
+                        "name": "Forums",
+                        "description": "Visit the World Community Grid forums",
+                        "url": "https://www.worldcommunitygrid.org/forumLogin.do",
+                    },
+                    {
+                        "name": "Help",
+                        "description": "Search for help in our help system",
+                        "url": "https://www.worldcommunitygrid.org/help/viewHelp.do",
+                    },
+                ],
+                "sched_priority": -1.041667,
+                "project_files_downloaded_time": 0.000000,
+                "project_dir": "/var/lib/boinc/projects/www.worldcommunitygrid.org",
+                "suspended_via_gui": False,
+                "upload_backoff": 12843.957831,
             }
         ]
     }
@@ -1644,6 +1753,7 @@ def suspended_project_status_dict() -> dict:
                 "elapsed_time": 43580057.333979,
                 "last_rpc_time": 1677187401.862822,
                 "dont_use_dcf": True,
+                "dont_request_more_work": False,
                 "master_url_fetch_pending": False,
                 "scheduler_rpc_in_progress": False,
                 "rsc_backoff_time": {"name": "CPU", "value": 0.000000},

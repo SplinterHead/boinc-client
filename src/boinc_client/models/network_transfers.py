@@ -17,9 +17,9 @@ def _epoch_to_date(epoch_days: str) -> str:
 
 
 class Transfer(Schema):
-    when = fields.Int()
-    up = fields.Float()
     down = fields.Float()
+    up = fields.Float()
+    when = fields.Int()
 
     @post_load
     def _a_remove_when(self, data, **kwargs):

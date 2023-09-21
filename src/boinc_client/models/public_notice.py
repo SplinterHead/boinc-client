@@ -9,15 +9,15 @@ from boinc_client.models.helpers import (
 
 
 class Notice(Schema):
-    title = fields.Str(allow_none=True)
-    description = fields.Str()
-    create_time = fields.Float()
     arrival_time = fields.Float()
-    is_private = fields.Bool()
-    project_name = fields.Str()
     category = fields.Str()
+    create_time = fields.Float()
+    description = fields.Str()
+    is_private = fields.Bool()
     link = fields.Url(allow_none=True)
+    project_name = fields.Str()
     seqno = fields.Int()
+    title = fields.Str(allow_none=True)
 
     @post_load
     def _remove_seqno(self, data, **kwargs):

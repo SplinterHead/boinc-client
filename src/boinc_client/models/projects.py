@@ -8,18 +8,18 @@ class ProjectPlatform(Schema):
 
 
 class Project(Schema):
-    name = fields.Str()
+    description = fields.Str()
+    general_area = fields.Str()
+    home = fields.Str()
     id = fields.Int()
+    image = fields.Str()
+    keywords = fields.Str()
+    name = fields.Str()
+    platforms = fields.Nested(ProjectPlatform(many=True))
+    specific_area = fields.Str()
+    summary = fields.Str()
     url = fields.Url()
     web_url = fields.Url()
-    general_area = fields.Str()
-    specific_area = fields.Str()
-    description = fields.Str()
-    home = fields.Str()
-    platforms = fields.Nested(ProjectPlatform(many=True))
-    image = fields.Str()
-    summary = fields.Str()
-    keywords = fields.Str()
 
     @pre_load
     def _convert_platform_dict_to_list(self, data, **kwargs):
