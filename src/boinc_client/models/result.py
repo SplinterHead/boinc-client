@@ -22,6 +22,7 @@ class ActiveTask(Schema):
     swap_size = fields.Float()
     working_set_size = fields.Float()
     working_set_size_smoothed = fields.Float()
+    too_large = fields.Bool(required=False, missing=None)
 
 
 class Result(Schema):
