@@ -46,6 +46,7 @@ class Result(Schema):
     wu_name = fields.Str()
     report_immediately = fields.Bool(required=False, missing=None)
     resources = fields.Str(required=False, missing=None)
+    suspended_via_gui = fields.Bool(required=False, missing=None)
 
     @pre_load
     def _set_ready(self, data, **kwargs):
