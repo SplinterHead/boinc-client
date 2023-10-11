@@ -8,7 +8,7 @@ from boinc_client.models.helpers import (
     set_bools,
 )
 
-from boinc_client.models.additional_fields import (
+""" from boinc_client.models.additional_fields import (
     scheduler_rpc_pending,
     suspended_via_gui,
     dont_request_more_work,
@@ -27,7 +27,7 @@ from boinc_client.models.additional_fields import (
     coproc_missing,
     runtime_outlier,
     project_backend
-)
+) """
 
 
 
