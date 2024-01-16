@@ -1,7 +1,13 @@
 from boinc_client.clients.rpc_client import RpcClient
 
 from .messages import message_count, messages, public_notices
-from .preferences import get_global_prefs_file, get_global_prefs_override
+from .preferences import (
+    get_global_prefs_file,
+    get_global_prefs_override,
+    get_global_prefs_working,
+    read_global_prefs_override,
+    set_global_prefs_override,
+)
 from .projects import (
     all_projects,
     attach_project,
@@ -145,3 +151,12 @@ class Boinc:
 
     def get_global_prefs_override(self):
         get_global_prefs_override(self.rpc_client)
+
+    def set_global_prefs_override(self, pref_override: dict) -> None:
+        return set_global_prefs_override(self.rpc_client, pref_override)
+
+    def get_global_prefs_working(self):
+        return get_global_prefs_working(self.rpc_client)
+
+    def read_global_prefs_override(self):
+        return read_global_prefs_override(self.rpc_client)

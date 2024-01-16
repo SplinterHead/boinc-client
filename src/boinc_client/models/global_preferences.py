@@ -32,7 +32,7 @@ class GlobalPreference(Schema):
     run_gpu_if_user_active = fields.Int()
     run_if_user_active = fields.Int()
     run_on_batteries = fields.Int()
-    source_project = fields.Str()
+    source_project = fields.Str(allow_none=True)
     start_hour = fields.Float()
     suspend_cpu_usage = fields.Float()
     suspend_if_no_recent_input = fields.Float()

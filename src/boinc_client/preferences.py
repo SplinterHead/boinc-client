@@ -25,3 +25,34 @@ def get_global_prefs_override(client: RpcClient):
         return GlobalPreferenceOverrides().load(rpc_json)
     except ValidationError:
         return GenericResponse().load(rpc_json)
+
+
+def get_global_prefs_working(client: RpcClient):
+    """Get the currently used global_prefs."""
+    rpc_resp = client.make_request("<get_global_prefs_working/>")
+    rpc_json = xmltodict.parse(rpc_resp)
+    try:
+        return GlobalPreferences().load(rpc_json)
+    except ValidationError:
+        return GenericResponse().load(rpc_json)
+
+
+def set_global_prefs_override(client: RpcClient, override: dict):
+    """Write the global_prefs_override.xml file."""
+    override_xml = ",".join([f"<{k}>{v}</{k}>" for k, v in override.items()])
+    rpc_resp = client.make_request(
+        f"""<set_global_prefs_override>
+        <global_preferences>
+        {override_xml}
+        </global_preferences>
+        </set_global_prefs_override>"""
+    )
+    rpc_json = xmltodict.parse(rpc_resp)
+    return GenericResponse().load(rpc_json)
+
+
+def read_global_prefs_override(client: RpcClient):
+    """Read the global_prefs_override.xml file and set the preferences accordingly."""
+    rpc_resp = client.make_request("<read_global_prefs_override/>")
+    rpc_json = xmltodict.parse(rpc_resp)
+    return GenericResponse().load(rpc_json)
