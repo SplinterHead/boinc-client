@@ -31,10 +31,7 @@ def get_global_prefs_working(client: RpcClient):
     """Get the currently used global_prefs."""
     rpc_resp = client.make_request("<get_global_prefs_working/>")
     rpc_json = xmltodict.parse(rpc_resp)
-    try:
-        return GlobalPreferences().load(rpc_json)
-    except ValidationError:
-        return GenericResponse().load(rpc_json)
+    return GlobalPreferences().load(rpc_json)
 
 
 def set_global_prefs_override(client: RpcClient, override: dict):

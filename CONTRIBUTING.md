@@ -21,6 +21,15 @@ make integration
 make test
 ```
 
+To ensure all code is covered by tests, a coverage report can be generated. This command will fail if coverage is not 100% and highlight where tests are missing
+```bash
+# When developing with unit tests only
+make unittest coverage
+
+# When creating integration tests
+make test coverage
+```
+
 Once changes have been made, use `black` and `isort` to format all the files:
 ```bash
 # Format with black

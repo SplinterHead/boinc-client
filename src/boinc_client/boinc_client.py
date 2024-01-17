@@ -149,14 +149,14 @@ class Boinc:
     def get_global_prefs_file(self) -> dict:
         return get_global_prefs_file(self.rpc_client)
 
-    def get_global_prefs_override(self):
-        get_global_prefs_override(self.rpc_client)
+    def get_global_prefs_override(self) -> dict:
+        return get_global_prefs_override(self.rpc_client)
 
     def set_global_prefs_override(self, pref_override: dict) -> None:
         return set_global_prefs_override(self.rpc_client, pref_override)
 
-    def get_global_prefs_working(self):
+    def get_global_prefs_working(self) -> dict:
         return get_global_prefs_working(self.rpc_client)
 
-    def read_global_prefs_override(self):
+    def read_global_prefs_override(self) -> dict:
         return read_global_prefs_override(self.rpc_client)

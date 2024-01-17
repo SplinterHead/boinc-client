@@ -25,4 +25,4 @@ test: unittest integration authenticated
 .PHONY: coverage
 coverage:
 	poetry run coverage combine --keep --data-file cov/.coverage cov/*.coverage
-	poetry run coverage report --data-file cov/.coverage --omit "tests/*,src/boinc_client/clients/rpc_client.py"
+	poetry run coverage report --show-missing --data-file cov/.coverage --omit "tests/*,src/boinc_client/clients/rpc_client.py" --fail-under=100

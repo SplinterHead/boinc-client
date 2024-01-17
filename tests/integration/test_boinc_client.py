@@ -271,6 +271,7 @@ def test_can_write_and_read_global_preferences(boinc_test_client, project_weak_k
         "https://www.worldcommunitygrid.org/",
         project_weak_key,
     )
+    assert "error" in boinc_test_client.get_global_prefs_override()
     assert (
         boinc_test_client.get_global_prefs_working()["global_preferences"][
             "max_ncpus_pct"
@@ -279,6 +280,7 @@ def test_can_write_and_read_global_preferences(boinc_test_client, project_weak_k
     )
     boinc_test_client.set_global_prefs_override({"max_ncpus_pct": 10})
     boinc_test_client.read_global_prefs_override()
+    assert boinc_test_client.get_global_prefs_override()
     assert (
         boinc_test_client.get_global_prefs_working()["global_preferences"][
             "max_ncpus_pct"
