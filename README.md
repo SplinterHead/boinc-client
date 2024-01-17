@@ -2,6 +2,8 @@
 
 ![Test and Release](https://github.com/SplinterHead/boinc-client/actions/workflows/test-and-release.yml/badge.svg)
 [![boinc-client](https://snyk.io/advisor/python/boinc-client/badge.svg)](https://snyk.io/advisor/python/boinc-client)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/boinc-client)
+
 
 Python native library for interacting with a BOINC client via RPC. This library has been designed to have consistent response types.
 
