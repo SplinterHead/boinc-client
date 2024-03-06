@@ -1,5 +1,5 @@
 from boinc_client import set_cpu_run_mode
-from boinc_client.modes import set_gpu_run_mode
+from boinc_client.modes import set_gpu_run_mode, set_network_mode
 
 
 def test_can_set_cpu_run_mode(mocker, mock_rpc_client):
@@ -68,5 +68,40 @@ def test_cannot_set_invalid_gpu_run_mode(mocker, mock_rpc_client):
     )
     assert set_gpu_run_mode(client=mock_rpc_client, run_mode="dummy") == {
         "error": "Invalid GPU mode given. Select from: always, never, auto or restore"
+    }
+    assert not m.called
+
+
+def test_can_set_network_mode(mocker, mock_rpc_client):
+    m = mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value="<success/>",
+    )
+    assert set_network_mode(client=mock_rpc_client, run_mode="always") == {
+        "success": True
+    }
+    m.assert_called_with("<set_network_mode><always/></set_network_mode>")
+
+
+def test_can_set_network_mode_with_duration(mocker, mock_rpc_client):
+    m = mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value="<success/>",
+    )
+    assert set_network_mode(client=mock_rpc_client, run_mode="always", duration=60) == {
+        "success": True
+    }
+    m.assert_called_with(
+        "<set_network_mode><always/><duration>60</duration></set_network_mode>"
+    )
+
+
+def test_cannot_set_invalid_network_mode(mocker, mock_rpc_client):
+    m = mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value="<error/>",
+    )
+    assert set_network_mode(client=mock_rpc_client, run_mode="dummy") == {
+        "error": "Invalid network mode given. Select from: always, never, auto or restore"
     }
     assert not m.called

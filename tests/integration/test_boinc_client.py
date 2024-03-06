@@ -287,5 +287,15 @@ def test_can_write_and_read_global_preferences(boinc_test_client, project_weak_k
         ]
         == 10.0
     )
-    assert boinc_test_client.set_cpu_run_mode("always") == {"success": True}
-    assert boinc_test_client.set_gpu_run_mode("always") == {"success": True}
+
+
+@mark.authenticated
+def test_can_set_compute_modes(boinc_test_client, project_weak_key):
+    boinc_test_client.attach_project(
+        "World Community Grid",
+        "https://www.worldcommunitygrid.org/",
+        project_weak_key,
+    )
+    assert boinc_test_client.set_cpu_run_mode("always", 60) == {"success": True}
+    assert boinc_test_client.set_gpu_run_mode("auto", 0) == {"success": True}
+    assert boinc_test_client.set_network_mode("never") == {"success": True}
