@@ -287,3 +287,4 @@ def test_can_write_and_read_global_preferences(boinc_test_client, project_weak_k
         ]
         == 10.0
     )
+    assert boinc_test_client.set_cpu_run_mode("always") == {"success": True}
