@@ -290,6 +290,25 @@ def test_can_write_and_read_global_preferences(boinc_test_client, project_weak_k
 
 
 @mark.authenticated
+def test_can_sequentially_set_global_overrides(boinc_test_client, project_weak_key):
+    boinc_test_client.attach_project(
+        "World Community Grid",
+        "https://www.worldcommunitygrid.org/",
+        project_weak_key,
+    )
+    boinc_test_client.set_global_prefs_override({"max_ncpus_pct": 10})
+    boinc_test_client.read_global_prefs_override()
+    boinc_test_client.update_global_prefs_override({"cpu_usage_limit": 10})
+    boinc_test_client.read_global_prefs_override()
+    assert (
+        boinc_test_client.get_global_prefs_working()["global_preferences"][
+            "max_ncpus_pct"
+        ]
+        == 10.0
+    )
+
+
+@mark.authenticated
 def test_can_set_compute_modes(boinc_test_client, project_weak_key):
     boinc_test_client.attach_project(
         "World Community Grid",

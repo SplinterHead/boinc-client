@@ -36,7 +36,7 @@ def get_global_prefs_working(client: RpcClient):
 
 def set_global_prefs_override(client: RpcClient, override: dict):
     """Write the global_prefs_override.xml file."""
-    override_xml = ",".join([f"<{k}>{v}</{k}>" for k, v in override.items()])
+    override_xml = "".join([f"<{k}>{v}</{k}>" for k, v in override.items()])
     rpc_resp = client.make_request(
         f"""<set_global_prefs_override>
         <global_preferences>
@@ -53,3 +53,13 @@ def read_global_prefs_override(client: RpcClient):
     rpc_resp = client.make_request("<read_global_prefs_override/>")
     rpc_json = xmltodict.parse(rpc_resp)
     return GenericResponse().load(rpc_json)
+
+
+############
+# Helpers
+############
+def update_global_prefs_override(client: RpcClient, override: dict):
+    """Helper for updating global prefs without resetting others."""
+    current_overrides = get_global_prefs_override(client)
+    merged_overrides = {**current_overrides["global_preferences"], **override}
+    set_global_prefs_override(client, merged_overrides)

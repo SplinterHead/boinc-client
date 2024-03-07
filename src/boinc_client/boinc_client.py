@@ -8,6 +8,7 @@ from .preferences import (
     get_global_prefs_working,
     read_global_prefs_override,
     set_global_prefs_override,
+    update_global_prefs_override,
 )
 from .projects import (
     all_projects,
@@ -155,6 +156,9 @@ class Boinc:
 
     def set_global_prefs_override(self, pref_override: dict) -> None:
         return set_global_prefs_override(self.rpc_client, pref_override)
+
+    def update_global_prefs_override(self, pref_override: dict) -> None:
+        return update_global_prefs_override(self.rpc_client, pref_override)
 
     def get_global_prefs_working(self) -> dict:
         return get_global_prefs_working(self.rpc_client)
