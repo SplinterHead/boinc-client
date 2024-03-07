@@ -1,5 +1,4 @@
-from boinc_client import set_cpu_run_mode
-from boinc_client.modes import set_gpu_run_mode, set_network_mode
+from boinc_client.modes import set_cpu_run_mode, set_gpu_run_mode, set_network_mode
 
 
 def test_can_set_cpu_run_mode(mocker, mock_rpc_client):
