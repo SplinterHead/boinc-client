@@ -66,8 +66,14 @@ def boinc_session_client(rpc_session_client) -> Boinc:
 
 @mark.authenticated
 @fixture
-def boinc_test_client(rpc_test_client) -> Boinc:
-    return Boinc(rpc_client=rpc_test_client)
+def boinc_test_client(rpc_test_client, project_weak_key) -> Boinc:
+    client = Boinc(rpc_client=rpc_test_client)
+    client.attach_project(
+        "World Community Grid",
+        "https://www.worldcommunitygrid.org/",
+        project_weak_key,
+    )
+    return client
 
 
 @fixture
