@@ -235,6 +235,11 @@ def test_can_set_and_unset_nomorework_on_project(boinc_test_client, project_weak
 
 
 @mark.authenticated
+def test_can_read_all_notices(boinc_test_client, project_weak_key):
+    assert "notices" in boinc_test_client.get_all_notices()
+
+
+@mark.authenticated
 def test_can_write_and_read_global_preferences(boinc_test_client, project_weak_key):
     assert "error" in boinc_test_client.get_global_prefs_override()
     assert (

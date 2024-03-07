@@ -1,6 +1,6 @@
 from boinc_client.clients.rpc_client import RpcClient
 
-from .messages import message_count, messages, public_notices
+from .messages import get_all_notices, message_count, messages, public_notices
 from .modes import set_cpu_run_mode, set_gpu_run_mode, set_network_mode
 from .preferences import (
     get_global_prefs_file,
@@ -54,6 +54,9 @@ class Boinc:
 
     def get_public_notices(self, start: int = 0) -> dict:
         return public_notices(client=self.rpc_client, start=start)
+
+    def get_all_notices(self, start: int = 0) -> dict:
+        return get_all_notices(client=self.rpc_client, start=start)
 
     ###########
     # Projects

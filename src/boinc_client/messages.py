@@ -29,3 +29,10 @@ def public_notices(client: RpcClient, start: int = 1) -> dict:
     )
     rpc_json = xmltodict.parse(rpc_resp, force_list="notice")
     return Notices().load(rpc_json)
+
+
+def get_all_notices(client: RpcClient, start: int = 1) -> dict:
+    """Returns both private and non-private notices."""
+    rpc_resp = client.make_request(f"<get_notices><seqno>{start}</seqno></get_notices>")
+    rpc_json = xmltodict.parse(rpc_resp, force_list="notice")
+    return Notices().load(rpc_json)

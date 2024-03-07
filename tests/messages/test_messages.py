@@ -1,4 +1,9 @@
-from boinc_client.messages import message_count, messages, public_notices
+from boinc_client.messages import (
+    get_all_notices,
+    message_count,
+    messages,
+    public_notices,
+)
 
 
 def test_can_get_message_count(mocker, mock_rpc_client):
@@ -90,7 +95,7 @@ def test_can_get_multi_public_notice(
     assert public_notices(client=mock_rpc_client) == multi_notice_dict
 
 
-def test_can_get_notices_since_id(
+def test_can_get_public_notices_since_id(
     mocker, mock_rpc_client, multi_notice_xml, multi_notice_dict
 ):
     m_call = mocker.patch(
@@ -101,3 +106,54 @@ def test_can_get_notices_since_id(
     m_call.assert_called_once_with(
         "<get_notices_public><seqno>5</seqno></get_notices_public>"
     )
+
+
+def test_can_get_empty_notice(
+    mocker, mock_rpc_client, empty_notice_xml, empty_notice_dict
+):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=empty_notice_xml,
+    )
+    assert get_all_notices(client=mock_rpc_client) == empty_notice_dict
+
+
+def test_can_get_single_notice(
+    mocker, mock_rpc_client, single_notice_xml, single_notice_dict
+):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=single_notice_xml,
+    )
+    assert get_all_notices(client=mock_rpc_client) == single_notice_dict
+
+
+def test_can_get_nulled_notice(
+    mocker, mock_rpc_client, nulled_notice_xml, nulled_notice_dict
+):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=nulled_notice_xml,
+    )
+    assert get_all_notices(client=mock_rpc_client) == nulled_notice_dict
+
+
+def test_can_get_multi_notice(
+    mocker, mock_rpc_client, multi_notice_xml, multi_notice_dict
+):
+    mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=multi_notice_xml,
+    )
+    assert get_all_notices(client=mock_rpc_client) == multi_notice_dict
+
+
+def test_can_get_notices_since_id(
+    mocker, mock_rpc_client, multi_notice_xml, multi_notice_dict
+):
+    m_call = mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value=multi_notice_xml,
+    )
+    _ = get_all_notices(client=mock_rpc_client, start=5) == multi_notice_dict
+    m_call.assert_called_once_with("<get_notices><seqno>5</seqno></get_notices>")
