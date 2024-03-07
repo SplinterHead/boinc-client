@@ -81,7 +81,7 @@ def test_can_read_global_prefs_override(mocker, mock_rpc_client):
     assert read_global_prefs_override(client=mock_rpc_client) == {"success": True}
 
 
-def test_helper_can_update_global_pref_overrides(mocker, mock_rpc_client):
+def test_can_update_global_pref_overrides(mocker, mock_rpc_client):
     m = mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.make_request",
     )
@@ -94,6 +94,21 @@ def test_helper_can_update_global_pref_overrides(mocker, mock_rpc_client):
         f"""<set_global_prefs_override>
         <global_preferences>
         <cpu_usage_limit>50.0</cpu_usage_limit><mock_key>mock</mock_key>
+        </global_preferences>
+        </set_global_prefs_override>"""
+    )
+
+
+def test_can_update_global_prefs_when_none_are_set(mocker, mock_rpc_client):
+    m = mocker.patch(
+        "boinc_client.clients.rpc_client.RpcClient.make_request",
+        return_value="""<error>no prefs override file</error>""",
+    )
+    update_global_prefs_override(mock_rpc_client, {"mock_key": "mock"})
+    m.assert_called_with(
+        f"""<set_global_prefs_override>
+        <global_preferences>
+        <mock_key>mock</mock_key>
         </global_preferences>
         </set_global_prefs_override>"""
     )

@@ -61,5 +61,8 @@ def read_global_prefs_override(client: RpcClient):
 def update_global_prefs_override(client: RpcClient, override: dict):
     """Helper for updating global prefs without resetting others."""
     current_overrides = get_global_prefs_override(client)
-    merged_overrides = {**current_overrides["global_preferences"], **override}
+    if "error" in current_overrides:
+        merged_overrides = override
+    else:
+        merged_overrides = {**current_overrides["global_preferences"], **override}
     set_global_prefs_override(client, merged_overrides)
