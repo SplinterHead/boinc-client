@@ -14,32 +14,32 @@ def password_hash():
 
 
 def test_can_create_rpc_client_with_default_values(mocker):
-    mocker.patch("socket.socket.connect")
+    mocker.patch("socket.socket.connect_ex", return_value=0)
     client = RpcClient(hostname="localhost")
     assert client.hostname == "localhost"
     assert client.port == 31416
 
 
 def test_can_create_rpc_client_with_custom_port(mocker):
-    mocker.patch("socket.socket.connect")
+    mocker.patch("socket.socket.connect_ex", return_value=0)
     client = RpcClient(hostname="localhost", port=12345)
     assert client.port == 12345
 
 
 def test_can_create_rpc_client_with_custom_timeout(mocker):
-    mocker.patch("socket.socket.connect")
+    mocker.patch("socket.socket.connect_ex", return_value=0)
     client = RpcClient(hostname="localhost", timeout=30)
     assert client.timeout == 30
 
 
 def test_can_create_rpc_client_with_password(mocker):
-    mocker.patch("socket.socket.connect")
+    mocker.patch("socket.socket.connect_ex", return_value=0)
     client = RpcClient(hostname="localhost", password="password")
     assert client.password == "password"
 
 
 def test_client_can_create_socket_connection(mocker):
-    m = mocker.patch("socket.socket.connect")
+    m = mocker.patch("socket.socket.connect_ex", return_value=0)
     _ = RpcClient(hostname="localhost")
     m.assert_called_once_with(("localhost", 31416))
 
@@ -48,7 +48,7 @@ def test_client_start_authentication_when_password_passed(mocker, nonce):
     def mock_call(self, req_string: str):
         return f"<boinc_gui_rpc_reply>\n<nonce>{nonce}</nonce>\n</boinc_gui_rpc_reply>"
 
-    mocker.patch("socket.socket.connect")
+    mocker.patch("socket.socket.connect_ex", return_value=0)
     mocker.patch("boinc_client.clients.rpc_client.RpcClient._call", mock_call)
     client = RpcClient(hostname="localhost", password="password")
     assert client.get_nonce() == nonce
@@ -57,7 +57,7 @@ def test_client_start_authentication_when_password_passed(mocker, nonce):
 def test_client_passes_password_to_target(mocker, nonce, password_hash):
     expected_req_str = f"<auth2>\n<nonce_hash>{password_hash}</nonce_hash>\n</auth2>"
 
-    mocker.patch("socket.socket.connect")
+    mocker.patch("socket.socket.connect_ex", return_value=0)
     m_call = mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient._call",
         return_value="<boinc_gui_rpc_reply>\n<authorized/>\n</boinc_gui_rpc_reply>",
@@ -69,7 +69,7 @@ def test_client_passes_password_to_target(mocker, nonce, password_hash):
 
 
 def test_client_authentication_completes_auth_flow(mocker, nonce):
-    mocker.patch("socket.socket.connect")
+    mocker.patch("socket.socket.connect_ex", return_value=0)
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.get_nonce", return_value=nonce
     )
@@ -82,7 +82,7 @@ def test_client_authentication_completes_auth_flow(mocker, nonce):
 
 
 def test_client_authentication_raises_error_on_auth_failure(mocker, nonce):
-    mocker.patch("socket.socket.connect")
+    mocker.patch("socket.socket.connect_ex", return_value=0)
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient.get_nonce", return_value=nonce
     )
@@ -95,7 +95,7 @@ def test_client_authentication_raises_error_on_auth_failure(mocker, nonce):
 
 
 def test_client_can_make_custom_calls(mocker):
-    mocker.patch("socket.socket.connect")
+    mocker.patch("socket.socket.connect_ex", return_value=0)
     m_call = mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient._call", return_value="123"
     )
@@ -107,7 +107,7 @@ def test_client_can_make_custom_calls(mocker):
 
 
 def test_client_removes_default_wrapper_tag(mocker):
-    mocker.patch("socket.socket.connect")
+    mocker.patch("socket.socket.connect_ex", return_value=0)
     mocker.patch(
         "boinc_client.clients.rpc_client.RpcClient._call",
         return_value="<boinc_gui_rpc_reply>\n<request/>\n</boinc_gui_rpc_reply>",

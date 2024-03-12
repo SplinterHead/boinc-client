@@ -1,3 +1,4 @@
+import errno
 import re
 import socket
 import threading
@@ -29,7 +30,12 @@ class RpcClient:
         self._call_lock = threading.Lock()
 
     def create_connection(self) -> socket:
-        return self.socket.connect((self.hostname, self.port))
+        socket_result = self.socket.connect_ex((self.hostname, self.port))
+        if socket_result > 0:
+            self.socket.close()
+            raise ConnectionError(
+                f"Error connecting to socket, {errno.errorcode[socket_result]}"
+            )
 
     def authenticate(self) -> bool:
         if self.password:
