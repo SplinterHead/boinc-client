@@ -18,7 +18,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: 3.11
         cache: "poetry"
     - name: Install Dependencies
       run: poetry install
@@ -44,7 +44,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: 3.11
         cache: "poetry"
     - name: Install Dependencies
       run: poetry install
@@ -69,7 +69,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: 3.11
     - name: Install coverage
       run: pip install coverage
     - uses: actions/download-artifact@master
@@ -106,7 +106,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: 3.11
         cache: "poetry"
     - name: Get Next Version
       id: semver
