@@ -4,7 +4,7 @@ from boinc_client.models.helpers import normalise_none_to_list
 
 
 class CoProc(Schema):
-    name: fields.Str()
+    name = fields.Str()
 
 
 class Host(Schema):

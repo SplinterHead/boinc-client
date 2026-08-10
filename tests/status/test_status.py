@@ -1,3 +1,5 @@
+from boinc_client.models.host_info import CoProc
+from boinc_client.models.project_status import ProjectState
 from boinc_client.status import (
     cc_status,
     client_state,
@@ -300,3 +302,24 @@ def test_can_get_suspended_project_status(
         return_value=suspended_project_status_xml,
     )
     assert project_status(client=mock_rpc_client) == suspended_project_status_dict
+
+
+def test_coproc_schema_loads_name_field():
+    assert CoProc().load({"name": "intel-gpu"}) == {"name": "intel-gpu"}
+
+
+def test_project_state_drops_empty_extension_fields():
+    data = {
+        "no_rsc_pref": "",
+        "venue": "",
+        "verify_files_on_app_start": "",
+        "attached_via_acct_mgr": "",
+        "project_name": "example",
+    }
+    cleaned = ProjectState()._b_drop_empty_extension_fields(data, many=False)
+
+    assert "no_rsc_pref" not in cleaned
+    assert "venue" not in cleaned
+    assert "verify_files_on_app_start" not in cleaned
+    assert "attached_via_acct_mgr" not in cleaned
+    assert cleaned["project_name"] == "example"

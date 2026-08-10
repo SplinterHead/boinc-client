@@ -1,4 +1,4 @@
-from marshmallow import Schema, fields, post_load, pre_load
+from marshmallow import EXCLUDE, Schema, fields, post_load, pre_load
 
 from boinc_client.models.helpers import (
     create_lists,
@@ -43,6 +43,9 @@ class AppDetails(Schema):
 
 
 class AppFileRef(Schema):
+    class Meta:
+        unknown = EXCLUDE
+
     copy_file = fields.Bool()
     file_name = fields.Str()
     main_program = fields.Bool()
@@ -60,13 +63,21 @@ class AppFileRef(Schema):
 
 
 class AppVersion(Schema):
+    class Meta:
+        unknown = EXCLUDE
+
     api_version = fields.Str()
     app_name = fields.Str()
     avg_ncpus = fields.Float()
-    file_ref = fields.Nested(AppFileRef(many=True))
+    file_ref = fields.Nested(
+        AppFileRef(many=True), required=False, allow_none=True, load_default=None
+    )
     flops = fields.Float()
     platform = fields.Str()
     version_num = fields.Int()
+    plan_class = fields.Str(allow_none=True)
+    is_wrapper = fields.Bool(allow_none=True)
+    cmdline = fields.Str(allow_none=True)
 
 
 class WorkUnit(Schema):
@@ -79,6 +90,8 @@ class WorkUnit(Schema):
     rsc_fpops_est = fields.Float()
     rsc_memory_bound = fields.Float()
     version_num = fields.Int()
+    plan_class = fields.Str(allow_none=True)
+    cmdline = fields.Str(allow_none=True)
 
 
 class GlobalPreferences(Schema):
@@ -126,6 +139,9 @@ class GlobalPreferences(Schema):
 
 
 class State(Schema):
+    class Meta:
+        unknown = EXCLUDE
+
     app_versions = fields.Nested(
         AppVersion(many=True), data_key="app_version", allow_none=True
     )

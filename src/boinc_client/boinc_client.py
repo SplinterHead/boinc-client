@@ -39,7 +39,7 @@ from .versions import client_update, client_version
 
 
 class Boinc:
-    rpc_client: RpcClient
+    rpc_client: RpcClient = None
 
     def __init__(self, rpc_client: RpcClient):
         self.rpc_client = rpc_client

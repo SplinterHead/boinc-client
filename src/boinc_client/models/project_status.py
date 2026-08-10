@@ -8,6 +8,27 @@ from boinc_client.models.helpers import (
     set_bools,
 )
 
+""" from boinc_client.models.additional_fields import (
+    scheduler_rpc_pending,
+    suspended_via_gui,
+    dont_request_more_work,
+    ended,
+    project_files_downloaded_time,
+    ready_to_report,
+    got_server_ack,
+    final_cpu_time,
+    final_elapsed_time,
+    state,
+    exit_status,
+    signal,
+    project_suspended_via_gui,
+    edf_scheduled,
+    scheduler_rpc_pending,
+    coproc_missing,
+    runtime_outlier,
+    project_backend
+) """
+
 
 class RscBackoffTime(Schema):
     name = fields.Str()
@@ -76,6 +97,10 @@ class ProjectState(Schema):
     user_name = fields.Str(allow_none=True)
     user_total_credit = fields.Float()
     userid = fields.Int()
+    no_rsc_pref = fields.Bool(allow_none=True)
+    venue = fields.Str(allow_none=True)
+    verify_files_on_app_start = fields.Bool(allow_none=True)
+    attached_via_acct_mgr = fields.Bool(allow_none=True)
 
     @pre_load
     def _a_create_keys(self, data, **kwargs):
@@ -101,6 +126,18 @@ class ProjectState(Schema):
     @post_load
     def _a_replace_none_string(self, data, **kwargs):
         return replace_none_string(data)
+
+    @post_load
+    def _b_drop_empty_extension_fields(self, data, **kwargs):
+        for key in (
+            "no_rsc_pref",
+            "venue",
+            "verify_files_on_app_start",
+            "attached_via_acct_mgr",
+        ):
+            if data.get(key) == "":
+                data.pop(key, None)
+        return data
 
 
 class ProjectStatus(Schema):

@@ -1,0 +1,8 @@
+- name: boinc-client
+  path: ~/dev/boinc-client
+  active: true
+  pre-build: poetry install
+  test:
+    -  make unittest
+    -  make unittest coverage
+  interval: 3600

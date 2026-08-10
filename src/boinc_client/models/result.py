@@ -1,4 +1,4 @@
-from marshmallow import Schema, fields, pre_load
+from marshmallow import Schema, fields, post_load, pre_load
 
 from boinc_client.models.helpers import flatten_data, normalise_none_to_list
 
@@ -22,6 +22,13 @@ class ActiveTask(Schema):
     swap_size = fields.Float()
     working_set_size = fields.Float()
     working_set_size_smoothed = fields.Float()
+    too_large = fields.Bool(required=False, allow_none=True)
+
+    @post_load
+    def _a_drop_none_optional_fields(self, data, **kwargs):
+        if data.get("too_large", None) is None:
+            data.pop("too_large", None)
+        return data
 
 
 class Result(Schema):
@@ -43,6 +50,9 @@ class Result(Schema):
     state = fields.Int()
     version_num = fields.Int()
     wu_name = fields.Str()
+    report_immediately = fields.Bool(required=False, allow_none=True)
+    resources = fields.Str(required=False, allow_none=True)
+    suspended_via_gui = fields.Bool(required=False, allow_none=True)
 
     @pre_load
     def _set_ready(self, data, **kwargs):
@@ -57,6 +67,13 @@ class Result(Schema):
     @pre_load
     def _set_suspended(self, data, **kwargs):
         data["project_suspended_via_gui"] = "project_suspended_via_gui" in data
+        return data
+
+    @post_load
+    def _a_drop_none_optional_fields(self, data, **kwargs):
+        for key in ("report_immediately", "resources", "suspended_via_gui"):
+            if data.get(key, None) is None:
+                data.pop(key, None)
         return data
 
 

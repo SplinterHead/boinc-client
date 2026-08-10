@@ -13,4 +13,6 @@ dist/
 .coverage
 cov/
 
+old_*
 boinc_client.log
+

@@ -1,3 +1,7 @@
+.PHONY: clean-cov
+clean-cov:
+	rm -f cov/*.coverage cov/.coverage
+
 .PHONY: fmt
 fmt:
 	poetry run black src/ tests/
@@ -8,7 +12,7 @@ fmtxml: fmt
 	find tests/test_files -type f -name "*.xml" -exec echo "- {}" \; -exec poetry run xmlformat --indent 4 --overwrite {} \;
 
 .PHONY: unittest
-unittest: fmt
+unittest: clean-cov fmt
 	poetry run coverage run --data-file cov/unittest.coverage -m pytest -m "not integration and not authenticated" -vv
 
 .PHONY: integration
