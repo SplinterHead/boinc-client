@@ -77,13 +77,11 @@ def test_can_attach_to_project(
         project_name="Mock Project",
         project_key=mock_project_key,
     ) == {"success": True}
-    m.assert_called_with(
-        f"""<project_attach>
+    m.assert_called_with(f"""<project_attach>
         <project_url>{mock_project_url}</project_url>
         <project_name>Mock Project</project_name>
         <authenticator>{mock_project_key}</authenticator>
-    </project_attach>"""
-    )
+    </project_attach>""")
 
 
 def test_project_attach_returns_error(

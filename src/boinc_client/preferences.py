@@ -56,13 +56,11 @@ def set_global_prefs_override(client: RpcClient, override: dict):
     logger.debug(override)
     override_xml = "".join([f"<{k}>{v}</{k}>" for k, v in override.items()])
     logger.debug(override_xml)
-    rpc_resp = client.make_request(
-        f"""<set_global_prefs_override>
+    rpc_resp = client.make_request(f"""<set_global_prefs_override>
         <global_preferences>
         {override_xml}
         </global_preferences>
-        </set_global_prefs_override>"""
-    )
+        </set_global_prefs_override>""")
     rpc_json = xmltodict.parse(rpc_resp)
     logger.debug(rpc_json)
     logger.debug("Converting to GenericResponse model")
