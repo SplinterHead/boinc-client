@@ -74,6 +74,7 @@ def test_project_stats(boinc_session_client):
 @mark.integration
 def test_client_state(boinc_session_client):
     result = boinc_session_client.get_client_state()
+    print(result)
     assert result
     assert "client_state" in result
 
